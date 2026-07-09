@@ -764,93 +764,98 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ====== CONTATO (CTA FINAL) ====== */}
-        <section
-          style={{
-            padding: isMobile ? '60px 15px' : '80px 20px',
-            backgroundImage: 'url(/images/hero.jpeg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
-            position: 'relative',
-          }}
-        >
-          <div
-            style={{
-              position: 'absolute',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundColor: 'rgba(0,0,0,0.6)',
-            }}
-          />
-          <div
-            style={{
-              position: 'relative',
-              zIndex: 5,
-              textAlign: 'center',
-              maxWidth: '600px',
-              margin: '0 auto',
-            }}
-          >
-            <h2
-              style={{
-                color: '#fff',
-                fontSize: isMobile ? '1.6rem' : 'clamp(1.8rem, 3vw, 2.5rem)',
-                fontWeight: '700',
-                marginBottom: '15px',
-              }}
-            >
-              Quer saber mais ou agendar uma visita?
-            </h2>
-            <p
-              style={{
-                color: 'rgba(255,255,255,0.85)',
-                fontSize: isMobile ? '1rem' : '1.1rem',
-                marginBottom: '30px',
-              }}
-            >
-              Fale com o vendedor diretamente pelo WhatsApp
-            </p>
-            <a
-              href="https://wa.me/5511918454543?text=Olá! Vi o terreno da Marques Alta Terra no site e tenho interesse."
-              target="_blank"
-              rel="noopener noreferrer"
-              style={{
-                display: 'inline-block',
-                padding: isMobile ? '16px 30px' : '18px 50px',
-                backgroundColor: '#25D366',
-                color: '#fff',
-                borderRadius: '30px',
-                fontSize: isMobile ? '1rem' : '1.2rem',
-                fontWeight: '700',
-                textDecoration: 'none',
-                boxShadow: '0 4px 20px rgba(37, 211, 102, 0.4)',
-                transition: 'all 0.3s ease',
-                width: isMobile ? '100%' : 'auto',
-              }}
-              onMouseOver={(e) => {
-                e.target.style.transform = 'scale(1.05)';
-                e.target.style.boxShadow = '0 6px 30px rgba(37, 211, 102, 0.5)';
-              }}
-              onMouseOut={(e) => {
-                e.target.style.transform = 'scale(1)';
-                e.target.style.boxShadow = '0 4px 20px rgba(37, 211, 102, 0.4)';
-              }}
-            >
-              📲 Fale agora no WhatsApp
-            </a>
-            <p
-              style={{
-                color: 'rgba(255,255,255,0.7)',
-                marginTop: '15px',
-                fontSize: isMobile ? '0.85rem' : '0.9rem',
-              }}
-            >
-              💰 Aceita proposta - negocie conosco
-            </p>
-          </div>
-        </section>
+{/* ====== CONTATO (CTA FINAL) ====== */}
+<section
+  style={{
+    padding: isMobile ? '60px 15px' : '80px 20px',
+    backgroundImage: 'url(/images/hero.jpeg)',
+    backgroundSize: 'cover',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    position: 'relative',
+    width: '100%',
+    boxSizing: 'border-box',
+    overflow: 'hidden',
+  }}
+>
+  <div
+    style={{
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(0,0,0,0.6)',
+    }}
+  />
+  <div
+    style={{
+      position: 'relative',
+      zIndex: 5,
+      textAlign: 'center',
+      maxWidth: '600px',
+      margin: '0 auto',
+    }}
+  >
+    <h2
+      style={{
+        color: '#fff',
+        fontSize: isMobile ? '1.6rem' : 'clamp(1.8rem, 3vw, 2.5rem)',
+        fontWeight: '700',
+        marginBottom: '15px',
+      }}
+    >
+      Quer saber mais ou agendar uma visita?
+    </h2>
+    <p
+      style={{
+        color: 'rgba(255,255,255,0.85)',
+        fontSize: isMobile ? '1rem' : '1.1rem',
+        marginBottom: '30px',
+      }}
+    >
+      Fale com o vendedor diretamente pelo WhatsApp
+    </p>
+    <a
+      href="https://wa.me/5511918454543?text=Olá! Vi o terreno da Marques Alta Terra no site e tenho interesse."
+      target="_blank"
+      rel="noopener noreferrer"
+      style={{
+        display: 'inline-block',
+        padding: isMobile ? '16px 30px' : '18px 50px',
+        backgroundColor: '#25D366',
+        color: '#fff',
+        borderRadius: '30px',
+        fontSize: isMobile ? '1rem' : '1.2rem',
+        fontWeight: '700',
+        textDecoration: 'none',
+        boxShadow: '0 4px 20px rgba(37, 211, 102, 0.4)',
+        transition: 'all 0.3s ease',
+        width: isMobile ? '100%' : 'auto',
+        boxSizing: 'border-box',
+      }}
+      onMouseOver={(e) => {
+        e.target.style.transform = 'scale(1.05)';
+        e.target.style.boxShadow = '0 6px 30px rgba(37, 211, 102, 0.5)';
+      }}
+      onMouseOut={(e) => {
+        e.target.style.transform = 'scale(1)';
+        e.target.style.boxShadow = '0 4px 20px rgba(37, 211, 102, 0.4)';
+      }}
+    >
+      📲 Fale agora no WhatsApp
+    </a>
+    <p
+      style={{
+        color: 'rgba(255,255,255,0.7)',
+        marginTop: '15px',
+        fontSize: isMobile ? '0.85rem' : '0.9rem',
+      }}
+    >
+      💰 Aceita proposta - negocie conosco
+    </p>
+  </div>
+</section>
 
         {/* ====== TEXTO SEO ====== */}
         <div style={{ 
@@ -969,295 +974,330 @@ export default function Home() {
           </div>
         </footer>
 
-        {/* ====== MODAL FOTOS ====== */}
-        {modalFotosAberto && (
-          <div
-            style={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundColor: 'rgba(0,0,0,0.92)',
-              zIndex: 1000,
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              padding: isMobile ? '10px' : '20px',
-            }}
-            onClick={() => setModalFotosAberto(false)}
-          >
-            <div
-              style={{
-                position: 'relative',
-                maxWidth: '90vw',
-                maxHeight: '90vh',
-                backgroundColor: 'transparent',
-              }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={() => setModalFotosAberto(false)}
-                style={{
-                  position: 'absolute',
-                  top: isMobile ? '-40px' : '-50px',
-                  right: '0',
-                  color: '#fff',
-                  fontSize: isMobile ? '1.5rem' : '2rem',
-                  background: 'none',
-                  border: 'none',
-                  cursor: 'pointer',
-                  padding: '0 10px',
-                }}
-              >
-                ✕
-              </button>
-              <img
-                src={fotos[fotoAtual]}
-                alt={`Vista aérea do terreno em Joanópolis SP - Marques Alta Terra ${fotoAtual + 1}`}
-                style={{
-                  maxWidth: '100%',
-                  maxHeight: '80vh',
-                  borderRadius: '8px',
-                  objectFit: 'contain',
-                }}
-              />
-              {fotos.length > 1 && (
-                <>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      fotoAnterior();
-                    }}
-                    style={{
-                      position: 'absolute',
-                      left: isMobile ? '-30px' : '-60px',
-                      top: '50%',
-                      transform: 'translateY(-50%)',
-                      color: '#fff',
-                      fontSize: isMobile ? '1.5rem' : '2.5rem',
-                      background: 'rgba(255,255,255,0.15)',
-                      border: 'none',
-                      borderRadius: '50%',
-                      width: isMobile ? '35px' : '50px',
-                      height: isMobile ? '35px' : '50px',
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      transition: 'all 0.3s ease',
-                    }}
-                    onMouseOver={(e) => {
-                      e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.3)';
-                    }}
-                    onMouseOut={(e) => {
-                      e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.15)';
-                    }}
-                  >
-                    ❮
-                  </button>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      proximaFoto();
-                    }}
-                    style={{
-                      position: 'absolute',
-                      right: isMobile ? '-30px' : '-60px',
-                      top: '50%',
-                      transform: 'translateY(-50%)',
-                      color: '#fff',
-                      fontSize: isMobile ? '1.5rem' : '2.5rem',
-                      background: 'rgba(255,255,255,0.15)',
-                      border: 'none',
-                      borderRadius: '50%',
-                      width: isMobile ? '35px' : '50px',
-                      height: isMobile ? '35px' : '50px',
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      transition: 'all 0.3s ease',
-                    }}
-                    onMouseOver={(e) => {
-                      e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.3)';
-                    }}
-                    onMouseOut={(e) => {
-                      e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.15)';
-                    }}
-                  >
-                    ❯
-                  </button>
-                </>
-              )}
-              <div
-                style={{
-                  position: 'absolute',
-                  bottom: '-40px',
-                  left: '50%',
-                  transform: 'translateX(-50%)',
-                  color: 'rgba(255,255,255,0.6)',
-                  fontSize: isMobile ? '0.7rem' : '0.85rem',
-                }}
-              >
-                {fotoAtual + 1} / {fotos.length}
-              </div>
-            </div>
-          </div>
-        )}
+{/* ====== MODAL FOTOS - COM BOTÕES EMBAIXO ====== */}
+{modalFotosAberto && (
+  <div
+    style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(0,0,0,0.92)',
+      zIndex: 1000,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: isMobile ? '10px' : '20px',
+    }}
+    onClick={() => setModalFotosAberto(false)}
+  >
+    <div
+      style={{
+        position: 'relative',
+        maxWidth: '90vw',
+        maxHeight: '90vh',
+        backgroundColor: 'transparent',
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+      }}
+      onClick={(e) => e.stopPropagation()}
+    >
+      {/* FECHAR */}
+      <button
+        onClick={() => setModalFotosAberto(false)}
+        style={{
+          position: 'absolute',
+          top: '-50px',
+          right: '0',
+          color: '#fff',
+          fontSize: '2rem',
+          background: 'none',
+          border: 'none',
+          cursor: 'pointer',
+          padding: '0 10px',
+          zIndex: 10,
+        }}
+      >
+        ✕
+      </button>
 
-        {/* ====== MODAL VÍDEO ====== */}
-        {modalVideoAberto && (
-          <div
+      {/* IMAGEM */}
+      <img
+        src={fotos[fotoAtual]}
+        alt={`Vista aérea do terreno em Joanópolis SP - Marques Alta Terra ${fotoAtual + 1}`}
+        style={{
+          maxWidth: '100%',
+          maxHeight: '70vh',
+          borderRadius: '8px',
+          objectFit: 'contain',
+        }}
+      />
+
+      {/* BOTÕES DE NAVEGAÇÃO EMBAIXO DA IMAGEM */}
+      {fotos.length > 1 && (
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '20px',
+            marginTop: '20px',
+            padding: '10px 0',
+          }}
+        >
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              fotoAnterior();
+            }}
             style={{
-              position: 'fixed',
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              backgroundColor: 'rgba(0,0,0,0.92)',
-              zIndex: 1000,
+              color: '#fff',
+              fontSize: '1.5rem',
+              background: 'rgba(255,255,255,0.15)',
+              border: '2px solid rgba(255,255,255,0.3)',
+              borderRadius: '50%',
+              width: isMobile ? '55px' : '60px',
+              height: isMobile ? '55px' : '60px',
+              cursor: 'pointer',
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              padding: isMobile ? '10px' : '20px',
+              transition: 'all 0.3s ease',
+              touchAction: 'manipulation',
             }}
-            onClick={() => setModalVideoAberto(false)}
+            onMouseOver={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.3)';
+              e.currentTarget.style.transform = 'scale(1.1)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.15)';
+              e.currentTarget.style.transform = 'scale(1)';
+            }}
           >
-            <div
-              style={{
-                position: 'relative',
-                maxWidth: '800px',
-                width: '100%',
-                backgroundColor: 'transparent',
-              }}
-              onClick={(e) => e.stopPropagation()}
-            >
-              <button
-                onClick={() => setModalVideoAberto(false)}
-                style={{
-                  position: 'absolute',
-                  top: isMobile ? '-40px' : '-50px',
-                  right: '0',
-                  color: '#fff',
-                  fontSize: isMobile ? '1.5rem' : '2rem',
-                  background: 'none',
-                  border: 'none',
-                  cursor: 'pointer',
-                  padding: '0 10px',
-                  zIndex: 10,
-                }}
-              >
-                ✕
-              </button>
-              
-              <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
-                <iframe
-                  src={videos[videoAtual].url}
-                  style={{
-                    position: 'absolute',
-                    top: 0,
-                    left: 0,
-                    width: '100%',
-                    height: '100%',
-                    borderRadius: '12px',
-                    border: 'none',
-                  }}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  title={videos[videoAtual].titulo}
-                />
-              </div>
-              
-              {/* SETAS DE NAVEGAÇÃO */}
-              {videos.length > 1 && (
-                <>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setVideoAtual((prev) => (prev === 0 ? videos.length - 1 : prev - 1));
-                    }}
-                    style={{
-                      position: 'absolute',
-                      left: isMobile ? '-30px' : '-60px',
-                      top: '50%',
-                      transform: 'translateY(-50%)',
-                      color: '#fff',
-                      fontSize: isMobile ? '1.5rem' : '2.5rem',
-                      background: 'rgba(255,255,255,0.15)',
-                      border: 'none',
-                      borderRadius: '50%',
-                      width: isMobile ? '35px' : '50px',
-                      height: isMobile ? '35px' : '50px',
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      transition: 'all 0.3s ease',
-                    }}
-                    onMouseOver={(e) => {
-                      e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.3)';
-                    }}
-                    onMouseOut={(e) => {
-                      e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.15)';
-                    }}
-                  >
-                    ❮
-                  </button>
-                  <button
-                    onClick={(e) => {
-                      e.stopPropagation();
-                      setVideoAtual((prev) => (prev === videos.length - 1 ? 0 : prev + 1));
-                    }}
-                    style={{
-                      position: 'absolute',
-                      right: isMobile ? '-30px' : '-60px',
-                      top: '50%',
-                      transform: 'translateY(-50%)',
-                      color: '#fff',
-                      fontSize: isMobile ? '1.5rem' : '2.5rem',
-                      background: 'rgba(255,255,255,0.15)',
-                      border: 'none',
-                      borderRadius: '50%',
-                      width: isMobile ? '35px' : '50px',
-                      height: isMobile ? '35px' : '50px',
-                      cursor: 'pointer',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'center',
-                      transition: 'all 0.3s ease',
-                    }}
-                    onMouseOver={(e) => {
-                      e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.3)';
-                    }}
-                    onMouseOut={(e) => {
-                      e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.15)';
-                    }}
-                  >
-                    ❯
-                  </button>
-                </>
-              )}
-              
-              {/* INDICADOR DE VÍDEO ATUAL */}
-              {videos.length > 1 && (
-                <div
-                  style={{
-                    position: 'absolute',
-                    bottom: '-40px',
-                    left: '50%',
-                    transform: 'translateX(-50%)',
-                    color: 'rgba(255,255,255,0.6)',
-                    fontSize: isMobile ? '0.7rem' : '0.85rem',
-                    textAlign: 'center',
-                  }}
-                >
-                  {videoAtual + 1} / {videos.length} • {videos[videoAtual].titulo}
-                </div>
-              )}
-            </div>
-          </div>
-        )}
+            ❮
+          </button>
+          
+          <span
+            style={{
+              color: 'rgba(255,255,255,0.7)',
+              fontSize: isMobile ? '0.8rem' : '1rem',
+              textAlign: 'center',
+              minWidth: '80px',
+            }}
+          >
+            {fotoAtual + 1} / {fotos.length}
+          </span>
+          
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              proximaFoto();
+            }}
+            style={{
+              color: '#fff',
+              fontSize: '1.5rem',
+              background: 'rgba(255,255,255,0.15)',
+              border: '2px solid rgba(255,255,255,0.3)',
+              borderRadius: '50%',
+              width: isMobile ? '55px' : '60px',
+              height: isMobile ? '55px' : '60px',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              transition: 'all 0.3s ease',
+              touchAction: 'manipulation',
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.3)';
+              e.currentTarget.style.transform = 'scale(1.1)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.15)';
+              e.currentTarget.style.transform = 'scale(1)';
+            }}
+          >
+            ❯
+          </button>
+        </div>
+      )}
+    </div>
+  </div>
+)}
+
+{/* ====== MODAL VÍDEO - COM BOTÕES EMBAIXO ====== */}
+{modalVideoAberto && (
+  <div
+    style={{
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      right: 0,
+      bottom: 0,
+      backgroundColor: 'rgba(0,0,0,0.92)',
+      zIndex: 1000,
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: isMobile ? '10px' : '20px',
+    }}
+    onClick={() => setModalVideoAberto(false)}
+  >
+    <div
+      style={{
+        position: 'relative',
+        maxWidth: '800px',
+        width: '100%',
+        backgroundColor: 'transparent',
+      }}
+      onClick={(e) => e.stopPropagation()}
+    >
+      {/* BOTÃO FECHAR */}
+      <button
+        onClick={() => setModalVideoAberto(false)}
+        style={{
+          position: 'absolute',
+          top: '-50px',
+          right: '0',
+          color: '#fff',
+          fontSize: '2rem',
+          background: 'none',
+          border: 'none',
+          cursor: 'pointer',
+          padding: '0 10px',
+          zIndex: 10,
+        }}
+      >
+        ✕
+      </button>
+      
+      {/* VÍDEO */}
+      <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
+        <iframe
+          src={videos[videoAtual].url}
+          style={{
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            width: '100%',
+            height: '100%',
+            borderRadius: '12px',
+            border: 'none',
+          }}
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowFullScreen
+          title={videos[videoAtual].titulo}
+        />
+      </div>
+      
+      {/* BOTÕES DE NAVEGAÇÃO EMBAIXO DO VÍDEO */}
+      {videos.length > 1 && (
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            gap: '20px',
+            marginTop: '20px',
+            padding: '10px 0',
+          }}
+        >
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setVideoAtual((prev) => (prev === 0 ? videos.length - 1 : prev - 1));
+            }}
+            style={{
+              color: '#fff',
+              fontSize: '1.5rem',
+              background: 'rgba(255,255,255,0.15)',
+              border: '2px solid rgba(255,255,255,0.3)',
+              borderRadius: '50%',
+              width: isMobile ? '55px' : '60px',
+              height: isMobile ? '55px' : '60px',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              transition: 'all 0.3s ease',
+              touchAction: 'manipulation',
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.3)';
+              e.currentTarget.style.transform = 'scale(1.1)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.15)';
+              e.currentTarget.style.transform = 'scale(1)';
+            }}
+          >
+            ❮
+          </button>
+          
+          <span
+            style={{
+              color: 'rgba(255,255,255,0.7)',
+              fontSize: isMobile ? '0.8rem' : '1rem',
+              textAlign: 'center',
+              minWidth: '120px',
+            }}
+          >
+            {videoAtual + 1} / {videos.length}
+          </span>
+          
+          <button
+            onClick={(e) => {
+              e.stopPropagation();
+              setVideoAtual((prev) => (prev === videos.length - 1 ? 0 : prev + 1));
+            }}
+            style={{
+              color: '#fff',
+              fontSize: '1.5rem',
+              background: 'rgba(255,255,255,0.15)',
+              border: '2px solid rgba(255,255,255,0.3)',
+              borderRadius: '50%',
+              width: isMobile ? '55px' : '60px',
+              height: isMobile ? '55px' : '60px',
+              cursor: 'pointer',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              transition: 'all 0.3s ease',
+              touchAction: 'manipulation',
+            }}
+            onMouseOver={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.3)';
+              e.currentTarget.style.transform = 'scale(1.1)';
+            }}
+            onMouseOut={(e) => {
+              e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.15)';
+              e.currentTarget.style.transform = 'scale(1)';
+            }}
+          >
+            ❯
+          </button>
+        </div>
+      )}
+      
+      {/* TÍTULO DO VÍDEO EMBAIXO */}
+      {videos.length > 1 && (
+        <div
+          style={{
+            textAlign: 'center',
+            color: 'rgba(255,255,255,0.5)',
+            fontSize: isMobile ? '0.7rem' : '0.85rem',
+            marginTop: '5px',
+            padding: '0 10px',
+          }}
+        >
+          {videos[videoAtual].titulo}
+        </div>
+      )}
+    </div>
+  </div>
+)}
 
         {/* ====== MODAL DOCUMENTOS ====== */}
         {modalDocumentosAberto && (
