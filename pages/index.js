@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Head from 'next/head';
 
 export default function Home() {
@@ -9,6 +9,17 @@ export default function Home() {
   const [modalVideoAberto, setModalVideoAberto] = useState(false);
   const [fotoAtual, setFotoAtual] = useState(0);
   const [videoAtual, setVideoAtual] = useState(0);
+  const [isMobile, setIsMobile] = useState(false);
+
+  // Detectar se é mobile
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth <= 768);
+    };
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+    return () => window.removeEventListener('resize', checkMobile);
+  }, []);
 
   // Lista das fotos da galeria
   const fotos = [
@@ -95,31 +106,27 @@ export default function Home() {
   return (
     <>
       <Head>
-        {/* ====== TÍTULO PRINCIPAL (COM PALAVRAS-CHAVE) ====== */}
+        {/* ====== TÍTULO PRINCIPAL ====== */}
         <title>Terreno em Joanópolis SP - 280m² com Luz e Platô | Marques Alta Terra</title>
         
-        {/* ====== META DESCRIPTION (COM PREÇO E LOCAL) ====== */}
+        {/* ====== META DESCRIPTION ====== */}
         <meta 
           name="description" 
-          content="Terreno de 280m² em Joanópolis - SP. Platô pronto, padrão de luz instalado. 20 min do centro. R$ 129.000,00. Aceita proposta. Visite e conheça!" 
+          content="Terreno de 280m² em Joanópolis - SP. Platô pronto, padrão de luz instalado. 20 min do centro. R$ 129.000,00. Aceita proposta." 
         />
         
-        {/* ====== PALAVRAS-CHAVE ====== */}
-        <meta 
-          name="keywords" 
-          content="terreno joanópolis, terreno sp, terreno 280m², terreno com luz, terreno com plato, marques alta terra, comprar terreno joanópolis, terreno interior sp" 
-        />
-        
-        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta charSet="utf-8" />
         <meta name="robots" content="index, follow" />
-        <link rel="canonical" href="https://marquesaltaterra.shop" />
+        <link rel="canonical" href="https://www.marquesaltaterra.shop" />
 
-        {/* ====== OPEN GRAPH (FACEBOOK/WHATSAPP) ====== */}
+        {/* ====== OPEN GRAPH (WhatsApp/Facebook) - IMAGEM ABSOLUTA ====== */}
         <meta property="og:title" content="Terreno em Joanópolis SP - 280m² com Luz e Platô | Marques Alta Terra" />
         <meta property="og:description" content="Terreno de 280m² em Joanópolis - SP. Platô pronto, luz instalada. R$ 129.000,00. Aceita proposta." />
-        <meta property="og:image" content="https://marquesaltaterra.shop/images/hero.jpeg" />
-        <meta property="og:url" content="https://marquesaltaterra.shop" />
+        <meta property="og:image" content="https://www.marquesaltaterra.shop/images/logo.png" />
+        <meta property="og:image:width" content="1200" />
+        <meta property="og:image:height" content="630" />
+        <meta property="og:url" content="https://www.marquesaltaterra.shop" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Marques Alta Terra" />
         <meta property="og:locale" content="pt_BR" />
@@ -128,23 +135,23 @@ export default function Home() {
         <meta name="twitter:card" content="summary_large_image" />
         <meta name="twitter:title" content="Terreno em Joanópolis SP - 280m² com Luz e Platô | Marques Alta Terra" />
         <meta name="twitter:description" content="Terreno de 280m² em Joanópolis - SP. Platô pronto, luz instalada. R$ 129.000,00." />
-        <meta name="twitter:image" content="https://marquesaltaterra.shop/images/hero.jpeg" />
+        <meta name="twitter:image" content="https://www.marquesaltaterra.shop/images/logo.png" />
 
-        {/* ====== SCHEMA.ORG (JSON-LD) - O SEGREDO DO SEO ====== */}
+        {/* ====== SCHEMA.ORG ====== */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
             "@type": "Product",
             "name": "Terreno em Joanópolis - Marques Alta Terra",
             "description": "Terreno de 280m² em Joanópolis - SP. Platô pronto, padrão de luz instalado. A 20min do centro. Aceita proposta.",
-            "image": "https://marquesaltaterra.shop/images/hero.jpeg",
+            "image": "https://www.marquesaltaterra.shop/images/hero.jpeg",
             "offers": {
               "@type": "Offer",
               "price": "129000.00",
               "priceCurrency": "BRL",
               "availability": "https://schema.org/InStock",
               "priceValidUntil": "2026-12-31",
-              "url": "https://marquesaltaterra.shop"
+              "url": "https://www.marquesaltaterra.shop"
             },
             "brand": {
               "@type": "Brand",
@@ -183,6 +190,7 @@ export default function Home() {
           backgroundColor: '#F5F0EB',
           fontFamily: "'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif",
           position: 'relative',
+          overflowX: 'hidden',
         }}
       >
         {/* ====== HERO SECTION ====== */}
@@ -190,7 +198,7 @@ export default function Home() {
           style={{
             position: 'relative',
             height: '100vh',
-            minHeight: '600px',
+            minHeight: isMobile ? '500px' : '600px',
             backgroundImage: 'url(/images/hero.jpeg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
@@ -212,32 +220,36 @@ export default function Home() {
             }}
           />
 
-          {/* Logo no topo */}
+          {/* Logo no topo - RESPONSIVA */}
           <div
             style={{
               position: 'absolute',
-              top: '30px',
-              left: '30px',
+              top: isMobile ? '15px' : '30px',
+              left: isMobile ? '15px' : '30px',
               zIndex: 10,
             }}
           >
             <img
               src="/images/logo.png"
               alt="Marques Alta Terra - Terreno em Joanópolis SP"
-              style={{ height: '100px', width: 'auto' }}
+              style={{ 
+                height: isMobile ? '50px' : '100px', 
+                width: 'auto' 
+              }}
             />
           </div>
 
           {/* Conteúdo central */}
-          <div style={{ position: 'relative', zIndex: 5, padding: '20px' }}>
+          <div style={{ position: 'relative', zIndex: 5, padding: isMobile ? '10px' : '20px' }}>
             <h1
               style={{
                 color: '#fff',
-                fontSize: 'clamp(2.5rem, 8vw, 4.5rem)',
+                fontSize: isMobile ? '2rem' : 'clamp(2.5rem, 8vw, 4.5rem)',
                 fontWeight: '700',
                 marginBottom: '10px',
                 letterSpacing: '2px',
                 textShadow: '0 2px 10px rgba(0,0,0,0.3)',
+                padding: isMobile ? '0 10px' : '0',
               }}
             >
               Marques Alta Terra
@@ -245,16 +257,17 @@ export default function Home() {
             <p
               style={{
                 color: '#fff',
-                fontSize: 'clamp(1rem, 2vw, 1.4rem)',
+                fontSize: isMobile ? '0.9rem' : 'clamp(1rem, 2vw, 1.4rem)',
                 marginBottom: '15px',
                 opacity: 0.9,
+                padding: isMobile ? '0 10px' : '0',
               }}
             >
               280m² de natureza, luz e vista. A 20min do centro de Joanópolis.
             </p>
             <div
               style={{
-                fontSize: 'clamp(2rem, 4vw, 3rem)',
+                fontSize: isMobile ? '1.8rem' : 'clamp(2rem, 4vw, 3rem)',
                 fontWeight: '700',
                 color: '#D48C5B',
                 marginBottom: '25px',
@@ -263,20 +276,27 @@ export default function Home() {
             >
               R$ 129.000,00
             </div>
-            <div style={{ display: 'flex', gap: '15px', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <div style={{ 
+              display: 'flex', 
+              gap: isMobile ? '10px' : '15px', 
+              justifyContent: 'center', 
+              flexWrap: 'wrap',
+              padding: isMobile ? '0 10px' : '0',
+            }}>
               <button
                 onClick={() => setModalFotosAberto(true)}
                 style={{
-                  padding: '14px 40px',
+                  padding: isMobile ? '12px 20px' : '14px 40px',
                   backgroundColor: '#D48C5B',
                   color: '#fff',
                   border: 'none',
                   borderRadius: '30px',
-                  fontSize: '1rem',
+                  fontSize: isMobile ? '0.85rem' : '1rem',
                   fontWeight: '600',
                   cursor: 'pointer',
                   transition: 'all 0.3s ease',
                   boxShadow: '0 4px 15px rgba(212, 140, 91, 0.4)',
+                  flex: isMobile ? '1 1 auto' : '0 0 auto',
                 }}
                 onMouseOver={(e) => {
                   e.target.style.backgroundColor = '#B8784A';
@@ -292,16 +312,17 @@ export default function Home() {
               <button
                 onClick={() => setModalVideoAberto(true)}
                 style={{
-                  padding: '14px 40px',
+                  padding: isMobile ? '12px 20px' : '14px 40px',
                   backgroundColor: '#E74C3C',
                   color: '#fff',
                   border: 'none',
                   borderRadius: '30px',
-                  fontSize: '1rem',
+                  fontSize: isMobile ? '0.85rem' : '1rem',
                   fontWeight: '600',
                   cursor: 'pointer',
                   transition: 'all 0.3s ease',
                   boxShadow: '0 4px 15px rgba(231, 76, 60, 0.4)',
+                  flex: isMobile ? '1 1 auto' : '0 0 auto',
                 }}
                 onMouseOver={(e) => {
                   e.target.style.backgroundColor = '#C0392B';
@@ -317,15 +338,17 @@ export default function Home() {
               <a
                 href="#sobre"
                 style={{
-                  padding: '14px 40px',
+                  padding: isMobile ? '12px 20px' : '14px 40px',
                   backgroundColor: 'transparent',
                   color: '#fff',
                   border: '2px solid #fff',
                   borderRadius: '30px',
-                  fontSize: '1rem',
+                  fontSize: isMobile ? '0.85rem' : '1rem',
                   fontWeight: '600',
                   textDecoration: 'none',
                   transition: 'all 0.3s ease',
+                  flex: isMobile ? '1 1 auto' : '0 0 auto',
+                  textAlign: 'center',
                 }}
                 onMouseOver={(e) => {
                   e.target.style.backgroundColor = 'rgba(255,255,255,0.15)';
@@ -347,7 +370,7 @@ export default function Home() {
               left: '50%',
               transform: 'translateX(-50%)',
               color: '#fff',
-              fontSize: '1.5rem',
+              fontSize: isMobile ? '1.2rem' : '1.5rem',
               animation: 'bounce 2s infinite',
             }}
           >
@@ -359,7 +382,7 @@ export default function Home() {
         <section
           id="sobre"
           style={{
-            padding: '60px 20px',
+            padding: isMobile ? '40px 15px' : '60px 20px',
             maxWidth: '1100px',
             margin: '0 auto',
           }}
@@ -367,8 +390,8 @@ export default function Home() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: '50px',
+              gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+              gap: isMobile ? '30px' : '50px',
               alignItems: 'center',
             }}
           >
@@ -376,7 +399,7 @@ export default function Home() {
               <h2
                 style={{
                   color: '#2C2C2C',
-                  fontSize: 'clamp(1.8rem, 3vw, 2.5rem)',
+                  fontSize: isMobile ? '1.6rem' : 'clamp(1.8rem, 3vw, 2.5rem)',
                   fontWeight: '600',
                   marginBottom: '20px',
                 }}
@@ -386,7 +409,7 @@ export default function Home() {
               <p
                 style={{
                   color: '#4A4A4A',
-                  fontSize: '1rem',
+                  fontSize: isMobile ? '0.95rem' : '1rem',
                   lineHeight: '1.8',
                   marginBottom: '20px',
                 }}
@@ -398,7 +421,7 @@ export default function Home() {
               <p
                 style={{
                   color: '#4A4A4A',
-                  fontSize: '1rem',
+                  fontSize: isMobile ? '0.95rem' : '1rem',
                   lineHeight: '1.8',
                   marginBottom: '30px',
                 }}
@@ -410,15 +433,16 @@ export default function Home() {
               <button
                 onClick={() => setModalDocumentosAberto(true)}
                 style={{
-                  padding: '12px 30px',
+                  padding: isMobile ? '12px 24px' : '12px 30px',
                   backgroundColor: 'transparent',
                   color: '#5E6C5B',
                   border: '2px solid #5E6C5B',
                   borderRadius: '8px',
-                  fontSize: '0.95rem',
+                  fontSize: isMobile ? '0.9rem' : '0.95rem',
                   fontWeight: '600',
                   cursor: 'pointer',
                   transition: 'all 0.3s ease',
+                  width: isMobile ? '100%' : 'auto',
                 }}
                 onMouseOver={(e) => {
                   e.target.style.backgroundColor = '#5E6C5B';
@@ -446,12 +470,12 @@ export default function Home() {
             </div>
           </div>
 
-          {/* Diferenciais em grid */}
+          {/* Diferenciais em grid - RESPONSIVO */}
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-              gap: '15px',
+              gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(auto-fit, minmax(200px, 1fr))',
+              gap: isMobile ? '10px' : '15px',
               marginTop: '50px',
             }}
           >
@@ -460,12 +484,12 @@ export default function Home() {
                 key={index}
                 style={{
                   backgroundColor: '#fff',
-                  padding: '15px 20px',
+                  padding: isMobile ? '12px 15px' : '15px 20px',
                   borderRadius: '10px',
                   boxShadow: '0 2px 10px rgba(0,0,0,0.06)',
                   display: 'flex',
                   alignItems: 'center',
-                  gap: '12px',
+                  gap: isMobile ? '8px' : '12px',
                   transition: 'all 0.3s ease',
                 }}
                 onMouseOver={(e) => {
@@ -477,8 +501,8 @@ export default function Home() {
                   e.currentTarget.style.boxShadow = '0 2px 10px rgba(0,0,0,0.06)';
                 }}
               >
-                <span style={{ fontSize: '1.5rem' }}>{item.icone}</span>
-                <span style={{ color: '#2C2C2C', fontSize: '0.9rem' }}>{item.texto}</span>
+                <span style={{ fontSize: isMobile ? '1.2rem' : '1.5rem' }}>{item.icone}</span>
+                <span style={{ color: '#2C2C2C', fontSize: isMobile ? '0.8rem' : '0.9rem' }}>{item.texto}</span>
               </div>
             ))}
           </div>
@@ -487,7 +511,7 @@ export default function Home() {
         {/* ====== GALERIA DE FOTOS ====== */}
         <section
           style={{
-            padding: '60px 20px',
+            padding: isMobile ? '40px 15px' : '60px 20px',
             backgroundColor: '#fff',
           }}
         >
@@ -495,7 +519,7 @@ export default function Home() {
             <h2
               style={{
                 color: '#2C2C2C',
-                fontSize: 'clamp(1.8rem, 3vw, 2.5rem)',
+                fontSize: isMobile ? '1.6rem' : 'clamp(1.8rem, 3vw, 2.5rem)',
                 fontWeight: '600',
                 textAlign: 'center',
                 marginBottom: '15px',
@@ -508,7 +532,7 @@ export default function Home() {
                 textAlign: 'center',
                 color: '#666',
                 marginBottom: '40px',
-                fontSize: '1rem',
+                fontSize: isMobile ? '0.9rem' : '1rem',
               }}
             >
               Fotos aéreas do terreno e região
@@ -516,8 +540,8 @@ export default function Home() {
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-                gap: '20px',
+                gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(auto-fit, minmax(250px, 1fr))',
+                gap: isMobile ? '10px' : '20px',
               }}
             >
               {fotos.map((foto, index) => (
@@ -548,7 +572,7 @@ export default function Home() {
                     alt={`Vista aérea do terreno em Joanópolis SP - Marques Alta Terra ${index + 1}`}
                     style={{
                       width: '100%',
-                      height: '220px',
+                      height: isMobile ? '150px' : '220px',
                       objectFit: 'cover',
                       display: 'block',
                     }}
@@ -563,7 +587,7 @@ export default function Home() {
         {/* ====== LOCALIZAÇÃO ====== */}
         <section
           style={{
-            padding: '60px 20px',
+            padding: isMobile ? '40px 15px' : '60px 20px',
             maxWidth: '1100px',
             margin: '0 auto',
           }}
@@ -571,7 +595,7 @@ export default function Home() {
           <h2
             style={{
               color: '#2C2C2C',
-              fontSize: 'clamp(1.8rem, 3vw, 2.5rem)',
+              fontSize: isMobile ? '1.6rem' : 'clamp(1.8rem, 3vw, 2.5rem)',
               fontWeight: '600',
               textAlign: 'center',
               marginBottom: '15px',
@@ -584,6 +608,7 @@ export default function Home() {
               textAlign: 'center',
               color: '#666',
               marginBottom: '40px',
+              fontSize: isMobile ? '0.9rem' : '1rem',
             }}
           >
             A uma hora e meia de São Paulo, pertinho de tudo
@@ -592,8 +617,8 @@ export default function Home() {
           <div
             style={{
               display: 'grid',
-              gridTemplateColumns: '1fr 1fr',
-              gap: '40px',
+              gridTemplateColumns: isMobile ? '1fr' : '1fr 1fr',
+              gap: isMobile ? '30px' : '40px',
               alignItems: 'center',
             }}
           >
@@ -608,7 +633,7 @@ export default function Home() {
                 <iframe
                   src="https://www.google.com/maps?q=22%C2%B058%2720.4%22S+46%C2%B014%2731.2%22W&hl=pt-BR&z=15&output=embed"
                   width="100%"
-                  height="350"
+                  height={isMobile ? '250px' : '350px'}
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
@@ -620,12 +645,12 @@ export default function Home() {
                 onClick={() => setModalLocalizacaoAberto(true)}
                 style={{
                   marginTop: '15px',
-                  padding: '12px 30px',
+                  padding: isMobile ? '12px 20px' : '12px 30px',
                   backgroundColor: '#5E6C5B',
                   color: '#fff',
                   border: 'none',
                   borderRadius: '8px',
-                  fontSize: '0.95rem',
+                  fontSize: isMobile ? '0.9rem' : '0.95rem',
                   fontWeight: '600',
                   cursor: 'pointer',
                   transition: 'all 0.3s ease',
@@ -642,27 +667,27 @@ export default function Home() {
               </button>
             </div>
             <div>
-              <h3 style={{ color: '#2C2C2C', fontSize: '1.3rem', marginBottom: '20px' }}>
+              <h3 style={{ color: '#2C2C2C', fontSize: isMobile ? '1.1rem' : '1.3rem', marginBottom: '20px' }}>
                 Próximo aos melhores lugares
               </h3>
               <ul style={{ listStyle: 'none', padding: 0 }}>
-                <li style={{ padding: '10px 0', borderBottom: '1px solid #eee' }}>
+                <li style={{ padding: '10px 0', borderBottom: '1px solid #eee', fontSize: isMobile ? '0.9rem' : '1rem' }}>
                   🌄 <strong>15 min</strong> do Mirante de Joanópolis
                 </li>
-                <li style={{ padding: '10px 0', borderBottom: '1px solid #eee' }}>
+                <li style={{ padding: '10px 0', borderBottom: '1px solid #eee', fontSize: isMobile ? '0.9rem' : '1rem' }}>
                   💧 <strong>30 min</strong> da Cachoeira dos Pretos
                 </li>
-                <li style={{ padding: '10px 0', borderBottom: '1px solid #eee' }}>
+                <li style={{ padding: '10px 0', borderBottom: '1px solid #eee', fontSize: isMobile ? '0.9rem' : '1rem' }}>
                   🏞️ <strong>45 min</strong> da Represa dos Cunha
                 </li>
-                <li style={{ padding: '10px 0', borderBottom: '1px solid #eee' }}>
+                <li style={{ padding: '10px 0', borderBottom: '1px solid #eee', fontSize: isMobile ? '0.9rem' : '1rem' }}>
                   🏙️ <strong>20 min</strong> do centro de Joanópolis
                 </li>
-                <li style={{ padding: '10px 0' }}>
+                <li style={{ padding: '10px 0', fontSize: isMobile ? '0.9rem' : '1rem' }}>
                   🚗 <strong>1h30</strong> de São Paulo
                 </li>
               </ul>
-              <p style={{ color: '#666', fontSize: '0.9rem', marginTop: '15px' }}>
+              <p style={{ color: '#666', fontSize: isMobile ? '0.8rem' : '0.9rem', marginTop: '15px' }}>
                 <strong>Coordenadas:</strong> 22°58'20.4"S 46°14'31.2"W
               </p>
             </div>
@@ -672,7 +697,7 @@ export default function Home() {
         {/* ====== DOCUMENTAÇÃO ====== */}
         <section
           style={{
-            padding: '60px 20px',
+            padding: isMobile ? '40px 15px' : '60px 20px',
             backgroundColor: '#F5F0EB',
           }}
         >
@@ -681,19 +706,19 @@ export default function Home() {
               maxWidth: '800px',
               margin: '0 auto',
               backgroundColor: '#fff',
-              padding: '50px 40px',
+              padding: isMobile ? '30px 20px' : '50px 40px',
               borderRadius: '16px',
               boxShadow: '0 4px 25px rgba(0,0,0,0.06)',
               textAlign: 'center',
             }}
           >
-            <span style={{ fontSize: '3rem', display: 'block', marginBottom: '15px' }}>
+            <span style={{ fontSize: isMobile ? '2.5rem' : '3rem', display: 'block', marginBottom: '15px' }}>
               📜
             </span>
             <h2
               style={{
                 color: '#2C2C2C',
-                fontSize: 'clamp(1.6rem, 2.5vw, 2.2rem)',
+                fontSize: isMobile ? '1.4rem' : 'clamp(1.6rem, 2.5vw, 2.2rem)',
                 fontWeight: '600',
                 marginBottom: '20px',
               }}
@@ -703,7 +728,7 @@ export default function Home() {
             <p
               style={{
                 color: '#4A4A4A',
-                fontSize: '1rem',
+                fontSize: isMobile ? '0.9rem' : '1rem',
                 lineHeight: '1.8',
                 marginBottom: '20px',
               }}
@@ -714,7 +739,7 @@ export default function Home() {
             <p
               style={{
                 color: '#4A4A4A',
-                fontSize: '1rem',
+                fontSize: isMobile ? '0.9rem' : '1rem',
                 lineHeight: '1.8',
                 marginBottom: '30px',
               }}
@@ -728,9 +753,9 @@ export default function Home() {
                 display: 'inline-block',
                 backgroundColor: '#5E6C5B',
                 color: '#fff',
-                padding: '8px 20px',
+                padding: isMobile ? '6px 16px' : '8px 20px',
                 borderRadius: '20px',
-                fontSize: '0.85rem',
+                fontSize: isMobile ? '0.75rem' : '0.85rem',
                 fontWeight: '600',
               }}
             >
@@ -742,7 +767,7 @@ export default function Home() {
         {/* ====== CONTATO (CTA FINAL) ====== */}
         <section
           style={{
-            padding: '80px 20px',
+            padding: isMobile ? '60px 15px' : '80px 20px',
             backgroundImage: 'url(/images/hero.jpeg)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
@@ -771,7 +796,7 @@ export default function Home() {
             <h2
               style={{
                 color: '#fff',
-                fontSize: 'clamp(1.8rem, 3vw, 2.5rem)',
+                fontSize: isMobile ? '1.6rem' : 'clamp(1.8rem, 3vw, 2.5rem)',
                 fontWeight: '700',
                 marginBottom: '15px',
               }}
@@ -781,7 +806,7 @@ export default function Home() {
             <p
               style={{
                 color: 'rgba(255,255,255,0.85)',
-                fontSize: '1.1rem',
+                fontSize: isMobile ? '1rem' : '1.1rem',
                 marginBottom: '30px',
               }}
             >
@@ -793,15 +818,16 @@ export default function Home() {
               rel="noopener noreferrer"
               style={{
                 display: 'inline-block',
-                padding: '18px 50px',
+                padding: isMobile ? '16px 30px' : '18px 50px',
                 backgroundColor: '#25D366',
                 color: '#fff',
                 borderRadius: '30px',
-                fontSize: '1.2rem',
+                fontSize: isMobile ? '1rem' : '1.2rem',
                 fontWeight: '700',
                 textDecoration: 'none',
                 boxShadow: '0 4px 20px rgba(37, 211, 102, 0.4)',
                 transition: 'all 0.3s ease',
+                width: isMobile ? '100%' : 'auto',
               }}
               onMouseOver={(e) => {
                 e.target.style.transform = 'scale(1.05)';
@@ -818,7 +844,7 @@ export default function Home() {
               style={{
                 color: 'rgba(255,255,255,0.7)',
                 marginTop: '15px',
-                fontSize: '0.9rem',
+                fontSize: isMobile ? '0.85rem' : '0.9rem',
               }}
             >
               💰 Aceita proposta - negocie conosco
@@ -826,17 +852,17 @@ export default function Home() {
           </div>
         </section>
 
-        {/* ====== TEXTO SEO (VISÍVEL PARA O GOOGLE) ====== */}
+        {/* ====== TEXTO SEO ====== */}
         <div style={{ 
           maxWidth: '1100px', 
           margin: '40px auto 20px', 
-          padding: '0 20px',
+          padding: isMobile ? '0 15px' : '0 20px',
           color: '#666',
-          fontSize: '0.9rem',
+          fontSize: isMobile ? '0.8rem' : '0.9rem',
           lineHeight: '1.6',
           textAlign: 'center'
         }}>
-          <h2 style={{ fontSize: '1.2rem', color: '#2C2C2C', marginBottom: '15px' }}>
+          <h2 style={{ fontSize: isMobile ? '1.1rem' : '1.2rem', color: '#2C2C2C', marginBottom: '15px' }}>
             Por que investir em um terreno em Joanópolis?
           </h2>
           <p>
@@ -859,7 +885,7 @@ export default function Home() {
         {/* ====== FOOTER ====== */}
         <footer
           style={{
-            padding: '40px 20px',
+            padding: isMobile ? '30px 15px' : '40px 20px',
             backgroundColor: '#2C2C2C',
             color: '#999',
             textAlign: 'center',
@@ -869,18 +895,22 @@ export default function Home() {
             <img
               src="/images/logo.png"
               alt="Marques Alta Terra - Terreno em Joanópolis SP"
-              style={{ height: '60px', width: 'auto', marginBottom: '20px' }}
+              style={{ 
+                height: isMobile ? '40px' : '60px', 
+                width: 'auto', 
+                marginBottom: '20px' 
+              }}
             />
             <div
               style={{
                 display: 'flex',
                 justifyContent: 'center',
-                gap: '25px',
+                gap: isMobile ? '15px' : '25px',
                 flexWrap: 'wrap',
                 marginBottom: '20px',
               }}
             >
-              <a href="#sobre" style={{ color: '#999', textDecoration: 'none', fontSize: '0.85rem' }}>
+              <a href="#sobre" style={{ color: '#999', textDecoration: 'none', fontSize: isMobile ? '0.75rem' : '0.85rem' }}>
                 Sobre
               </a>
               <a
@@ -889,7 +919,7 @@ export default function Home() {
                   e.preventDefault();
                   setModalFotosAberto(true);
                 }}
-                style={{ color: '#999', textDecoration: 'none', fontSize: '0.85rem', cursor: 'pointer' }}
+                style={{ color: '#999', textDecoration: 'none', fontSize: isMobile ? '0.75rem' : '0.85rem', cursor: 'pointer' }}
               >
                 Fotos
               </a>
@@ -899,7 +929,7 @@ export default function Home() {
                   e.preventDefault();
                   setModalLocalizacaoAberto(true);
                 }}
-                style={{ color: '#999', textDecoration: 'none', fontSize: '0.85rem', cursor: 'pointer' }}
+                style={{ color: '#999', textDecoration: 'none', fontSize: isMobile ? '0.75rem' : '0.85rem', cursor: 'pointer' }}
               >
                 Localização
               </a>
@@ -909,7 +939,7 @@ export default function Home() {
                   e.preventDefault();
                   setModalDocumentosAberto(true);
                 }}
-                style={{ color: '#999', textDecoration: 'none', fontSize: '0.85rem', cursor: 'pointer' }}
+                style={{ color: '#999', textDecoration: 'none', fontSize: isMobile ? '0.75rem' : '0.85rem', cursor: 'pointer' }}
               >
                 Documentação
               </a>
@@ -917,7 +947,7 @@ export default function Home() {
                 href="https://wa.me/5511918454543"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: '#999', textDecoration: 'none', fontSize: '0.85rem' }}
+                style={{ color: '#999', textDecoration: 'none', fontSize: isMobile ? '0.75rem' : '0.85rem' }}
               >
                 Contato
               </a>
@@ -930,10 +960,10 @@ export default function Home() {
                 margin: '0 auto 20px',
               }}
             />
-            <p style={{ fontSize: '0.8rem', margin: '5px 0' }}>
+            <p style={{ fontSize: isMobile ? '0.7rem' : '0.8rem', margin: '5px 0' }}>
               © {new Date().getFullYear()} Marques Alta Terra - Joanópolis/SP
             </p>
-            <p style={{ fontSize: '0.7rem', color: '#666' }}>
+            <p style={{ fontSize: isMobile ? '0.65rem' : '0.7rem', color: '#666' }}>
               📞 WhatsApp: (11) 91845-4543
             </p>
           </div>
@@ -953,7 +983,7 @@ export default function Home() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              padding: '20px',
+              padding: isMobile ? '10px' : '20px',
             }}
             onClick={() => setModalFotosAberto(false)}
           >
@@ -970,10 +1000,10 @@ export default function Home() {
                 onClick={() => setModalFotosAberto(false)}
                 style={{
                   position: 'absolute',
-                  top: '-50px',
+                  top: isMobile ? '-40px' : '-50px',
                   right: '0',
                   color: '#fff',
-                  fontSize: '2rem',
+                  fontSize: isMobile ? '1.5rem' : '2rem',
                   background: 'none',
                   border: 'none',
                   cursor: 'pointer',
@@ -1001,16 +1031,16 @@ export default function Home() {
                     }}
                     style={{
                       position: 'absolute',
-                      left: '-60px',
+                      left: isMobile ? '-30px' : '-60px',
                       top: '50%',
                       transform: 'translateY(-50%)',
                       color: '#fff',
-                      fontSize: '2.5rem',
+                      fontSize: isMobile ? '1.5rem' : '2.5rem',
                       background: 'rgba(255,255,255,0.15)',
                       border: 'none',
                       borderRadius: '50%',
-                      width: '50px',
-                      height: '50px',
+                      width: isMobile ? '35px' : '50px',
+                      height: isMobile ? '35px' : '50px',
                       cursor: 'pointer',
                       display: 'flex',
                       alignItems: 'center',
@@ -1033,16 +1063,16 @@ export default function Home() {
                     }}
                     style={{
                       position: 'absolute',
-                      right: '-60px',
+                      right: isMobile ? '-30px' : '-60px',
                       top: '50%',
                       transform: 'translateY(-50%)',
                       color: '#fff',
-                      fontSize: '2.5rem',
+                      fontSize: isMobile ? '1.5rem' : '2.5rem',
                       background: 'rgba(255,255,255,0.15)',
                       border: 'none',
                       borderRadius: '50%',
-                      width: '50px',
-                      height: '50px',
+                      width: isMobile ? '35px' : '50px',
+                      height: isMobile ? '35px' : '50px',
                       cursor: 'pointer',
                       display: 'flex',
                       alignItems: 'center',
@@ -1067,7 +1097,7 @@ export default function Home() {
                   left: '50%',
                   transform: 'translateX(-50%)',
                   color: 'rgba(255,255,255,0.6)',
-                  fontSize: '0.85rem',
+                  fontSize: isMobile ? '0.7rem' : '0.85rem',
                 }}
               >
                 {fotoAtual + 1} / {fotos.length}
@@ -1090,7 +1120,7 @@ export default function Home() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              padding: '20px',
+              padding: isMobile ? '10px' : '20px',
             }}
             onClick={() => setModalVideoAberto(false)}
           >
@@ -1107,10 +1137,10 @@ export default function Home() {
                 onClick={() => setModalVideoAberto(false)}
                 style={{
                   position: 'absolute',
-                  top: '-50px',
+                  top: isMobile ? '-40px' : '-50px',
                   right: '0',
                   color: '#fff',
-                  fontSize: '2rem',
+                  fontSize: isMobile ? '1.5rem' : '2rem',
                   background: 'none',
                   border: 'none',
                   cursor: 'pointer',
@@ -1149,16 +1179,16 @@ export default function Home() {
                     }}
                     style={{
                       position: 'absolute',
-                      left: '-60px',
+                      left: isMobile ? '-30px' : '-60px',
                       top: '50%',
                       transform: 'translateY(-50%)',
                       color: '#fff',
-                      fontSize: '2.5rem',
+                      fontSize: isMobile ? '1.5rem' : '2.5rem',
                       background: 'rgba(255,255,255,0.15)',
                       border: 'none',
                       borderRadius: '50%',
-                      width: '50px',
-                      height: '50px',
+                      width: isMobile ? '35px' : '50px',
+                      height: isMobile ? '35px' : '50px',
                       cursor: 'pointer',
                       display: 'flex',
                       alignItems: 'center',
@@ -1181,16 +1211,16 @@ export default function Home() {
                     }}
                     style={{
                       position: 'absolute',
-                      right: '-60px',
+                      right: isMobile ? '-30px' : '-60px',
                       top: '50%',
                       transform: 'translateY(-50%)',
                       color: '#fff',
-                      fontSize: '2.5rem',
+                      fontSize: isMobile ? '1.5rem' : '2.5rem',
                       background: 'rgba(255,255,255,0.15)',
                       border: 'none',
                       borderRadius: '50%',
-                      width: '50px',
-                      height: '50px',
+                      width: isMobile ? '35px' : '50px',
+                      height: isMobile ? '35px' : '50px',
                       cursor: 'pointer',
                       display: 'flex',
                       alignItems: 'center',
@@ -1218,7 +1248,7 @@ export default function Home() {
                     left: '50%',
                     transform: 'translateX(-50%)',
                     color: 'rgba(255,255,255,0.6)',
-                    fontSize: '0.85rem',
+                    fontSize: isMobile ? '0.7rem' : '0.85rem',
                     textAlign: 'center',
                   }}
                 >
@@ -1243,7 +1273,7 @@ export default function Home() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              padding: '20px',
+              padding: isMobile ? '15px' : '20px',
             }}
             onClick={() => setModalDocumentosAberto(false)}
           >
@@ -1252,7 +1282,7 @@ export default function Home() {
                 backgroundColor: '#fff',
                 maxWidth: '600px',
                 width: '100%',
-                padding: '40px',
+                padding: isMobile ? '25px 20px' : '40px',
                 borderRadius: '16px',
                 position: 'relative',
                 maxHeight: '90vh',
@@ -1275,12 +1305,14 @@ export default function Home() {
               >
                 ✕
               </button>
-              <h2 style={{ color: '#2C2C2C', marginBottom: '20px' }}>📄 Documentação</h2>
-              <p style={{ color: '#4A4A4A', lineHeight: '1.8', marginBottom: '15px' }}>
+              <h2 style={{ color: '#2C2C2C', marginBottom: '20px', fontSize: isMobile ? '1.3rem' : '1.8rem' }}>
+                📄 Documentação
+              </h2>
+              <p style={{ color: '#4A4A4A', lineHeight: '1.8', marginBottom: '15px', fontSize: isMobile ? '0.9rem' : '1rem' }}>
                 O terreno é negociado por <strong>Contrato Particular de Compra e Venda</strong>, 
                 modalidade bastante utilizada na região de Joanópolis para negociações imobiliárias.
               </p>
-              <p style={{ color: '#4A4A4A', lineHeight: '1.8', marginBottom: '20px' }}>
+              <p style={{ color: '#4A4A4A', lineHeight: '1.8', marginBottom: '20px', fontSize: isMobile ? '0.9rem' : '1rem' }}>
                 O comprador receberá toda a documentação disponível, incluindo o 
                 <strong> histórico completo da cadeia de contratos</strong> (cadeia possessória), 
                 proporcionando total transparência na negociação.
@@ -1293,7 +1325,7 @@ export default function Home() {
                   borderLeft: '4px solid #5E6C5B',
                 }}
               >
-                <p style={{ margin: 0, color: '#2C2C2C', fontSize: '0.9rem' }}>
+                <p style={{ margin: 0, color: '#2C2C2C', fontSize: isMobile ? '0.8rem' : '0.9rem' }}>
                   ✅ Toda a documentação histórica será entregue ao comprador antes da assinatura do contrato.
                 </p>
               </div>
@@ -1315,7 +1347,7 @@ export default function Home() {
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              padding: '20px',
+              padding: isMobile ? '15px' : '20px',
             }}
             onClick={() => setModalLocalizacaoAberto(false)}
           >
@@ -1324,7 +1356,7 @@ export default function Home() {
                 backgroundColor: '#fff',
                 maxWidth: '700px',
                 width: '100%',
-                padding: '30px',
+                padding: isMobile ? '20px 15px' : '30px',
                 borderRadius: '16px',
                 position: 'relative',
               }}
@@ -1345,12 +1377,14 @@ export default function Home() {
               >
                 ✕
               </button>
-              <h2 style={{ color: '#2C2C2C', marginBottom: '15px' }}>📍 Localização</h2>
+              <h2 style={{ color: '#2C2C2C', marginBottom: '15px', fontSize: isMobile ? '1.3rem' : '1.8rem' }}>
+                📍 Localização
+              </h2>
               <div style={{ borderRadius: '12px', overflow: 'hidden', marginBottom: '15px' }}>
                 <iframe
                   src="https://www.google.com/maps?q=22%C2%B058%2720.4%22S+46%C2%B014%2731.2%22W&hl=pt-BR&z=15&output=embed"
                   width="100%"
-                  height="400"
+                  height={isMobile ? '300px' : '400px'}
                   style={{ border: 0 }}
                   allowFullScreen
                   loading="lazy"
@@ -1358,7 +1392,7 @@ export default function Home() {
                   title="Localização do terreno Marques Alta Terra em Joanópolis SP"
                 />
               </div>
-              <p style={{ color: '#666', fontSize: '0.9rem' }}>
+              <p style={{ color: '#666', fontSize: isMobile ? '0.8rem' : '0.9rem' }}>
                 <strong>Coordenadas:</strong> 22°58'20.4"S 46°14'31.2"W
               </p>
               <a
@@ -1367,13 +1401,15 @@ export default function Home() {
                 rel="noopener noreferrer"
                 style={{
                   display: 'inline-block',
-                  padding: '10px 25px',
+                  padding: isMobile ? '10px 20px' : '10px 25px',
                   backgroundColor: '#5E6C5B',
                   color: '#fff',
                   borderRadius: '8px',
                   textDecoration: 'none',
                   marginTop: '10px',
                   fontWeight: '600',
+                  width: isMobile ? '100%' : 'auto',
+                  textAlign: 'center',
                 }}
               >
                 Abrir no Google Maps
