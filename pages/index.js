@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Head from 'next/head';
+import Script from 'next/script'; // <-- Importe o Script do Next.js
 
 export default function Home() {
   // Estados para controlar os modais
@@ -202,6 +203,27 @@ export default function Home() {
         {/* Favicon */}
         <link rel="icon" href="/images/logo.png" />
       </Head>
+
+      {/* ====== GOOGLE ANALYTICS ====== */}
+      <Script 
+        strategy="afterInteractive" 
+        src="https://www.googletagmanager.com/gtag/js?id=G-89LSRYEHF1" 
+      />
+      <Script 
+        id="google-analytics" 
+        strategy="afterInteractive" 
+        dangerouslySetInnerHTML={{
+          __html: `
+            window.dataLayer = window.dataLayer || [];
+            function gtag(){ dataLayer.push(arguments); }
+            gtag('js', new Date());
+            gtag('config', 'G-89LSRYEHF1', {
+              page_title: 'Marques Alta Terra - Terreno Joanópolis',
+              page_location: window.location.href
+            });
+          `,
+        }} 
+      />
 
       {/* ====== CONTAINER PRINCIPAL ====== */}
       <div
