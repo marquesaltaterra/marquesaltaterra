@@ -118,9 +118,10 @@ export default function Home() {
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
         <meta charSet="utf-8" />
         <meta name="robots" content="index, follow" />
+        <meta name="googlebot" content="index, follow" />
         <link rel="canonical" href="https://www.marquesaltaterra.shop" />
 
-        {/* ====== OPEN GRAPH (WhatsApp/Facebook) - IMAGEM ABSOLUTA ====== */}
+        {/* ====== OPEN GRAPH (WhatsApp/Facebook) ====== */}
         <meta property="og:title" content="Terreno em Joanópolis SP - 280m² com Luz e Platô | Marques Alta Terra" />
         <meta property="og:description" content="Terreno de 280m² em Joanópolis - SP. Platô pronto, luz instalada. R$ 129.000,00. Aceita proposta." />
         <meta property="og:image" content="https://www.marquesaltaterra.shop/images/logo.png" />
@@ -137,7 +138,7 @@ export default function Home() {
         <meta name="twitter:description" content="Terreno de 280m² em Joanópolis - SP. Platô pronto, luz instalada. R$ 129.000,00." />
         <meta name="twitter:image" content="https://www.marquesaltaterra.shop/images/logo.png" />
 
-        {/* ====== SCHEMA.ORG ====== */}
+        {/* ====== SCHEMA.ORG - PRODUTO ====== */}
         <script type="application/ld+json">
           {JSON.stringify({
             "@context": "https://schema.org",
@@ -172,6 +173,28 @@ export default function Home() {
               "@type": "GeoCoordinates",
               "latitude": "-22.972333",
               "longitude": "-46.242000"
+            }
+          })}
+        </script>
+
+        {/* ====== SCHEMA.ORG - EMPRESA (COM CNPJ CORRETO) ====== */}
+        <script type="application/ld+json">
+          {JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Organization",
+            "name": "MARZON SOLUÇÕES COMERCIAIS LTDA",
+            "description": "Venda de terreno em Joanópolis - Marques Alta Terra. 280m² com platô e luz.",
+            "taxID": "39.868.744/0001-68",
+            "address": {
+              "@type": "PostalAddress",
+              "addressLocality": "Joanópolis",
+              "addressRegion": "SP",
+              "addressCountry": "BR"
+            },
+            "contactPoint": {
+              "@type": "ContactPoint",
+              "telephone": "+5511942956152",
+              "contactType": "sales"
             }
           })}
         </script>
@@ -744,7 +767,7 @@ export default function Home() {
                 marginBottom: '30px',
               }}
             >
-              O comprador receberá toda a documentação disponível, incluindo o 
+              O comprador receberá toda a documentação disponível, incluindo o
               <strong> histórico completo da cadeia de contratos</strong> (cadeia possessória), 
               proporcionando total transparência na negociação.
             </p>
@@ -764,98 +787,98 @@ export default function Home() {
           </div>
         </section>
 
-{/* ====== CONTATO (CTA FINAL) ====== */}
-<section
-  style={{
-    padding: isMobile ? '60px 15px' : '80px 20px',
-    backgroundImage: 'url(/images/hero.jpeg)',
-    backgroundSize: 'cover',
-    backgroundPosition: 'center',
-    backgroundRepeat: 'no-repeat',
-    position: 'relative',
-    width: '100%',
-    boxSizing: 'border-box',
-    overflow: 'hidden',
-  }}
->
-  <div
-    style={{
-      position: 'absolute',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundColor: 'rgba(0,0,0,0.6)',
-    }}
-  />
-  <div
-    style={{
-      position: 'relative',
-      zIndex: 5,
-      textAlign: 'center',
-      maxWidth: '600px',
-      margin: '0 auto',
-    }}
-  >
-    <h2
-      style={{
-        color: '#fff',
-        fontSize: isMobile ? '1.6rem' : 'clamp(1.8rem, 3vw, 2.5rem)',
-        fontWeight: '700',
-        marginBottom: '15px',
-      }}
-    >
-      Quer saber mais ou agendar uma visita?
-    </h2>
-    <p
-      style={{
-        color: 'rgba(255,255,255,0.85)',
-        fontSize: isMobile ? '1rem' : '1.1rem',
-        marginBottom: '30px',
-      }}
-    >
-      Fale com o vendedor diretamente pelo WhatsApp
-    </p>
-    <a
-      href="https://wa.me/5511918454543?text=Olá! Vi o terreno da Marques Alta Terra no site e tenho interesse."
-      target="_blank"
-      rel="noopener noreferrer"
-      style={{
-        display: 'inline-block',
-        padding: isMobile ? '16px 30px' : '18px 50px',
-        backgroundColor: '#25D366',
-        color: '#fff',
-        borderRadius: '30px',
-        fontSize: isMobile ? '1rem' : '1.2rem',
-        fontWeight: '700',
-        textDecoration: 'none',
-        boxShadow: '0 4px 20px rgba(37, 211, 102, 0.4)',
-        transition: 'all 0.3s ease',
-        width: isMobile ? '100%' : 'auto',
-        boxSizing: 'border-box',
-      }}
-      onMouseOver={(e) => {
-        e.target.style.transform = 'scale(1.05)';
-        e.target.style.boxShadow = '0 6px 30px rgba(37, 211, 102, 0.5)';
-      }}
-      onMouseOut={(e) => {
-        e.target.style.transform = 'scale(1)';
-        e.target.style.boxShadow = '0 4px 20px rgba(37, 211, 102, 0.4)';
-      }}
-    >
-      📲 Fale agora no WhatsApp
-    </a>
-    <p
-      style={{
-        color: 'rgba(255,255,255,0.7)',
-        marginTop: '15px',
-        fontSize: isMobile ? '0.85rem' : '0.9rem',
-      }}
-    >
-      💰 Aceita proposta - negocie conosco
-    </p>
-  </div>
-</section>
+        {/* ====== CONTATO (CTA FINAL) ====== */}
+        <section
+          style={{
+            padding: isMobile ? '60px 15px' : '80px 20px',
+            backgroundImage: 'url(/images/hero.jpeg)',
+            backgroundSize: 'cover',
+            backgroundPosition: 'center',
+            backgroundRepeat: 'no-repeat',
+            position: 'relative',
+            width: '100%',
+            boxSizing: 'border-box',
+            overflow: 'hidden',
+          }}
+        >
+          <div
+            style={{
+              position: 'absolute',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(0,0,0,0.6)',
+            }}
+          />
+          <div
+            style={{
+              position: 'relative',
+              zIndex: 5,
+              textAlign: 'center',
+              maxWidth: '600px',
+              margin: '0 auto',
+            }}
+          >
+            <h2
+              style={{
+                color: '#fff',
+                fontSize: isMobile ? '1.6rem' : 'clamp(1.8rem, 3vw, 2.5rem)',
+                fontWeight: '700',
+                marginBottom: '15px',
+              }}
+            >
+              Quer saber mais ou agendar uma visita?
+            </h2>
+            <p
+              style={{
+                color: 'rgba(255,255,255,0.85)',
+                fontSize: isMobile ? '1rem' : '1.1rem',
+                marginBottom: '30px',
+              }}
+            >
+              Fale com o vendedor diretamente pelo WhatsApp
+            </p>
+            <a
+              href="https://wa.me/5511942956152?text=Olá! Vi o terreno da Marques Alta Terra no site e tenho interesse."
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{
+                display: 'inline-block',
+                padding: isMobile ? '16px 30px' : '18px 50px',
+                backgroundColor: '#25D366',
+                color: '#fff',
+                borderRadius: '30px',
+                fontSize: isMobile ? '1rem' : '1.2rem',
+                fontWeight: '700',
+                textDecoration: 'none',
+                boxShadow: '0 4px 20px rgba(37, 211, 102, 0.4)',
+                transition: 'all 0.3s ease',
+                width: isMobile ? '100%' : 'auto',
+                boxSizing: 'border-box',
+              }}
+              onMouseOver={(e) => {
+                e.target.style.transform = 'scale(1.05)';
+                e.target.style.boxShadow = '0 6px 30px rgba(37, 211, 102, 0.5)';
+              }}
+              onMouseOut={(e) => {
+                e.target.style.transform = 'scale(1)';
+                e.target.style.boxShadow = '0 4px 20px rgba(37, 211, 102, 0.4)';
+              }}
+            >
+              📲 Fale agora no WhatsApp
+            </a>
+            <p
+              style={{
+                color: 'rgba(255,255,255,0.7)',
+                marginTop: '15px',
+                fontSize: isMobile ? '0.85rem' : '0.9rem',
+              }}
+            >
+              💰 Aceita proposta - negocie conosco
+            </p>
+          </div>
+        </section>
 
         {/* ====== TEXTO SEO ====== */}
         <div style={{ 
@@ -865,7 +888,6 @@ export default function Home() {
           color: '#666',
           fontSize: isMobile ? '0.8rem' : '0.9rem',
           lineHeight: '1.6',
-          textAlign: 'center'
         }}>
           <h2 style={{ fontSize: isMobile ? '1.1rem' : '1.2rem', color: '#2C2C2C', marginBottom: '15px' }}>
             Por que investir em um terreno em Joanópolis?
@@ -883,11 +905,11 @@ export default function Home() {
           <p style={{ marginTop: '10px' }}>
             <strong>Marques Alta Terra</strong> - Seu pedaço do céu em Joanópolis. 
             <br />
-            📞 WhatsApp: (11) 91845-4543
+            📞 WhatsApp: (11) 94295-6152
           </p>
         </div>
 
-        {/* ====== FOOTER ====== */}
+        {/* ====== FOOTER COM CNPJ E WHATSAPP CORRETOS ====== */}
         <footer
           style={{
             padding: isMobile ? '30px 15px' : '40px 20px',
@@ -897,6 +919,7 @@ export default function Home() {
           }}
         >
           <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+            {/* Logo */}
             <img
               src="/images/logo.png"
               alt="Marques Alta Terra - Terreno em Joanópolis SP"
@@ -906,16 +929,49 @@ export default function Home() {
                 marginBottom: '20px' 
               }}
             />
+
+            {/* ====== TEXTO DO RODAPÉ COM CNPJ CORRETO ====== */}
+            <div
+              style={{
+                maxWidth: '800px',
+                margin: '0 auto 25px',
+                padding: '15px 20px',
+                backgroundColor: 'rgba(255,255,255,0.05)',
+                borderRadius: '8px',
+                borderLeft: '3px solid #D48C5B',
+              }}
+            >
+              <p
+                style={{
+                  fontSize: isMobile ? '0.8rem' : '0.9rem',
+                  lineHeight: '1.7',
+                  color: '#ccc',
+                  margin: 0,
+                }}
+              >
+                <strong style={{ color: '#D48C5B' }}>Marques Alta Terra</strong> - Seu terreno dos sonhos em 
+                <strong style={{ color: '#fff' }}> Joanópolis - SP</strong>. 
+                280m² de natureza, platô pronto e padrão de luz instalado. 
+                Localização privilegiada a apenas 20 minutos do centro, com fácil acesso e cercado por 
+                mirantes, cachoeiras e belezas naturais.
+                <br />
+                <span style={{ fontSize: '0.75rem', color: '#888', display: 'inline-block', marginTop: '5px' }}>
+                  CNPJ: 39.868.744/0001-68 - MARZON SOLUÇÕES COMERCIAIS LTDA
+                </span>
+              </p>
+            </div>
+
+            {/* Links de navegação */}
             <div
               style={{
                 display: 'flex',
                 justifyContent: 'center',
-                gap: isMobile ? '15px' : '25px',
+                gap: isMobile ? '12px' : '25px',
                 flexWrap: 'wrap',
                 marginBottom: '20px',
               }}
             >
-              <a href="#sobre" style={{ color: '#999', textDecoration: 'none', fontSize: isMobile ? '0.75rem' : '0.85rem' }}>
+              <a href="#sobre" style={{ color: '#999', textDecoration: 'none', fontSize: isMobile ? '0.7rem' : '0.85rem' }}>
                 Sobre
               </a>
               <a
@@ -924,7 +980,7 @@ export default function Home() {
                   e.preventDefault();
                   setModalFotosAberto(true);
                 }}
-                style={{ color: '#999', textDecoration: 'none', fontSize: isMobile ? '0.75rem' : '0.85rem', cursor: 'pointer' }}
+                style={{ color: '#999', textDecoration: 'none', fontSize: isMobile ? '0.7rem' : '0.85rem', cursor: 'pointer' }}
               >
                 Fotos
               </a>
@@ -934,7 +990,7 @@ export default function Home() {
                   e.preventDefault();
                   setModalLocalizacaoAberto(true);
                 }}
-                style={{ color: '#999', textDecoration: 'none', fontSize: isMobile ? '0.75rem' : '0.85rem', cursor: 'pointer' }}
+                style={{ color: '#999', textDecoration: 'none', fontSize: isMobile ? '0.7rem' : '0.85rem', cursor: 'pointer' }}
               >
                 Localização
               </a>
@@ -944,19 +1000,21 @@ export default function Home() {
                   e.preventDefault();
                   setModalDocumentosAberto(true);
                 }}
-                style={{ color: '#999', textDecoration: 'none', fontSize: isMobile ? '0.75rem' : '0.85rem', cursor: 'pointer' }}
+                style={{ color: '#999', textDecoration: 'none', fontSize: isMobile ? '0.7rem' : '0.85rem', cursor: 'pointer' }}
               >
                 Documentação
               </a>
               <a
-                href="https://wa.me/5511918454543"
+                href="https://wa.me/5511942956152"
                 target="_blank"
                 rel="noopener noreferrer"
-                style={{ color: '#999', textDecoration: 'none', fontSize: isMobile ? '0.75rem' : '0.85rem' }}
+                style={{ color: '#999', textDecoration: 'none', fontSize: isMobile ? '0.7rem' : '0.85rem' }}
               >
                 Contato
               </a>
             </div>
+
+            {/* Divider */}
             <div
               style={{
                 height: '1px',
@@ -965,339 +1023,337 @@ export default function Home() {
                 margin: '0 auto 20px',
               }}
             />
-            <p style={{ fontSize: isMobile ? '0.7rem' : '0.8rem', margin: '5px 0' }}>
+
+            {/* Copyright */}
+            <p style={{ fontSize: isMobile ? '0.65rem' : '0.8rem', margin: '3px 0' }}>
               © {new Date().getFullYear()} Marques Alta Terra - Joanópolis/SP
             </p>
-            <p style={{ fontSize: isMobile ? '0.65rem' : '0.7rem', color: '#666' }}>
-              📞 WhatsApp: (11) 91845-4543
+            <p style={{ fontSize: isMobile ? '0.6rem' : '0.7rem', color: '#666', margin: '3px 0' }}>
+              📞 WhatsApp: (11) 94295-6152 | CNPJ: 39.868.744/0001-68
+            </p>
+            <p style={{ fontSize: isMobile ? '0.55rem' : '0.65rem', color: '#555', marginTop: '5px' }}>
+              MARZON SOLUÇÕES COMERCIAIS LTDA
             </p>
           </div>
         </footer>
 
-{/* ====== MODAL FOTOS - COM BOTÕES EMBAIXO ====== */}
-{modalFotosAberto && (
-  <div
-    style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundColor: 'rgba(0,0,0,0.92)',
-      zIndex: 1000,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: isMobile ? '10px' : '20px',
-    }}
-    onClick={() => setModalFotosAberto(false)}
-  >
-    <div
-      style={{
-        position: 'relative',
-        maxWidth: '90vw',
-        maxHeight: '90vh',
-        backgroundColor: 'transparent',
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-      }}
-      onClick={(e) => e.stopPropagation()}
-    >
-      {/* FECHAR */}
-      <button
-        onClick={() => setModalFotosAberto(false)}
-        style={{
-          position: 'absolute',
-          top: '-50px',
-          right: '0',
-          color: '#fff',
-          fontSize: '2rem',
-          background: 'none',
-          border: 'none',
-          cursor: 'pointer',
-          padding: '0 10px',
-          zIndex: 10,
-        }}
-      >
-        ✕
-      </button>
+        {/* ====== MODAL FOTOS ====== */}
+        {modalFotosAberto && (
+          <div
+            style={{
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(0,0,0,0.92)',
+              zIndex: 1000,
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              padding: isMobile ? '10px' : '20px',
+            }}
+            onClick={() => setModalFotosAberto(false)}
+          >
+            <div
+              style={{
+                position: 'relative',
+                maxWidth: '90vw',
+                maxHeight: '90vh',
+                backgroundColor: 'transparent',
+                display: 'flex',
+                flexDirection: 'column',
+                alignItems: 'center',
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setModalFotosAberto(false)}
+                style={{
+                  position: 'absolute',
+                  top: '-50px',
+                  right: '0',
+                  color: '#fff',
+                  fontSize: '2rem',
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  padding: '0 10px',
+                  zIndex: 10,
+                }}
+              >
+                ✕
+              </button>
 
-      {/* IMAGEM */}
-      <img
-        src={fotos[fotoAtual]}
-        alt={`Vista aérea do terreno em Joanópolis SP - Marques Alta Terra ${fotoAtual + 1}`}
-        style={{
-          maxWidth: '100%',
-          maxHeight: '70vh',
-          borderRadius: '8px',
-          objectFit: 'contain',
-        }}
-      />
+              <img
+                src={fotos[fotoAtual]}
+                alt={`Vista aérea do terreno em Joanópolis SP - Marques Alta Terra ${fotoAtual + 1}`}
+                style={{
+                  maxWidth: '100%',
+                  maxHeight: '70vh',
+                  borderRadius: '8px',
+                  objectFit: 'contain',
+                }}
+              />
 
-      {/* BOTÕES DE NAVEGAÇÃO EMBAIXO DA IMAGEM */}
-      {fotos.length > 1 && (
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            gap: '20px',
-            marginTop: '20px',
-            padding: '10px 0',
-          }}
-        >
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              fotoAnterior();
-            }}
-            style={{
-              color: '#fff',
-              fontSize: '1.5rem',
-              background: 'rgba(255,255,255,0.15)',
-              border: '2px solid rgba(255,255,255,0.3)',
-              borderRadius: '50%',
-              width: isMobile ? '55px' : '60px',
-              height: isMobile ? '55px' : '60px',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              transition: 'all 0.3s ease',
-              touchAction: 'manipulation',
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.3)';
-              e.currentTarget.style.transform = 'scale(1.1)';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.15)';
-              e.currentTarget.style.transform = 'scale(1)';
-            }}
-          >
-            ❮
-          </button>
-          
-          <span
-            style={{
-              color: 'rgba(255,255,255,0.7)',
-              fontSize: isMobile ? '0.8rem' : '1rem',
-              textAlign: 'center',
-              minWidth: '80px',
-            }}
-          >
-            {fotoAtual + 1} / {fotos.length}
-          </span>
-          
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              proximaFoto();
-            }}
-            style={{
-              color: '#fff',
-              fontSize: '1.5rem',
-              background: 'rgba(255,255,255,0.15)',
-              border: '2px solid rgba(255,255,255,0.3)',
-              borderRadius: '50%',
-              width: isMobile ? '55px' : '60px',
-              height: isMobile ? '55px' : '60px',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              transition: 'all 0.3s ease',
-              touchAction: 'manipulation',
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.3)';
-              e.currentTarget.style.transform = 'scale(1.1)';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.15)';
-              e.currentTarget.style.transform = 'scale(1)';
-            }}
-          >
-            ❯
-          </button>
-        </div>
-      )}
-    </div>
-  </div>
-)}
+              {fotos.length > 1 && (
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    gap: '20px',
+                    marginTop: '20px',
+                    padding: '10px 0',
+                  }}
+                >
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      fotoAnterior();
+                    }}
+                    style={{
+                      color: '#fff',
+                      fontSize: '1.5rem',
+                      background: 'rgba(255,255,255,0.15)',
+                      border: '2px solid rgba(255,255,255,0.3)',
+                      borderRadius: '50%',
+                      width: isMobile ? '55px' : '60px',
+                      height: isMobile ? '55px' : '60px',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      transition: 'all 0.3s ease',
+                      touchAction: 'manipulation',
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.3)';
+                      e.currentTarget.style.transform = 'scale(1.1)';
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.15)';
+                      e.currentTarget.style.transform = 'scale(1)';
+                    }}
+                  >
+                    ❮
+                  </button>
+                  
+                  <span
+                    style={{
+                      color: 'rgba(255,255,255,0.7)',
+                      fontSize: isMobile ? '0.8rem' : '1rem',
+                      textAlign: 'center',
+                      minWidth: '80px',
+                    }}
+                  >
+                    {fotoAtual + 1} / {fotos.length}
+                  </span>
+                  
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      proximaFoto();
+                    }}
+                    style={{
+                      color: '#fff',
+                      fontSize: '1.5rem',
+                      background: 'rgba(255,255,255,0.15)',
+                      border: '2px solid rgba(255,255,255,0.3)',
+                      borderRadius: '50%',
+                      width: isMobile ? '55px' : '60px',
+                      height: isMobile ? '55px' : '60px',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      transition: 'all 0.3s ease',
+                      touchAction: 'manipulation',
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.3)';
+                      e.currentTarget.style.transform = 'scale(1.1)';
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.15)';
+                      e.currentTarget.style.transform = 'scale(1)';
+                    }}
+                  >
+                    ❯
+                  </button>
+                </div>
+              )}
+            </div>
+          </div>
+        )}
 
-{/* ====== MODAL VÍDEO - COM BOTÕES EMBAIXO ====== */}
-{modalVideoAberto && (
-  <div
-    style={{
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      right: 0,
-      bottom: 0,
-      backgroundColor: 'rgba(0,0,0,0.92)',
-      zIndex: 1000,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      padding: isMobile ? '10px' : '20px',
-    }}
-    onClick={() => setModalVideoAberto(false)}
-  >
-    <div
-      style={{
-        position: 'relative',
-        maxWidth: '800px',
-        width: '100%',
-        backgroundColor: 'transparent',
-      }}
-      onClick={(e) => e.stopPropagation()}
-    >
-      {/* BOTÃO FECHAR */}
-      <button
-        onClick={() => setModalVideoAberto(false)}
-        style={{
-          position: 'absolute',
-          top: '-50px',
-          right: '0',
-          color: '#fff',
-          fontSize: '2rem',
-          background: 'none',
-          border: 'none',
-          cursor: 'pointer',
-          padding: '0 10px',
-          zIndex: 10,
-        }}
-      >
-        ✕
-      </button>
-      
-      {/* VÍDEO */}
-      <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
-        <iframe
-          src={videos[videoAtual].url}
-          style={{
-            position: 'absolute',
-            top: 0,
-            left: 0,
-            width: '100%',
-            height: '100%',
-            borderRadius: '12px',
-            border: 'none',
-          }}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          title={videos[videoAtual].titulo}
-        />
-      </div>
-      
-      {/* BOTÕES DE NAVEGAÇÃO EMBAIXO DO VÍDEO */}
-      {videos.length > 1 && (
-        <div
-          style={{
-            display: 'flex',
-            justifyContent: 'center',
-            alignItems: 'center',
-            gap: '20px',
-            marginTop: '20px',
-            padding: '10px 0',
-          }}
-        >
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setVideoAtual((prev) => (prev === 0 ? videos.length - 1 : prev - 1));
-            }}
+        {/* ====== MODAL VÍDEO ====== */}
+        {modalVideoAberto && (
+          <div
             style={{
-              color: '#fff',
-              fontSize: '1.5rem',
-              background: 'rgba(255,255,255,0.15)',
-              border: '2px solid rgba(255,255,255,0.3)',
-              borderRadius: '50%',
-              width: isMobile ? '55px' : '60px',
-              height: isMobile ? '55px' : '60px',
-              cursor: 'pointer',
+              position: 'fixed',
+              top: 0,
+              left: 0,
+              right: 0,
+              bottom: 0,
+              backgroundColor: 'rgba(0,0,0,0.92)',
+              zIndex: 1000,
               display: 'flex',
               alignItems: 'center',
               justifyContent: 'center',
-              transition: 'all 0.3s ease',
-              touchAction: 'manipulation',
+              padding: isMobile ? '10px' : '20px',
             }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.3)';
-              e.currentTarget.style.transform = 'scale(1.1)';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.15)';
-              e.currentTarget.style.transform = 'scale(1)';
-            }}
+            onClick={() => setModalVideoAberto(false)}
           >
-            ❮
-          </button>
-          
-          <span
-            style={{
-              color: 'rgba(255,255,255,0.7)',
-              fontSize: isMobile ? '0.8rem' : '1rem',
-              textAlign: 'center',
-              minWidth: '120px',
-            }}
-          >
-            {videoAtual + 1} / {videos.length}
-          </span>
-          
-          <button
-            onClick={(e) => {
-              e.stopPropagation();
-              setVideoAtual((prev) => (prev === videos.length - 1 ? 0 : prev + 1));
-            }}
-            style={{
-              color: '#fff',
-              fontSize: '1.5rem',
-              background: 'rgba(255,255,255,0.15)',
-              border: '2px solid rgba(255,255,255,0.3)',
-              borderRadius: '50%',
-              width: isMobile ? '55px' : '60px',
-              height: isMobile ? '55px' : '60px',
-              cursor: 'pointer',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              transition: 'all 0.3s ease',
-              touchAction: 'manipulation',
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.3)';
-              e.currentTarget.style.transform = 'scale(1.1)';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.15)';
-              e.currentTarget.style.transform = 'scale(1)';
-            }}
-          >
-            ❯
-          </button>
-        </div>
-      )}
-      
-      {/* TÍTULO DO VÍDEO EMBAIXO */}
-      {videos.length > 1 && (
-        <div
-          style={{
-            textAlign: 'center',
-            color: 'rgba(255,255,255,0.5)',
-            fontSize: isMobile ? '0.7rem' : '0.85rem',
-            marginTop: '5px',
-            padding: '0 10px',
-          }}
-        >
-          {videos[videoAtual].titulo}
-        </div>
-      )}
-    </div>
-  </div>
-)}
+            <div
+              style={{
+                position: 'relative',
+                maxWidth: '800px',
+                width: '100%',
+                backgroundColor: 'transparent',
+              }}
+              onClick={(e) => e.stopPropagation()}
+            >
+              <button
+                onClick={() => setModalVideoAberto(false)}
+                style={{
+                  position: 'absolute',
+                  top: '-50px',
+                  right: '0',
+                  color: '#fff',
+                  fontSize: '2rem',
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  padding: '0 10px',
+                  zIndex: 10,
+                }}
+              >
+                ✕
+              </button>
+              
+              <div style={{ position: 'relative', paddingBottom: '56.25%', height: 0 }}>
+                <iframe
+                  src={videos[videoAtual].url}
+                  style={{
+                    position: 'absolute',
+                    top: 0,
+                    left: 0,
+                    width: '100%',
+                    height: '100%',
+                    borderRadius: '12px',
+                    border: 'none',
+                  }}
+                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                  allowFullScreen
+                  title={videos[videoAtual].titulo}
+                />
+              </div>
+              
+              {videos.length > 1 && (
+                <div
+                  style={{
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    gap: '20px',
+                    marginTop: '20px',
+                    padding: '10px 0',
+                  }}
+                >
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setVideoAtual((prev) => (prev === 0 ? videos.length - 1 : prev - 1));
+                    }}
+                    style={{
+                      color: '#fff',
+                      fontSize: '1.5rem',
+                      background: 'rgba(255,255,255,0.15)',
+                      border: '2px solid rgba(255,255,255,0.3)',
+                      borderRadius: '50%',
+                      width: isMobile ? '55px' : '60px',
+                      height: isMobile ? '55px' : '60px',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      transition: 'all 0.3s ease',
+                      touchAction: 'manipulation',
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.3)';
+                      e.currentTarget.style.transform = 'scale(1.1)';
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.15)';
+                      e.currentTarget.style.transform = 'scale(1)';
+                    }}
+                  >
+                    ❮
+                  </button>
+                  
+                  <span
+                    style={{
+                      color: 'rgba(255,255,255,0.7)',
+                      fontSize: isMobile ? '0.8rem' : '1rem',
+                      textAlign: 'center',
+                      minWidth: '120px',
+                    }}
+                  >
+                    {videoAtual + 1} / {videos.length}
+                  </span>
+                  
+                  <button
+                    onClick={(e) => {
+                      e.stopPropagation();
+                      setVideoAtual((prev) => (prev === videos.length - 1 ? 0 : prev + 1));
+                    }}
+                    style={{
+                      color: '#fff',
+                      fontSize: '1.5rem',
+                      background: 'rgba(255,255,255,0.15)',
+                      border: '2px solid rgba(255,255,255,0.3)',
+                      borderRadius: '50%',
+                      width: isMobile ? '55px' : '60px',
+                      height: isMobile ? '55px' : '60px',
+                      cursor: 'pointer',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      transition: 'all 0.3s ease',
+                      touchAction: 'manipulation',
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.3)';
+                      e.currentTarget.style.transform = 'scale(1.1)';
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.backgroundColor = 'rgba(255,255,255,0.15)';
+                      e.currentTarget.style.transform = 'scale(1)';
+                    }}
+                  >
+                    ❯
+                  </button>
+                </div>
+              )}
+              
+              {videos.length > 1 && (
+                <div
+                  style={{
+                    textAlign: 'center',
+                    color: 'rgba(255,255,255,0.5)',
+                    fontSize: isMobile ? '0.7rem' : '0.85rem',
+                    marginTop: '5px',
+                    padding: '0 10px',
+                  }}
+                >
+                  {videos[videoAtual].titulo}
+                </div>
+              )}
+            </div>
+          </div>
+        )}
 
         {/* ====== MODAL DOCUMENTOS ====== */}
         {modalDocumentosAberto && (
