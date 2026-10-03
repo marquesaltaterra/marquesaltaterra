@@ -95,104 +95,121 @@ export default function Home() {
 
   return (
     <>
-      <Head>
-        <title>Terrenos no Interior de SP e MG | Marques Alta Terra</title>
-        <meta
-          name="description"
-          content="Terrenos selecionados com curadoria no interior de São Paulo e Minas Gerais. Transparência total, atendimento direto e regiões de natureza preservada. Fale com a Marques Alta Terra."
-        />
-        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
-        <meta charSet="utf-8" />
-        <meta name="robots" content="index, follow" />
-        <meta name="googlebot" content="index, follow" />
-        <link rel="canonical" href="https://www.marquesaltaterra.shop" />
+<Head>
+  {/* ====== TÍTULO PRINCIPAL ====== */}
+  <title>Terrenos à Venda no Interior de SP e MG | Marques Alta Terra</title>
+  
+  {/* ====== META DESCRIPTION (SEO forte) ====== */}
+  <meta
+    name="description"
+    content="Terrenos à venda no interior de SP e MG com curadoria de verdade. Lotes em Joanópolis, Bragança Paulista e Itapeva (Quinta do Arvoredo). Atendimento direto, documentação transparente e regiões de natureza preservada. Fale com a Marques Alta Terra."
+  />
+  
+  <meta
+    name="keywords"
+    content="terreno interior SP, terreno Minas Gerais, terreno à venda interior, lote Joanópolis, terreno Bragança Paulista, Quinta do Arvoredo Itapeva, comprar terreno interior, investimento imobiliário interior, terreno condomínio fechado"
+  />
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta charSet="utf-8" />
+  <meta name="robots" content="index, follow, max-image-preview:large" />
+  <meta name="googlebot" content="index, follow" />
+  <meta name="author" content="Marques Alta Terra" />
+  <link rel="canonical" href="https://www.marquesaltaterra.shop" />
 
-        {/* Open Graph */}
-        <meta property="og:title" content="Terrenos no Interior de SP e MG | Marques Alta Terra" />
-        <meta
-          property="og:description"
-          content="Do caos de São Paulo para a paz do interior. Terrenos selecionados com curadoria, transparência e atendimento direto."
-        />
-        <meta property="og:image" content="https://www.marquesaltaterra.shop/images/logo.png" />
-        <meta property="og:image:width" content="1200" />
-        <meta property="og:image:height" content="630" />
-        <meta property="og:url" content="https://www.marquesaltaterra.shop" />
-        <meta property="og:type" content="website" />
-        <meta property="og:site_name" content="Marques Alta Terra" />
-        <meta property="og:locale" content="pt_BR" />
+  {/* ====== OPEN GRAPH (WhatsApp/Facebook) ====== */}
+  <meta property="og:title" content="Terrenos à Venda no Interior de SP e MG | Marques Alta Terra" />
+  <meta
+    property="og:description"
+    content="Terrenos selecionados com curadoria no interior de SP e MG. Lotes em Joanópolis, Bragança Paulista e Quinta do Arvoredo (Itapeva). Atendimento direto e documentação transparente."
+  />
+  <meta property="og:image" content="https://www.marquesaltaterra.shop/images/logo.png" />
+  <meta property="og:image:secure_url" content="https://www.marquesaltaterra.shop/images/logo.png" />
+  <meta property="og:image:type" content="image/png" />
+  <meta property="og:image:width" content="1200" />
+  <meta property="og:image:height" content="630" />
+  <meta property="og:image:alt" content="Marques Alta Terra - Terrenos no interior de SP e MG" />
+  <meta property="og:url" content="https://www.marquesaltaterra.shop" />
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content="Marques Alta Terra" />
+  <meta property="og:locale" content="pt_BR" />
 
-        {/* Twitter */}
-        <meta name="twitter:card" content="summary_large_image" />
-        <meta name="twitter:title" content="Terrenos no Interior de SP e MG | Marques Alta Terra" />
-        <meta
-          name="twitter:description"
-          content="Do caos de São Paulo para a paz do interior. Terrenos selecionados com curadoria."
-        />
-        <meta name="twitter:image" content="https://www.marquesaltaterra.shop/images/logo.png" />
+  {/* ====== TWITTER CARD ====== */}
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Terrenos à Venda no Interior de SP e MG | Marques Alta Terra" />
+  <meta
+    name="twitter:description"
+    content="Terrenos selecionados com curadoria no interior de SP e MG. Lotes em Joanópolis, Bragança Paulista e Quinta do Arvoredo."
+  />
+  <meta name="twitter:image" content="https://www.marquesaltaterra.shop/images/logo.png" />
 
-        {/* Schema.org - Organization */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'Organization',
-            name: 'MARZON SOLUÇÕES COMERCIAIS LTDA',
-            alternateName: 'Marques Alta Terra',
-            url: 'https://www.marquesaltaterra.shop',
-            logo: 'https://www.marquesaltaterra.shop/images/logo.png',
-            description:
-              'Curadoria e venda de terrenos no interior de São Paulo e Minas Gerais.',
-            taxID: '39.868.744/0001-68',
-            address: {
-              '@type': 'PostalAddress',
-              addressLocality: 'Joanópolis',
-              addressRegion: 'SP',
-              addressCountry: 'BR',
-            },
-            contactPoint: {
-              '@type': 'ContactPoint',
-              telephone: '+5511913572902',
-              contactType: 'sales',
-              areaServed: 'BR',
-              availableLanguage: 'Portuguese',
-            },
-          })}
-        </script>
+  {/* ====== SCHEMA.ORG - ORGANIZATION ====== */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Organization',
+      name: 'MARZON SOLUÇÕES COMERCIAIS LTDA',
+      alternateName: 'Marques Alta Terra',
+      url: 'https://www.marquesaltaterra.shop',
+      logo: 'https://www.marquesaltaterra.shop/images/logo.png',
+      description: 'Curadoria e venda de terrenos no interior de São Paulo e Minas Gerais.',
+      taxID: '39.868.744/0001-68',
+      address: {
+        '@type': 'PostalAddress',
+        addressLocality: 'Joanópolis',
+        addressRegion: 'SP',
+        addressCountry: 'BR',
+      },
+      contactPoint: {
+        '@type': 'ContactPoint',
+        telephone: '+5511913572902',
+        contactType: 'sales',
+        areaServed: 'BR',
+        availableLanguage: 'Portuguese',
+      },
+    })}
+  </script>
 
-        {/* Schema.org - ItemList */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'ItemList',
-            name: 'Regiões com terrenos - Marques Alta Terra',
-            itemListElement: cidades.map((c, i) => ({
-              '@type': 'ListItem',
-              position: i + 1,
-              name: `Terrenos em ${c.nome} - ${c.estado}`,
-              url: `https://www.marquesaltaterra.shop/${c.slug}`,
-            })),
-          })}
-        </script>
+  {/* ====== SCHEMA.ORG - ITEMLIST ====== */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'ItemList',
+      name: 'Regiões com terrenos - Marques Alta Terra',
+      itemListElement: cidades.map((c, i) => ({
+        '@type': 'ListItem',
+        position: i + 1,
+        name: `Terrenos em ${c.nome} - ${c.estado}`,
+        url: `https://www.marquesaltaterra.shop/${c.slug}`,
+      })),
+    })}
+  </script>
 
-        {/* Schema.org - WebSite */}
-        <script type="application/ld+json">
-          {JSON.stringify({
-            '@context': 'https://schema.org',
-            '@type': 'WebSite',
-            name: 'Marques Alta Terra',
-            url: 'https://www.marquesaltaterra.shop',
-          })}
-        </script>
+  {/* ====== SCHEMA.ORG - WEBSITE ====== */}
+  <script type="application/ld+json">
+    {JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'WebSite',
+      name: 'Marques Alta Terra',
+      url: 'https://www.marquesaltaterra.shop',
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: 'https://www.marquesaltaterra.shop/?q={search_term_string}',
+        'query-input': 'required name=search_term_string',
+      },
+    })}
+  </script>
 
-        {/* Fonte premium */}
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
-        <link
-          href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
-          rel="stylesheet"
-        />
+  {/* ====== FONTES PREMIUM ====== */}
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
 
-        <link rel="icon" href="/images/logo.png" />
-      </Head>
+  <link rel="icon" href="/images/logo.png" />
+</Head>
 
       <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-89LSRYEHF1" />
       <Script
@@ -253,24 +270,24 @@ export default function Home() {
           />
 
           {/* Logo */}
-          <div
-            style={{
-              position: 'absolute',
-              top: isMobile ? '16px' : '35px',
-              left: isMobile ? '16px' : '40px',
-              zIndex: 10,
-            }}
-          >
-            <img
-              src="/images/logo.png"
-              alt="Marques Alta Terra"
-              style={{
-                height: isMobile ? '48px' : '110px',
-                width: 'auto',
-                maxWidth: '150px',
-              }}
-            />
-          </div>
+<div
+  style={{
+    position: 'absolute',
+    top: isMobile ? '16px' : '35px',
+    left: isMobile ? '16px' : '40px',
+    zIndex: 10,
+  }}
+>
+  <img
+    src="/images/logo.png"
+    alt="Marques Alta Terra"
+    style={{
+      height: isMobile ? '70px' : '250px',   // ✅ Aumentei
+      width: 'auto',
+      maxWidth: isMobile ? '180px' : '360px', // ✅ Aumentei
+    }}
+  />
+</div>
 
           {/* Conteúdo */}
           <div
@@ -1084,17 +1101,17 @@ export default function Home() {
         >
           <div style={{ maxWidth: '1150px', margin: '0 auto', width: '100%' }}>
             {/* Logo centralizada */}
-            <div style={{ textAlign: 'center', marginBottom: '30px' }}>
-              <img
-                src="/images/logo.png"
-                alt="Marques Alta Terra"
-                style={{
-                  height: isMobile ? '48px' : '70px',
-                  width: 'auto',
-                  maxWidth: '160px',
-                }}
-              />
-            </div>
+<div style={{ textAlign: 'center', marginBottom: '35px' }}>
+  <img
+    src="/images/logo.png"
+    alt="Marques Alta Terra"
+    style={{
+      height: isMobile ? '70px' : '190px',   // ✅ Aumentei
+      width: 'auto',
+      maxWidth: isMobile ? '200px' : '230px', // ✅ Aumentei
+    }}
+  />
+</div>
 
             {/* Linha divisória elegante abaixo da logo */}
             <div
