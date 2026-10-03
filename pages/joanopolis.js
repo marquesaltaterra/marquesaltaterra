@@ -284,17 +284,17 @@ export default function Joanopolis() {
               gap: '12px',
             }}
           >
-            <a href="/" style={{ display: 'inline-block' }}>
-              <img
-                src="/images/logo.png"
-                alt="Marques Alta Terra"
-                style={{
-                  height: isMobile ? '48px' : '90px',
-                  width: 'auto',
-                  maxWidth: '150px',
-                }}
-              />
-            </a>
+<a href="/" style={{ display: 'inline-block' }}>
+  <img
+    src="/images/logo.png"
+    alt="Marques Alta Terra"
+    style={{
+      height: isMobile ? '65px' : '150px',   // ✅
+      width: 'auto',
+      maxWidth: isMobile ? '170px' : '240px',
+    }}
+  />
+</a>
             <div
               style={{
                 display: 'flex',
