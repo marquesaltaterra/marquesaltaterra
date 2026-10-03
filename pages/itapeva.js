@@ -319,17 +319,17 @@ export default function Itapeva() {
               gap: '12px',
             }}
           >
-            <a href="/" style={{ display: 'inline-block' }}>
-              <img
-                src="/images/logo.png"
-                alt="Marques Alta Terra"
-                style={{
-                  height: isMobile ? '48px' : '90px',
-                  width: 'auto',
-                  maxWidth: '150px',
-                }}
-              />
-            </a>
+<a href="/" style={{ display: 'inline-block' }}>
+  <img
+    src="/images/logo.png"
+    alt="Marques Alta Terra"
+    style={{
+      height: isMobile ? '65px' : '150px',   // ✅
+      width: 'auto',
+      maxWidth: isMobile ? '170px' : '240px',
+    }}
+  />
+</a>
             <div
               style={{
                 display: 'flex',
@@ -1519,7 +1519,7 @@ export default function Itapeva() {
         <section
           style={{
             padding: sectionPaddingLarge,
-            backgroundImage: 'url(/images/itapeva3.jpeg)',
+            backgroundImage: 'url(/images/home3.png)',
             backgroundSize: 'cover',
             backgroundPosition: 'center',
             position: 'relative',
