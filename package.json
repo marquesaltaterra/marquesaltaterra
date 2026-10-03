@@ -2,13 +2,18 @@
   "name": "terreno",
   "version": "0.1.0",
   "private": true,
+  "type": "module",
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint"
+    "lint": "eslint",
+    "generate-index": "node scripts/generate-index.js",
+    "predev": "node scripts/generate-index.js",
+    "prebuild": "node scripts/generate-index.js"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.117.2",
     "next": "16.2.10",
     "react": "19.2.4",
     "react-dom": "19.2.4"

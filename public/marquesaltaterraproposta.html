@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<title>Proposta - Marques Alta Terra</title>
+<style>
+  @page { size: A4; margin: 1.5cm; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: 'Segoe UI', Arial, sans-serif; color: #4A4A4A; line-height: 1.6; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
+  .pagina { page-break-after: always; padding: 15px; min-height: 100vh; }
+  .pagina:last-child { page-break-after: auto; }
+  
+  /* CAPA */
+  .capa { text-align: center; padding-top: 80px; position: relative; }
+  .linha-decorativa { height: 3px; background: linear-gradient(90deg, #D48C5B 50%, #5E6C5B 50%); margin: 20px auto; max-width: 400px; }
+  .titulo { font-size: 42px; color: #D48C5B; font-weight: bold; margin: 20px 0 10px; }
+  .subtitulo { font-size: 18px; color: #666; margin-bottom: 30px; }
+  .box-destaque { background: #5E6C5B; color: #fff; padding: 25px; border-radius: 10px; max-width: 450px; margin: 25px auto; }
+  .box-destaque h3 { font-size: 20px; margin-bottom: 8px; }
+  .preco { font-size: 40px; color: #D48C5B; font-weight: bold; margin: 25px 0 10px; }
+  
+  /* CONTEÚDO */
+  h2 { color: #5E6C5B; font-size: 26px; margin-bottom: 18px; border-bottom: 3px solid #D48C5B; padding-bottom: 8px; }
+  h3 { color: #2C2C2C; margin: 18px 0 10px; }
+  p { margin-bottom: 12px; text-align: justify; }
+  
+  table { width: 100%; border-collapse: collapse; margin: 15px 0; }
+  th, td { padding: 10px; text-align: left; border: 1px solid #E0D8CF; }
+  th { background: #F5F0EB; color: #5E6C5B; }
+  
+  .grid-diferenciais { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin: 15px 0; }
+  .card { background: #F5F0EB; padding: 15px; border-radius: 8px; border-left: 4px solid #D48C5B; }
+  .card strong { color: #2C2C2C; display: block; margin-bottom: 4px; font-size: 14px; }
+  .card span { font-size: 12px; color: #666; }
+  
+  .box-proposta { background: #D48C5B; color: #fff; padding: 25px; border-radius: 12px; text-align: center; margin: 25px 0; }
+  .box-proposta h3 { color: #fff; font-size: 22px; margin-bottom: 10px; }
+  
+  .box-coord { background: #F5F0EB; border: 2px solid #5E6C5B; padding: 15px; text-align: center; border-radius: 8px; margin: 15px 0; color: #5E6C5B; }
+  
+  .rodape-contato { background: #2C2C2C; color: #fff; padding: 22px; border-radius: 10px; margin-top: 20px; }
+  .rodape-contato p { margin: 5px 0; color: #ccc; }
+  .rodape-contato strong { color: #D48C5B; }
+  
+  ul.lista-pontos { list-style: none; }
+  ul.lista-pontos li { padding: 10px 0; border-bottom: 1px solid #eee; }
+  
+  /* ===== FOTOS ===== */
+  .foto-hero {
+    width: 100%;
+    height: 220px;
+    object-fit: cover;
+    border-radius: 12px;
+    margin: 15px 0;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+  }
+  
+  .galeria-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin: 20px 0;
+  }
+  
+  .foto-item {
+    position: relative;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.12);
+  }
+  
+  .foto-item img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    display: block;
+  }
+  
+  .foto-legenda {
+    background: rgba(0,0,0,0.7);
+    color: #fff;
+    padding: 8px 12px;
+    font-size: 12px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+  }
+  
+  .foto-destaque {
+    width: 100%;
+    height: 280px;
+    object-fit: cover;
+    border-radius: 12px;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.15);
+    margin-bottom: 15px;
+  }
+</style>
+</head>
+<body>
+
+<!-- PÁGINA 1: CAPA -->
+<div class="pagina capa">
+  <div class="linha-decorativa"></div>
+  <h1 class="titulo">MARQUES ALTA TERRA</h1>
+  <p class="subtitulo">Seu pedaço do céu em Joanópolis</p>
+  
+  <img src="https://www.marquesaltaterra.shop/images/galeria1.jpeg" alt="Vista aérea do terreno" class="foto-hero" />
+  
+  <div class="box-destaque">
+    <h3>TERRENO DE ESQUINA</h3>
+    <p>280m² · Platô Pronto · Luz Instalada</p>
+  </div>
+  
+  <div class="preco">R$ 129.000,00</div>
+  <p><i>Aceita proposta · Negociação direta</i></p>
+  
+  <p style="margin-top: 40px;"><strong>Joanópolis - SP</strong> | A 20min do centro · A 1h30 de São Paulo</p>
+  <div class="linha-decorativa"></div>
+</div>
+
+<!-- PÁGINA 2: SOBRE + FOTO -->
+<div class="pagina">
+  <h2>O Terreno</h2>
+  <img src="https://www.marquesaltaterra.shop/images/galeria2.jpeg" alt="Vista panorâmica do terreno" class="foto-destaque" />
+  
+  <p>O <strong>Marques Alta Terra</strong> é um terreno de esquina com 280m² de área, já limpo e terraplanado, localizado em uma das regiões mais valorizadas de Joanópolis - SP. Com platô pronto para construção e padrão de energia já instalado, o lote reduz significativamente os custos iniciais de preparação.</p>
+  <p>Cercado pela natureza e com vista privilegiada da serra, oferece o equilíbrio perfeito entre tranquilidade e acesso rápido aos principais pontos da cidade. Ideal para refúgio, casa definitiva ou investimento.</p>
+  
+  <table>
+    <tr><th>Área Total</th><td>280 m²</td></tr>
+    <tr><th>Tipo</th><td>Terreno de Esquina</td></tr>
+    <tr><th>Preparação</th><td>Platô Executado</td></tr>
+    <tr><th>Limpeza</th><td>Terreno Limpo</td></tr>
+    <tr><th>Energia</th><td>Padrão Instalado</td></tr>
+    <tr><th>Acesso</th><td>Fácil acesso</td></tr>
+  </table>
+</div>
+
+<!-- PÁGINA 3: GALERIA DE FOTOS -->
+<div class="pagina">
+  <h2>Galeria do Terreno</h2>
+  <p style="text-align: center; color: #666; margin-bottom: 15px;">Vistas aéreas e panorâmicas do Marques Alta Terra</p>
+  
+  <div class="galeria-grid">
+    <div class="foto-item">
+      <img src="https://www.marquesaltaterra.shop/images/galeria1.jpeg" alt="Vista aérea 1" />
+      <div class="foto-legenda">📸 Vista Aérea - Frente</div>
+    </div>
+    <div class="foto-item">
+      <img src="https://www.marquesaltaterra.shop/images/galeria2.jpeg" alt="Vista aérea 2" />
+      <div class="foto-legenda">📸 Paisagem e Natureza</div>
+    </div>
+    <div class="foto-item">
+      <img src="https://www.marquesaltaterra.shop/images/galeria3.jpeg" alt="Vista aérea 3" />
+      <div class="foto-legenda">📸 Drone 4K sobre o Terreno</div>
+    </div>
+    <div class="foto-item">
+      <img src="https://www.marquesaltaterra.shop/images/galeria4.jpeg" alt="Vista aérea 4" />
+      <div class="foto-legenda">📸 Vista Panorâmica</div>
+    </div>
+  </div>
+  
+  <div style="background: #F5F0EB; padding: 15px; border-radius: 8px; border-left: 4px solid #5E6C5B; margin-top: 20px;">
+    <p style="margin: 0;"><strong>💡 Dica:</strong> Para ver mais fotos e vídeos em 4K do terreno, acesse <strong>www.marquesaltaterra.shop</strong></p>
+  </div>
+</div>
+
+<!-- PÁGINA 4: DIFERENCIAIS -->
+<div class="pagina">
+  <h2>Por que este terreno?</h2>
+  <div class="grid-diferenciais">
+    <div class="card"><strong>📐 Terreno de Esquina</strong><span>Maior visibilidade e duas frentes de acesso.</span></div>
+    <div class="card"><strong>📏 280 m² de Área</strong><span>Espaço ideal para casa com área de lazer completa.</span></div>
+    <div class="card"><strong>🏗️ Platô Executado</strong><span>Economize até R$ 15.000 em terraplanagem.</span></div>
+    <div class="card"><strong>⚡ Padrão de Energia</strong><span>Ligação pronta, sem burocracia.</span></div>
+    <div class="card"><strong>🧹 Terreno Limpo</strong><span>Pronto para iniciar a construção imediatamente.</span></div>
+    <div class="card"><strong>🚗 Fácil Acesso</strong><span>Ruas bem cuidadas em qualquer época.</span></div>
+    <div class="card"><strong>📈 Valorização</strong><span>Região em crescimento com potencial de alta.</span></div>
+    <div class="card"><strong>📍 Localização Premium</strong><span>Próximo aos principais pontos turísticos.</span></div>
+  </div>
+</div>
+
+<!-- PÁGINA 5: LOCALIZAÇÃO -->
+<div class="pagina">
+  <h2>Localização Privilegiada</h2>
+  <p>Joanópolis é um dos destinos mais procurados do interior de São Paulo. A apenas <strong>1 hora e meia de São Paulo</strong> via Rodovia Fernão Dias, você tem acesso rápido a uma infraestrutura completa.</p>
+  
+  <h3>Distâncias dos principais pontos:</h3>
+  <ul class="lista-pontos">
+    <li>🌄 <strong>Mirante de Joanópolis</strong> — 15 min</li>
+    <li>💧 <strong>Cachoeira dos Pretos</strong> — 30 min</li>
+    <li>🏞️ <strong>Represa dos Cunha</strong> — 45 min</li>
+    <li>🏙️ <strong>Centro de Joanópolis</strong> — 20 min</li>
+    <li>🚗 <strong>São Paulo (Capital)</strong> — 1h30</li>
+  </ul>
+  
+  <div class="box-coord">
+    <strong>📍 Coordenadas GPS</strong><br>
+    22°58'20.4"S  46°14'31.2"W
+  </div>
+</div>
+
+<!-- PÁGINA 6: PROPOSTA E CONTATO -->
+<div class="pagina">
+  <h2>Documentação e Proposta</h2>
+  <h3>📜 Negociação Transparente</h3>
+  <p>O terreno é negociado por <strong>Contrato Particular de Compra e Venda</strong>, modalidade bastante utilizada na região de Joanópolis. O comprador receberá toda a documentação disponível, incluindo o <strong>histórico completo da cadeia de contratos</strong> (cadeia possessória), proporcionando total transparência.</p>
+  
+  <div class="box-proposta">
+    <h3>PROPOSTA DE COMPRA</h3>
+    <p>Valor: <strong>R$ 129.000,00</strong> · Aceita proposta</p>
+    <p>Forma de pagamento: A combinar diretamente com o vendedor</p>
+  </div>
+  
+  <h3>📲 Entre em contato agora</h3>
+  <div class="rodape-contato">
+    <p><strong>WhatsApp:</strong> (11) 94295-6152</p>
+    <p><strong>Site:</strong> www.marquesaltaterra.shop</p>
+    <p><strong>Empresa:</strong> MARZON SOLUÇÕES COMERCIAIS LTDA</p>
+    <p><strong>CNPJ:</strong> 39.868.744/0001-68</p>
+  </div>
+</div>
+
+</body>
+</html>
