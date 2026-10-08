@@ -1,6 +1,6 @@
 // pages/casa-marion.js
 // Casa Marion — Imóvel de Alto Padrão no Golf Riviera de São Lourenço
-// Página cinematográfica premium com foco em SEO e conversão de cliente AAA
+// Página premium com foco em SEO e conversão de cliente AAA
 
 import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
@@ -69,12 +69,6 @@ const IMOVEL = {
     'Olá, Anderson! Vi a Casa Marion no site da Marques Alta Terra e gostaria de mais informações sobre esse imóvel no Golf Riviera de São Lourenço.',
 };
 
-// ========== LISTA DE FOTOS (25) ========== //
-const FOTOS = Array.from({ length: 25 }, (_, i) => ({
-  src: `/images/casa-marion${i + 1}.jpg`,
-  alt: `Casa Marion Golf Riviera de São Lourenço — Foto ${i + 1} — Imóvel de alto padrão com ${IMOVEL.suites} suítes e ${IMOVEL.areaConstruida}m²`,
-}));
-
 // ========== CARACTERÍSTICAS PRINCIPAIS ========== //
 const CARACTERISTICAS = [
   {
@@ -130,8 +124,6 @@ const FORNECEDORES = [
 export default function CasaMarion() {
   const [isMobile, setIsMobile] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   useEffect(() => {
     const checkSize = () => {
@@ -154,28 +146,9 @@ export default function CasaMarion() {
     };
   }, [menuOpen]);
 
-  // Navegação do lightbox com teclado
-  useEffect(() => {
-    if (!lightboxOpen) return;
-    const handleKey = (e) => {
-      if (e.key === 'Escape') setLightboxOpen(false);
-      if (e.key === 'ArrowRight')
-        setLightboxIndex((prev) => (prev + 1) % FOTOS.length);
-      if (e.key === 'ArrowLeft')
-        setLightboxIndex((prev) => (prev - 1 + FOTOS.length) % FOTOS.length);
-    };
-    window.addEventListener('keydown', handleKey);
-    return () => window.removeEventListener('keydown', handleKey);
-  }, [lightboxOpen]);
-
   const LINK_WHATSAPP = `https://wa.me/${IMOVEL.whatsapp}?text=${encodeURIComponent(
     IMOVEL.mensagemWhatsApp
   )}`;
-
-  const openLightbox = (index) => {
-    setLightboxIndex(index);
-    setLightboxOpen(true);
-  };
 
   const sectionPadding = isMobile ? '60px 16px' : '110px 20px';
   const sectionPaddingLarge = isMobile ? '80px 16px' : '140px 20px';
@@ -206,7 +179,7 @@ export default function CasaMarion() {
         <meta name="author" content="Marques Alta Terra" />
         <link rel="canonical" href="https://www.marquesaltaterra.shop/casa-marion" />
 
-        {/* ====== OPEN GRAPH (WhatsApp/Facebook) ====== */}
+        {/* ====== OPEN GRAPH ====== */}
         <meta
           property="og:title"
           content="Casa Marion — Imóvel de Alto Padrão no Golf Riviera de São Lourenço"
@@ -215,9 +188,9 @@ export default function CasaMarion() {
           property="og:description"
           content="Assinada pela arquiteta Leila Lemos. 6 suítes, 559m², piscina com prainha, SPA, sauna, casa inteligente com Alexa. O refúgio de luxo no Golf Riviera de São Lourenço. R$ 16.500.000,00."
         />
-        <meta property="og:image" content="https://www.marquesaltaterra.shop/images/casa-marion1.jpg" />
-        <meta property="og:image:secure_url" content="https://www.marquesaltaterra.shop/images/casa-marion1.jpg" />
-        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image" content="https://www.marquesaltaterra.shop/images/logo.png" />
+        <meta property="og:image:secure_url" content="https://www.marquesaltaterra.shop/images/logo.png" />
+        <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Casa Marion — Casa de Luxo no Golf Riviera de São Lourenço" />
@@ -236,7 +209,7 @@ export default function CasaMarion() {
           name="twitter:description"
           content="Imóvel de alto padrão com 6 suítes, 559m², piscina com prainha, SPA e sauna no Golf Riviera de São Lourenço."
         />
-        <meta name="twitter:image" content="https://www.marquesaltaterra.shop/images/casa-marion1.jpg" />
+        <meta name="twitter:image" content="https://www.marquesaltaterra.shop/images/logo.png" />
 
         {/* ====== SCHEMA.ORG — RESIDENCE ====== */}
         <script type="application/ld+json">
@@ -246,7 +219,7 @@ export default function CasaMarion() {
             name: 'Casa Marion',
             description:
               'Imóvel de alto padrão no Golf Riviera de São Lourenço, assinado pela arquiteta Leila Lemos e executado pela MV Obras. 6 suítes, 559m², piscina com prainha, SPA, sauna, casa inteligente com Alexa.',
-            image: 'https://www.marquesaltaterra.shop/images/casa-marion1.jpg',
+            image: 'https://www.marquesaltaterra.shop/images/logo.png',
             address: {
               '@type': 'PostalAddress',
               streetAddress: 'Rua Aprovada, 377',
@@ -279,7 +252,7 @@ export default function CasaMarion() {
             '@type': 'RealEstateListing',
             name: 'Casa Marion',
             url: 'https://www.marquesaltaterra.shop/casa-marion',
-            image: 'https://www.marquesaltaterra.shop/images/casa-marion1.jpg',
+            image: 'https://www.marquesaltaterra.shop/images/logo.png',
             datePosted: '2026-10-05',
             description:
               'Casa de luxo no Golf Riviera de São Lourenço. 6 suítes, 559m², piscina com prainha, SPA, sauna, casa inteligente com Alexa, energia fotovoltaica.',
@@ -291,7 +264,7 @@ export default function CasaMarion() {
           })}
         </script>
 
-        {/* ====== SCHEMA.ORG — LOCALBUSINESS ====== */}
+        {/* ====== SCHEMA.ORG — REALESTATEAGENT ====== */}
         <script type="application/ld+json">
           {JSON.stringify({
             '@context': 'https://schema.org',
@@ -542,20 +515,19 @@ export default function CasaMarion() {
         )}
 
         {/* ============================================================ */}
-        {/* ====== HERO CINEMATOGRÁFICO ====== */}
+        {/* ====== HERO CINEMATOGRÁFICO (SEM FOTO) ====== */}
         {/* ============================================================ */}
         <section
           style={{
             position: 'relative',
             minHeight: '100vh',
             height: '100vh',
-            backgroundImage: 'url(/images/casa-marion1.jpg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            background:
+              'linear-gradient(180deg, #0A0A0A 0%, #1A1A1A 50%, #0A0A0A 100%)',
             display: 'flex',
-            alignItems: 'flex-end',
+            alignItems: 'center',
             justifyContent: 'center',
-            padding: isMobile ? '80px 20px 60px' : '0 40px 120px',
+            padding: isMobile ? '80px 20px 60px' : '0 40px',
             boxSizing: 'border-box',
           }}
         >
@@ -564,7 +536,7 @@ export default function CasaMarion() {
               position: 'absolute',
               inset: 0,
               background:
-                'linear-gradient(180deg, rgba(10,10,10,0.5) 0%, rgba(10,10,10,0.3) 30%, rgba(10,10,10,0.95) 100%)',
+                'radial-gradient(ellipse at center, rgba(212,175,122,0.08) 0%, transparent 70%)',
             }}
           />
 
@@ -656,7 +628,7 @@ export default function CasaMarion() {
               }}
             >
               <a
-                href="#galeria"
+                href="#sobre"
                 style={{
                   padding: isMobile ? '16px 32px' : '18px 44px',
                   backgroundColor: COR_DESTAQUE,
@@ -673,7 +645,7 @@ export default function CasaMarion() {
                   boxSizing: 'border-box',
                 }}
               >
-                Ver Galeria
+                Conhecer o Imóvel
               </a>
               <a
                 href={LINK_WHATSAPP}
@@ -799,6 +771,7 @@ export default function CasaMarion() {
         {/* ====== SOBRE O PROJETO ====== */}
         {/* ============================================================ */}
         <section
+          id="sobre"
           style={{
             padding: sectionPadding,
             backgroundColor: '#0A0A0A',
@@ -894,112 +867,96 @@ export default function CasaMarion() {
         </section>
 
         {/* ============================================================ */}
-        {/* ====== GALERIA ====== */}
+        {/* ====== CTA INTERMEDIÁRIO (no lugar das fotos) ====== */}
         {/* ============================================================ */}
         <section
-          id="galeria"
           style={{
-            padding: isMobile ? '60px 16px' : '100px 20px',
-            backgroundColor: '#0A0A0A',
+            padding: sectionPadding,
+            backgroundColor: '#0F0F0F',
+            borderTop: `1px solid ${COR_DESTAQUE}1A`,
+            borderBottom: `1px solid ${COR_DESTAQUE}1A`,
           }}
         >
-          <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+          <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
             <FadeIn>
               <div
                 style={{
-                  textAlign: 'center',
-                  marginBottom: isMobile ? '40px' : '70px',
+                  backgroundColor: `${COR_DESTAQUE}0D`,
+                  border: `1px solid ${COR_DESTAQUE}4D`,
+                  padding: isMobile ? '40px 24px' : '60px 50px',
+                  borderRadius: '2px',
                 }}
               >
                 <div
                   style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '14px',
-                    marginBottom: '24px',
+                    fontSize: isMobile ? '2.5rem' : '3.5rem',
+                    marginBottom: '20px',
                   }}
                 >
-                  <span style={{ width: '50px', height: '1px', backgroundColor: COR_DESTAQUE }} />
-                  <span
-                    style={{
-                      color: COR_DESTAQUE,
-                      fontSize: isMobile ? '0.65rem' : '0.8rem',
-                      fontWeight: '500',
-                      letterSpacing: isMobile ? '3px' : '5px',
-                      textTransform: 'uppercase',
-                    }}
-                  >
-                    Galeria
-                  </span>
-                  <span style={{ width: '50px', height: '1px', backgroundColor: COR_DESTAQUE }} />
+                  🔒
                 </div>
-                <h2
+                <h3
                   style={{
                     color: '#fff',
                     fontFamily: "'Playfair Display', Georgia, serif",
-                    fontSize: isMobile ? '1.8rem' : 'clamp(2.5rem, 4.5vw, 3.5rem)',
+                    fontSize: isMobile ? '1.4rem' : 'clamp(1.8rem, 3vw, 2.3rem)',
                     fontWeight: '500',
-                    marginBottom: '16px',
-                    lineHeight: '1.2',
+                    fontStyle: 'italic',
+                    marginBottom: '20px',
+                    lineHeight: '1.3',
                   }}
                 >
-                  Cada ambiente, uma obra
-                </h2>
+                  Galeria exclusiva sob consulta
+                </h3>
                 <p
                   style={{
-                    color: 'rgba(255,255,255,0.6)',
-                    fontSize: isMobile ? '0.9rem' : '1rem',
-                    maxWidth: '600px',
-                    margin: '0 auto',
-                    lineHeight: '1.7',
+                    color: 'rgba(255,255,255,0.7)',
+                    fontSize: isMobile ? '0.92rem' : '1.05rem',
+                    lineHeight: '1.8',
                     fontWeight: '300',
+                    marginBottom: '35px',
+                    maxWidth: '600px',
+                    margin: '0 auto 35px',
                   }}
                 >
-                  Clique em qualquer imagem para ampliar e explorar cada detalhe da Casa Marion.
+                  Por questões de privacidade dos proprietários, as fotografias completas
+                  da Casa Marion são disponibilizadas apenas para interessados sérios, durante
+                  o atendimento personalizado com o corretor responsável.
+                </p>
+                <a
+                  href={LINK_WHATSAPP}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-block',
+                    padding: isMobile ? '16px 32px' : '18px 44px',
+                    backgroundColor: '#25D366',
+                    color: '#fff',
+                    fontSize: isMobile ? '0.78rem' : '0.85rem',
+                    fontWeight: '700',
+                    letterSpacing: '2.5px',
+                    textTransform: 'uppercase',
+                    textDecoration: 'none',
+                    boxShadow: '0 15px 50px rgba(37, 211, 102, 0.35)',
+                    transition: 'all 0.3s ease',
+                  }}
+                >
+                  📲 Solicitar Galeria Completa
+                </a>
+                <p
+                  style={{
+                    color: 'rgba(255,255,255,0.4)',
+                    marginTop: '22px',
+                    fontSize: isMobile ? '0.7rem' : '0.78rem',
+                    letterSpacing: '1.5px',
+                    textTransform: 'uppercase',
+                    fontWeight: '400',
+                  }}
+                >
+                  Atendimento direto · Sem intermediários · Estuda permuta
                 </p>
               </div>
             </FadeIn>
-
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
-                gap: isMobile ? '8px' : '14px',
-              }}
-            >
-              {FOTOS.map((foto, index) => (
-                <FadeIn key={index} delay={(index % 8) * 0.05}>
-                  <div
-                    onClick={() => openLightbox(index)}
-                    style={{
-                      position: 'relative',
-                      width: '100%',
-                      paddingBottom: '75%',
-                      overflow: 'hidden',
-                      cursor: 'pointer',
-                      backgroundColor: '#1A1A1A',
-                    }}
-                  >
-                    <img
-                      src={foto.src}
-                      alt={foto.alt}
-                      loading={index < 4 ? 'eager' : 'lazy'}
-                      style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        transition: 'transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)',
-                      }}
-                      onMouseOver={(e) => (e.currentTarget.style.transform = 'scale(1.08)')}
-                      onMouseOut={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-                    />
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
           </div>
         </section>
 
@@ -1009,9 +966,7 @@ export default function CasaMarion() {
         <section
           style={{
             padding: sectionPadding,
-            backgroundColor: '#0F0F0F',
-            borderTop: `1px solid ${COR_DESTAQUE}1A`,
-            borderBottom: `1px solid ${COR_DESTAQUE}1A`,
+            backgroundColor: '#0A0A0A',
           }}
         >
           <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
@@ -1122,7 +1077,9 @@ export default function CasaMarion() {
         <section
           style={{
             padding: sectionPadding,
-            backgroundColor: '#0A0A0A',
+            backgroundColor: '#0F0F0F',
+            borderTop: `1px solid ${COR_DESTAQUE}1A`,
+            borderBottom: `1px solid ${COR_DESTAQUE}1A`,
           }}
         >
           <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
@@ -1233,9 +1190,7 @@ export default function CasaMarion() {
         <section
           style={{
             padding: sectionPadding,
-            backgroundColor: '#0F0F0F',
-            borderTop: `1px solid ${COR_DESTAQUE}1A`,
-            borderBottom: `1px solid ${COR_DESTAQUE}1A`,
+            backgroundColor: '#0A0A0A',
           }}
         >
           <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
@@ -1333,7 +1288,9 @@ export default function CasaMarion() {
         <section
           style={{
             padding: sectionPadding,
-            backgroundColor: '#0A0A0A',
+            backgroundColor: '#0F0F0F',
+            borderTop: `1px solid ${COR_DESTAQUE}1A`,
+            borderBottom: `1px solid ${COR_DESTAQUE}1A`,
           }}
         >
           <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
@@ -1479,8 +1436,7 @@ export default function CasaMarion() {
         <section
           style={{
             padding: sectionPadding,
-            backgroundColor: '#0F0F0F',
-            borderTop: `1px solid ${COR_DESTAQUE}1A`,
+            backgroundColor: '#0A0A0A',
           }}
         >
           <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
@@ -1583,9 +1539,8 @@ export default function CasaMarion() {
         <section
           style={{
             padding: sectionPaddingLarge,
-            backgroundImage: 'url(/images/casa-marion25.jpg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            background:
+              'linear-gradient(180deg, #0A0A0A 0%, #1A1A1A 50%, #0A0A0A 100%)',
             position: 'relative',
           }}
         >
@@ -1593,7 +1548,8 @@ export default function CasaMarion() {
             style={{
               position: 'absolute',
               inset: 0,
-              background: 'linear-gradient(180deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.95) 100%)',
+              background:
+                'radial-gradient(ellipse at center, rgba(212,175,122,0.1) 0%, transparent 70%)',
             }}
           />
           <div
@@ -1711,9 +1667,6 @@ export default function CasaMarion() {
           }}
         >
           <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
-            {/* ❌ LOGO REMOVIDA */}
-
-            {/* Divisor superior */}
             <div
               style={{
                 height: '1px',
@@ -1724,7 +1677,6 @@ export default function CasaMarion() {
               }}
             />
 
-            {/* ====== 3 COLUNAS LADO A LADO (mobile e desktop) ====== */}
             <div
               style={{
                 display: 'grid',
@@ -1735,7 +1687,6 @@ export default function CasaMarion() {
                 width: '100%',
               }}
             >
-              {/* COLUNA 1 — Navegação */}
               <div>
                 <h4
                   style={{
@@ -1774,7 +1725,6 @@ export default function CasaMarion() {
                 </ul>
               </div>
 
-              {/* COLUNA 2 — Regiões */}
               <div>
                 <h4
                   style={{
@@ -1814,7 +1764,6 @@ export default function CasaMarion() {
                 </ul>
               </div>
 
-              {/* COLUNA 3 — Contato */}
               <div>
                 <h4
                   style={{
@@ -1881,7 +1830,6 @@ export default function CasaMarion() {
               }}
             />
 
-            {/* Copyright */}
             <div style={{ textAlign: 'center', width: '100%' }}>
               <p
                 style={{
@@ -1920,184 +1868,6 @@ export default function CasaMarion() {
           </div>
         </footer>
       </div>
-
-      {/* ============================================================ */}
-      {/* ====== LIGHTBOX ====== */}
-      {/* ============================================================ */}
-      {lightboxOpen && (
-        <div
-          style={{
-            position: 'fixed',
-            inset: 0,
-            zIndex: 9999,
-            backgroundColor: 'rgba(5,5,5,0.98)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: isMobile ? '20px' : '40px',
-          }}
-          onClick={() => setLightboxOpen(false)}
-        >
-          <button
-            onClick={() => setLightboxOpen(false)}
-            style={{
-              position: 'absolute',
-              top: isMobile ? '20px' : '30px',
-              right: isMobile ? '20px' : '30px',
-              background: 'none',
-              border: `1px solid ${COR_DESTAQUE}99`,
-              color: COR_DESTAQUE,
-              width: '45px',
-              height: '45px',
-              borderRadius: '50%',
-              cursor: 'pointer',
-              fontSize: '20px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 10,
-            }}
-          >
-            ✕
-          </button>
-
-          <div
-            style={{
-              position: 'absolute',
-              top: isMobile ? '25px' : '40px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              color: COR_DESTAQUE,
-              fontSize: '0.85rem',
-              letterSpacing: '2px',
-              fontWeight: '500',
-            }}
-          >
-            {lightboxIndex + 1} / {FOTOS.length}
-          </div>
-
-          {!isMobile && (
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setLightboxIndex((prev) => (prev - 1 + FOTOS.length) % FOTOS.length);
-              }}
-              style={{
-                position: 'absolute',
-                left: '30px',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                background: `${COR_DESTAQUE}1A`,
-                border: `1px solid ${COR_DESTAQUE}66`,
-                color: COR_DESTAQUE,
-                width: '55px',
-                height: '55px',
-                borderRadius: '50%',
-                cursor: 'pointer',
-                fontSize: '22px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                zIndex: 10,
-              }}
-            >
-              ‹
-            </button>
-          )}
-
-          {!isMobile && (
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setLightboxIndex((prev) => (prev + 1) % FOTOS.length);
-              }}
-              style={{
-                position: 'absolute',
-                right: '30px',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                background: `${COR_DESTAQUE}1A`,
-                border: `1px solid ${COR_DESTAQUE}66`,
-                color: COR_DESTAQUE,
-                width: '55px',
-                height: '55px',
-                borderRadius: '50%',
-                cursor: 'pointer',
-                fontSize: '22px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                zIndex: 10,
-              }}
-            >
-              ›
-            </button>
-          )}
-
-          <img
-            src={FOTOS[lightboxIndex].src}
-            alt={FOTOS[lightboxIndex].alt}
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              maxWidth: '100%',
-              maxHeight: '90vh',
-              objectFit: 'contain',
-              boxShadow: '0 30px 100px rgba(0,0,0,0.9)',
-            }}
-          />
-
-          {isMobile && (
-            <div
-              style={{
-                position: 'absolute',
-                bottom: '20px',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                display: 'flex',
-                gap: '20px',
-                zIndex: 10,
-              }}
-            >
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setLightboxIndex((prev) => (prev - 1 + FOTOS.length) % FOTOS.length);
-                }}
-                style={{
-                  background: `${COR_DESTAQUE}26`,
-                  border: `1px solid ${COR_DESTAQUE}80`,
-                  color: COR_DESTAQUE,
-                  width: '50px',
-                  height: '50px',
-                  borderRadius: '50%',
-                  cursor: 'pointer',
-                  fontSize: '20px',
-                }}
-              >
-                ‹
-              </button>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setLightboxIndex((prev) => (prev + 1) % FOTOS.length);
-                }}
-                style={{
-                  background: `${COR_DESTAQUE}26`,
-                  border: `1px solid ${COR_DESTAQUE}80`,
-                  color: COR_DESTAQUE,
-                  width: '50px',
-                  height: '50px',
-                  borderRadius: '50%',
-                  cursor: 'pointer',
-                  fontSize: '20px',
-                }}
-              >
-                ›
-              </button>
-            </div>
-          )}
-        </div>
-      )}
 
       <style jsx global>{`
         * {
