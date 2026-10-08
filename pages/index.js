@@ -1,7 +1,6 @@
 import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
-import Script from 'next/script';
-import { cidades, formatarPreco } from '../data/cidades';
+import { cidades, imoveis, formatarPreco, formatarPrecoMilhoes } from '../data/cidades';
 
 // Hook para animação de fade-in ao rolar
 function useFadeIn() {
@@ -100,12 +99,12 @@ export default function Home() {
 
         <meta
           name="description"
-          content="Terrenos à venda no interior de SP e MG com curadoria de verdade. Lotes em Joanópolis, Bragança Paulista e Itapeva (Quinta do Arvoredo). Atendimento direto, documentação transparente e regiões de natureza preservada. Fale com a Marques Alta Terra."
+          content="Terrenos à venda no interior de SP e MG com curadoria de verdade. Lotes em Joanópolis, Bragança Paulista e Itapeva (Quinta do Arvoredo). Imóveis de alto padrão na Riviera de São Lourenço. Atendimento direto, documentação transparente."
         />
 
         <meta
           name="keywords"
-          content="terreno interior SP, terreno Minas Gerais, terreno à venda interior, lote Joanópolis, terreno Bragança Paulista, Quinta do Arvoredo Itapeva, comprar terreno interior, investimento imobiliário interior, terreno condomínio fechado"
+          content="terreno interior SP, terreno Minas Gerais, terreno à venda interior, lote Joanópolis, terreno Bragança Paulista, Quinta do Arvoredo Itapeva, comprar terreno interior, investimento imobiliário interior, terreno condomínio fechado, casa de luxo Riviera de São Lourenço, imóvel alto padrão Bertioga"
         />
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
@@ -118,14 +117,14 @@ export default function Home() {
         <meta property="og:title" content="Terrenos à Venda no Interior de SP e MG | Marques Alta Terra" />
         <meta
           property="og:description"
-          content="Terrenos selecionados com curadoria no interior de SP e MG. Lotes em Joanópolis, Bragança Paulista e Quinta do Arvoredo (Itapeva). Atendimento direto e documentação transparente."
+          content="Terrenos selecionados com curadoria no interior de SP e MG. Imóveis de alto padrão na Riviera de São Lourenço. Atendimento direto e documentação transparente."
         />
         <meta property="og:image" content="https://www.marquesaltaterra.shop/images/logo.png" />
         <meta property="og:image:secure_url" content="https://www.marquesaltaterra.shop/images/logo.png" />
         <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
-        <meta property="og:image:alt" content="Marques Alta Terra - Terrenos no interior de SP e MG" />
+        <meta property="og:image:alt" content="Marques Alta Terra - Terrenos e Imóveis de Alto Padrão" />
         <meta property="og:url" content="https://www.marquesaltaterra.shop" />
         <meta property="og:type" content="website" />
         <meta property="og:site_name" content="Marques Alta Terra" />
@@ -135,7 +134,7 @@ export default function Home() {
         <meta name="twitter:title" content="Terrenos à Venda no Interior de SP e MG | Marques Alta Terra" />
         <meta
           name="twitter:description"
-          content="Terrenos selecionados com curadoria no interior de SP e MG. Lotes em Joanópolis, Bragança Paulista e Quinta do Arvoredo."
+          content="Terrenos com curadoria no interior de SP e MG + Imóveis de alto padrão na Riviera de São Lourenço."
         />
         <meta name="twitter:image" content="https://www.marquesaltaterra.shop/images/logo.png" />
 
@@ -147,7 +146,8 @@ export default function Home() {
             alternateName: 'Marques Alta Terra',
             url: 'https://www.marquesaltaterra.shop',
             logo: 'https://www.marquesaltaterra.shop/images/logo.png',
-            description: 'Curadoria e venda de terrenos no interior de São Paulo e Minas Gerais.',
+            description:
+              'Curadoria e venda de terrenos no interior de São Paulo e Minas Gerais, e imóveis de alto padrão no litoral paulista.',
             taxID: '39.868.744/0001-68',
             address: {
               '@type': 'PostalAddress',
@@ -202,23 +202,6 @@ export default function Home() {
 
         <link rel="icon" href="/images/logo.png" />
       </Head>
-
-      <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-89LSRYEHF1" />
-      <Script
-        id="google-analytics"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){ dataLayer.push(arguments); }
-            gtag('js', new Date());
-            gtag('config', 'G-89LSRYEHF1', {
-              page_title: 'Home - Marques Alta Terra',
-              page_location: window.location.href
-            });
-          `,
-        }}
-      />
 
       <div
         style={{
@@ -418,7 +401,6 @@ export default function Home() {
                 Falar agora
               </a>
 
-              {/* BOTÃO 3 — Blog */}
               <a
                 href="/blog"
                 style={{
@@ -478,7 +460,7 @@ export default function Home() {
         <section
           style={{
             backgroundColor: '#1A1A1A',
-            padding: isMobile ? '30px 16px' : '45px 20px',
+            padding: isMobile ? '28px 12px' : '45px 20px',
           }}
         >
           <div
@@ -486,49 +468,77 @@ export default function Home() {
               maxWidth: '1100px',
               margin: '0 auto',
               display: 'grid',
-              gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
-              gap: isMobile ? '20px' : '0',
+              // NOVO: mobile 2x2, desktop 4x1
+              gridTemplateColumns: isMobile ? '1fr 1fr' : 'repeat(4, 1fr)',
+              gap: isMobile ? '0' : '0',
               textAlign: 'center',
             }}
           >
             {[
-              { numero: '03', label: 'Regiões selecionadas' },
+              { numero: String(cidades.length).padStart(2, '0'), label: 'Regiões selecionadas' },
               { numero: '100%', label: 'Curadoria própria' },
               { numero: '0', label: 'Intermediários' },
-            ].map((item, i) => (
-              <div
-                key={i}
-                style={{
-                  borderLeft:
-                    !isMobile && i > 0 ? '1px solid rgba(212,140,91,0.25)' : 'none',
-                  borderTop: isMobile && i > 0 ? '1px solid rgba(212,140,91,0.15)' : 'none',
-                  padding: isMobile ? '15px 0' : '0 20px',
-                }}
-              >
+              {
+                numero: imoveis[0] ? formatarPrecoMilhoes(imoveis[0].preco) : '—',
+                label: 'Imóveis premium',
+              },
+            ].map((item, i) => {
+              // Lógica de bordas para grade 2x2 no mobile
+              // Desktop (4x1): borda esquerda em todos menos o primeiro
+              // Mobile (2x2):
+              //   0 (topo-esq): sem borda
+              //   1 (topo-dir): borda esquerda
+              //   2 (baixo-esq): borda topo
+              //   3 (baixo-dir): borda topo + borda esquerda
+              let borderLeft = 'none';
+              let borderTop = 'none';
+
+              if (isMobile) {
+                const isSegundaColuna = i % 2 === 1;
+                const isSegundaLinha = i >= 2;
+                if (isSegundaColuna) borderLeft = '1px solid rgba(212,140,91,0.25)';
+                if (isSegundaLinha) borderTop = '1px solid rgba(212,140,91,0.2)';
+              } else {
+                if (i > 0) borderLeft = '1px solid rgba(212,140,91,0.25)';
+              }
+
+              return (
                 <div
+                  key={i}
                   style={{
-                    fontFamily: "'Playfair Display', Georgia, serif",
-                    fontSize: isMobile ? '2rem' : '2.6rem',
-                    fontWeight: '600',
-                    color: '#D48C5B',
-                    marginBottom: '6px',
-                    lineHeight: 1,
+                    borderLeft,
+                    borderTop,
+                    padding: isMobile ? '18px 8px' : '0 20px',
                   }}
                 >
-                  {item.numero}
+                  <div
+                    style={{
+                      fontFamily: "'Playfair Display', Georgia, serif",
+                      // NOVO: fonte reduzida no mobile pra caber 2 por linha
+                      fontSize: isMobile ? '1.6rem' : '2.6rem',
+                      fontWeight: '600',
+                      color: '#D48C5B',
+                      marginBottom: '6px',
+                      lineHeight: 1,
+                    }}
+                  >
+                    {item.numero}
+                  </div>
+                  <div
+                    style={{
+                      color: 'rgba(255,255,255,0.7)',
+                      // NOVO: fonte reduzida no mobile
+                      fontSize: isMobile ? '0.6rem' : '0.8rem',
+                      letterSpacing: isMobile ? '1px' : '2px',
+                      textTransform: 'uppercase',
+                      lineHeight: 1.3,
+                    }}
+                  >
+                    {item.label}
+                  </div>
                 </div>
-                <div
-                  style={{
-                    color: 'rgba(255,255,255,0.7)',
-                    fontSize: isMobile ? '0.7rem' : '0.8rem',
-                    letterSpacing: '2px',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  {item.label}
-                </div>
-              </div>
-            ))}
+              );
+            })}
           </div>
         </section>
 
@@ -775,6 +785,323 @@ export default function Home() {
           </div>
         </section>
 
+        {/* ============================================================ */}
+        {/* ====== IMÓVEIS DE ALTO PADRÃO (dinâmico) ====== */}
+        {/* ============================================================ */}
+        {imoveis.length > 0 && (
+          <section
+            style={{
+              backgroundColor: '#0A0A0A',
+              padding: isMobile ? '70px 16px 60px' : '120px 20px 100px',
+              width: '100%',
+              boxSizing: 'border-box',
+              position: 'relative',
+            }}
+          >
+            <div
+              style={{
+                maxWidth: '1200px',
+                margin: '0 auto',
+                width: '100%',
+              }}
+            >
+              <FadeIn>
+                <div
+                  style={{
+                    textAlign: 'center',
+                    marginBottom: isMobile ? '40px' : '70px',
+                  }}
+                >
+                  <div
+                    style={{
+                      display: 'inline-flex',
+                      alignItems: 'center',
+                      gap: isMobile ? '10px' : '14px',
+                      marginBottom: '24px',
+                    }}
+                  >
+                    <span
+                      style={{
+                        width: isMobile ? '25px' : '50px',
+                        height: '1px',
+                        backgroundColor: '#C9A961',
+                      }}
+                    />
+                    <span
+                      style={{
+                        color: '#C9A961',
+                        fontSize: isMobile ? '0.65rem' : '0.8rem',
+                        fontWeight: '500',
+                        letterSpacing: isMobile ? '3px' : '5px',
+                        textTransform: 'uppercase',
+                        whiteSpace: 'nowrap',
+                      }}
+                    >
+                      Imóveis de Alto Padrão
+                    </span>
+                    <span
+                      style={{
+                        width: isMobile ? '25px' : '50px',
+                        height: '1px',
+                        backgroundColor: '#C9A961',
+                      }}
+                    />
+                  </div>
+
+                  <h2
+                    style={{
+                      color: '#fff',
+                      fontFamily: "'Playfair Display', Georgia, serif",
+                      fontSize: isMobile ? '1.8rem' : 'clamp(2.5rem, 4.5vw, 3.5rem)',
+                      fontWeight: '500',
+                      marginBottom: '20px',
+                      lineHeight: '1.2',
+                    }}
+                  >
+                    Excelência para poucos
+                  </h2>
+
+                  <p
+                    style={{
+                      color: 'rgba(255,255,255,0.65)',
+                      fontSize: isMobile ? '0.92rem' : '1.05rem',
+                      maxWidth: '640px',
+                      margin: '0 auto',
+                      lineHeight: '1.8',
+                      fontWeight: '300',
+                    }}
+                  >
+                    Selecionamos imóveis de arquitetura assinada, localização privilegiada
+                    e acabamentos de alto padrão para quem busca o extraordinário.
+                  </p>
+                </div>
+              </FadeIn>
+
+              {imoveis.map((imovel, idx) => (
+                <FadeIn key={imovel.slug} delay={0.15 + idx * 0.1}>
+                  <a
+                    href={`/${imovel.slug}`}
+                    style={{
+                      display: 'block',
+                      textDecoration: 'none',
+                      position: 'relative',
+                      overflow: 'hidden',
+                      borderRadius: '2px',
+                      boxShadow: '0 30px 80px rgba(0,0,0,0.6)',
+                      border: '1px solid rgba(201,169,97,0.2)',
+                      transition: 'all 0.5s cubic-bezier(0.4, 0, 0.2, 1)',
+                      marginBottom: isMobile ? '30px' : '50px',
+                    }}
+                    onMouseOver={(e) => {
+                      e.currentTarget.style.transform = 'translateY(-5px)';
+                      e.currentTarget.style.boxShadow = '0 40px 100px rgba(201,169,97,0.25)';
+                      e.currentTarget.style.borderColor = 'rgba(201,169,97,0.5)';
+                    }}
+                    onMouseOut={(e) => {
+                      e.currentTarget.style.transform = 'translateY(0)';
+                      e.currentTarget.style.boxShadow = '0 30px 80px rgba(0,0,0,0.6)';
+                      e.currentTarget.style.borderColor = 'rgba(201,169,97,0.2)';
+                    }}
+                  >
+                    <div
+                      style={{
+                        display: 'grid',
+                        gridTemplateColumns: isMobile ? '1fr' : '1.3fr 1fr',
+                        width: '100%',
+                        minHeight: isMobile ? 'auto' : '520px',
+                      }}
+                    >
+                      <div
+                        style={{
+                          position: 'relative',
+                          height: isMobile ? '280px' : 'auto',
+                          minHeight: isMobile ? '280px' : '520px',
+                          backgroundImage: `url(${imovel.imagem})`,
+                          backgroundSize: 'cover',
+                          backgroundPosition: 'center',
+                        }}
+                      >
+                        <div
+                          style={{
+                            position: 'absolute',
+                            inset: 0,
+                            background:
+                              'linear-gradient(180deg, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.4) 100%)',
+                          }}
+                        />
+
+                        <div
+                          style={{
+                            position: 'absolute',
+                            top: '20px',
+                            left: '20px',
+                            backgroundColor: '#C9A961',
+                            color: '#0A0A0A',
+                            padding: '8px 18px',
+                            fontSize: '0.65rem',
+                            fontWeight: '700',
+                            letterSpacing: '2.5px',
+                            textTransform: 'uppercase',
+                          }}
+                        >
+                          ✦ Exclusividade
+                        </div>
+                      </div>
+
+                      <div
+                        style={{
+                          backgroundColor: '#0F0F0F',
+                          padding: isMobile ? '30px 24px' : '60px 50px',
+                          display: 'flex',
+                          flexDirection: 'column',
+                          justifyContent: 'center',
+                          gap: '20px',
+                        }}
+                      >
+                        <div
+                          style={{
+                            color: '#C9A961',
+                            fontSize: isMobile ? '0.65rem' : '0.75rem',
+                            fontWeight: '500',
+                            letterSpacing: isMobile ? '2px' : '4px',
+                            textTransform: 'uppercase',
+                          }}
+                        >
+                          {imovel.categoria}
+                        </div>
+
+                        <h3
+                          style={{
+                            color: '#fff',
+                            fontFamily: "'Playfair Display', Georgia, serif",
+                            fontSize: isMobile ? '2rem' : 'clamp(2.2rem, 3.5vw, 3rem)',
+                            fontWeight: '500',
+                            fontStyle: 'italic',
+                            margin: 0,
+                            lineHeight: '1.1',
+                            letterSpacing: '-1px',
+                          }}
+                        >
+                          {imovel.nome}
+                        </h3>
+
+                        <p
+                          style={{
+                            color: 'rgba(255,255,255,0.7)',
+                            fontSize: isMobile ? '0.88rem' : '0.98rem',
+                            lineHeight: '1.75',
+                            margin: 0,
+                            fontWeight: '300',
+                          }}
+                        >
+                          {imovel.descricaoCurta}
+                        </p>
+
+                        <div
+                          style={{
+                            display: 'flex',
+                            flexWrap: 'wrap',
+                            gap: isMobile ? '10px' : '16px',
+                            paddingTop: '16px',
+                            borderTop: '1px solid rgba(201,169,97,0.2)',
+                          }}
+                        >
+                          {imovel.destaques.map((item, i) => (
+                            <span
+                              key={i}
+                              style={{
+                                color: 'rgba(255,255,255,0.55)',
+                                fontSize: isMobile ? '0.72rem' : '0.8rem',
+                                letterSpacing: '1.5px',
+                                textTransform: 'uppercase',
+                                fontWeight: '500',
+                              }}
+                            >
+                              {item}
+                            </span>
+                          ))}
+                        </div>
+
+                        <div
+                          style={{
+                            display: 'flex',
+                            alignItems: 'baseline',
+                            gap: '10px',
+                            paddingTop: '10px',
+                          }}
+                        >
+                          <span
+                            style={{
+                              color: 'rgba(255,255,255,0.5)',
+                              fontSize: isMobile ? '0.7rem' : '0.78rem',
+                              letterSpacing: '1.5px',
+                              textTransform: 'uppercase',
+                            }}
+                          >
+                            A partir de
+                          </span>
+                          <span
+                            style={{
+                              color: '#C9A961',
+                              fontFamily: "'Playfair Display', Georgia, serif",
+                              fontSize: isMobile ? '1.5rem' : '1.9rem',
+                              fontWeight: '500',
+                            }}
+                          >
+                            {formatarPreco(imovel.preco)}
+                          </span>
+                        </div>
+
+                        <div
+                          style={{
+                            marginTop: '10px',
+                            display: 'inline-flex',
+                            alignItems: 'center',
+                            gap: '10px',
+                            color: '#C9A961',
+                            fontSize: isMobile ? '0.75rem' : '0.82rem',
+                            fontWeight: '600',
+                            letterSpacing: '2.5px',
+                            textTransform: 'uppercase',
+                          }}
+                        >
+                          Explorar Imóvel
+                          <span style={{ fontSize: '1.2rem' }}>→</span>
+                        </div>
+                      </div>
+                    </div>
+                  </a>
+                </FadeIn>
+              ))}
+
+              <FadeIn delay={0.3}>
+                <div
+                  style={{
+                    textAlign: 'center',
+                    marginTop: isMobile ? '10px' : '10px',
+                    padding: isMobile ? '20px' : '30px',
+                    border: '1px dashed rgba(201,169,97,0.3)',
+                    borderRadius: '2px',
+                  }}
+                >
+                  <p
+                    style={{
+                      color: 'rgba(255,255,255,0.5)',
+                      fontSize: isMobile ? '0.8rem' : '0.88rem',
+                      margin: 0,
+                      letterSpacing: '1px',
+                      fontStyle: 'italic',
+                      fontWeight: '300',
+                    }}
+                  >
+                    Outros imóveis exclusivos disponíveis sob consulta.
+                  </p>
+                </div>
+              </FadeIn>
+            </div>
+          </section>
+        )}
+
         {/* ====== POR QUE MARQUES ALTA TERRA ====== */}
         <section
           style={{
@@ -796,7 +1123,7 @@ export default function Home() {
               <div
                 style={{
                   textAlign: 'center',
-                  marginBottom: isMobile ? '35px' : '60px',
+                  marginBottom: isMobile ? '30px' : '60px',
                 }}
               >
                 <div
@@ -852,10 +1179,11 @@ export default function Home() {
             <div
               style={{
                 display: 'grid',
+                // NOVO: mobile 2x2, desktop auto-fit
                 gridTemplateColumns: isMobile
-                  ? '1fr'
+                  ? '1fr 1fr'
                   : 'repeat(auto-fit, minmax(230px, 1fr))',
-                gap: isMobile ? '18px' : '25px',
+                gap: isMobile ? '12px' : '25px',
                 width: '100%',
               }}
             >
@@ -864,7 +1192,8 @@ export default function Home() {
                   <div
                     style={{
                       backgroundColor: '#FAF7F3',
-                      padding: isMobile ? '26px 22px' : '40px 30px',
+                      // NOVO: padding reduzido no mobile
+                      padding: isMobile ? '18px 14px' : '40px 30px',
                       borderRadius: '4px',
                       height: '100%',
                       borderTop: '2px solid #D48C5B',
@@ -874,8 +1203,9 @@ export default function Home() {
                   >
                     <div
                       style={{
-                        fontSize: isMobile ? '1.7rem' : '2.2rem',
-                        marginBottom: '16px',
+                        // NOVO: ícone menor no mobile
+                        fontSize: isMobile ? '1.4rem' : '2.2rem',
+                        marginBottom: isMobile ? '10px' : '16px',
                       }}
                     >
                       {p.icone}
@@ -884,9 +1214,11 @@ export default function Home() {
                       style={{
                         color: '#2C2C2C',
                         fontFamily: "'Playfair Display', Georgia, serif",
-                        fontSize: isMobile ? '1.15rem' : '1.35rem',
+                        // NOVO: título menor no mobile
+                        fontSize: isMobile ? '0.95rem' : '1.35rem',
                         fontWeight: '600',
-                        marginBottom: '10px',
+                        marginBottom: '8px',
+                        lineHeight: 1.2,
                       }}
                     >
                       {p.titulo}
@@ -894,8 +1226,9 @@ export default function Home() {
                     <p
                       style={{
                         color: '#4A4A4A',
-                        fontSize: isMobile ? '0.88rem' : '0.95rem',
-                        lineHeight: '1.7',
+                        // NOVO: texto menor no mobile
+                        fontSize: isMobile ? '0.75rem' : '0.95rem',
+                        lineHeight: '1.55',
                         margin: 0,
                       }}
                     >
@@ -939,17 +1272,18 @@ export default function Home() {
                 lineHeight: '1.3',
               }}
             >
-              Terrenos à venda no interior de São Paulo e Minas Gerais
+              Terrenos e imóveis de alto padrão em SP e MG
             </h2>
             <p style={{ marginBottom: '18px' }}>
               A <strong>Marques Alta Terra</strong> é especializada em{' '}
-              <strong>terrenos no interior</strong> de São Paulo e Minas Gerais. Selecionamos
-              propriedades em regiões de natureza preservada, tranquilidade e alto potencial de
-              valorização — ideais para quem busca um refúgio a poucos minutos da capital, uma casa
-              de campo ou um investimento imobiliário sólido.
+              <strong>terrenos no interior</strong> de São Paulo e Minas Gerais, e em{' '}
+              <strong>imóveis de alto padrão no litoral paulista</strong>. Selecionamos propriedades
+              em regiões de natureza preservada, tranquilidade e alto potencial de valorização —
+              ideais para quem busca um refúgio a poucos minutos da capital, uma casa de campo ou um
+              investimento imobiliário sólido.
             </p>
             <p style={{ marginBottom: '18px' }}>
-              Trabalhamos com <strong>curadoria de verdade</strong>: cada terreno é visitado e
+              Trabalhamos com <strong>curadoria de verdade</strong>: cada imóvel é visitado e
               analisado antes de entrar no nosso catálogo. Você não encontra aqui anúncio repetido,
               foto enganosa ou preço escondido. Nosso compromisso é com a{' '}
               <strong>transparência total</strong> — toda a documentação histórica é apresentada ao
@@ -958,14 +1292,15 @@ export default function Home() {
             <p style={{ marginBottom: '18px' }}>
               Atuamos em regiões cercadas por serras, cachoeiras, mirantes e belezas naturais, com
               fácil acesso pelas principais rodovias do interior. Do{' '}
-              <strong>interior paulista</strong> ao <strong>sul de Minas</strong>, selecionamos
-              terrenos que unem qualidade de vida, tranquilidade e potencial de crescimento.
+              <strong>interior paulista</strong> ao <strong>sul de Minas</strong>, e também no{' '}
+              <strong>litoral paulista</strong>, selecionamos imóveis que unem qualidade de vida,
+              tranquilidade e potencial de crescimento.
             </p>
             <p style={{ marginBottom: '25px' }}>
               Se você procura <strong>terreno para construir</strong>,{' '}
-              <strong>terreno para investir</strong> ou um <strong>lote em região rural</strong>,
-              fale com a gente. Atendimento direto com o vendedor, sem intermediários, sem
-              enrolação.
+              <strong>terreno para investir</strong>, <strong>lote em região rural</strong> ou uma{' '}
+              <strong>casa de alto padrão</strong>, fale com a gente. Atendimento direto com o
+              vendedor, sem intermediários, sem enrolação.
             </p>
             <div style={{ textAlign: 'center', marginTop: '35px' }}>
               <div
@@ -987,7 +1322,7 @@ export default function Home() {
                   margin: 0,
                 }}
               >
-                Marques Alta Terra — Seu pedaço do céu no interior.
+                Marques Alta Terra — Do interior ao litoral, imóveis que inspiram.
               </p>
             </div>
           </div>
@@ -1066,7 +1401,7 @@ export default function Home() {
                 lineHeight: '1.7',
               }}
             >
-              Fale agora com a gente pelo WhatsApp e descubra o terreno ideal para você.
+              Fale agora com a gente pelo WhatsApp e descubra o imóvel ideal para você.
             </p>
             <a
               href={LINK_WHATSAPP}
@@ -1108,7 +1443,8 @@ export default function Home() {
         {/* ====== FOOTER ====== */}
         <footer
           style={{
-            padding: isMobile ? '40px 16px 25px' : '60px 40px 30px',
+            // NOVO: padding mais enxuto
+            padding: isMobile ? '35px 14px 22px' : '60px 40px 30px',
             backgroundColor: '#1A1A1A',
             color: '#999',
             width: '100%',
@@ -1116,35 +1452,29 @@ export default function Home() {
           }}
         >
           <div style={{ maxWidth: '1150px', margin: '0 auto', width: '100%' }}>
-            <div style={{ textAlign: 'center', marginBottom: '35px' }}>
-              <img
-                src="/images/logo.png"
-                alt="Marques Alta Terra"
-                style={{
-                  height: isMobile ? '70px' : '190px',
-                  width: 'auto',
-                  maxWidth: isMobile ? '200px' : '230px',
-                }}
-              />
-            </div>
+            {/* ❌ LOGO REMOVIDA — já aparece no hero */}
 
+            {/* Divisor superior */}
             <div
               style={{
                 height: '1px',
                 background:
                   'linear-gradient(90deg, transparent 0%, #3A3A3A 20%, #3A3A3A 80%, transparent 100%)',
                 maxWidth: '900px',
-                margin: '0 auto 35px',
+                margin: '0 auto 30px',
               }}
             />
 
+            {/* ====== 3 COLUNAS LADO A LADO (mobile e desktop) ====== */}
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
-                gap: isMobile ? '28px' : '50px',
-                marginBottom: '35px',
-                textAlign: isMobile ? 'center' : 'left',
+                // NOVO: 3 colunas SEMPRE (antes era 1 coluna no mobile)
+                gridTemplateColumns: '1fr 1fr 1fr',
+                gap: isMobile ? '14px' : '50px',
+                marginBottom: isMobile ? '25px' : '35px',
+                // NOVO: alinhamento sempre à esquerda (antes centralizava no mobile)
+                textAlign: 'left',
                 width: '100%',
               }}
             >
@@ -1152,11 +1482,11 @@ export default function Home() {
                 <h4
                   style={{
                     color: '#D48C5B',
-                    fontSize: '0.7rem',
+                    fontSize: isMobile ? '0.6rem' : '0.7rem',
                     fontWeight: '600',
-                    letterSpacing: '2.5px',
+                    letterSpacing: isMobile ? '1.5px' : '2.5px',
                     textTransform: 'uppercase',
-                    marginBottom: '16px',
+                    marginBottom: isMobile ? '12px' : '16px',
                   }}
                 >
                   Navegação
@@ -1168,14 +1498,15 @@ export default function Home() {
                     { label: 'Blog', href: '/blog' },
                     { label: 'Quem Somos', href: '/quem-somos' },
                   ].map((item, i) => (
-                    <li key={i} style={{ marginBottom: '9px' }}>
+                    <li key={i} style={{ marginBottom: isMobile ? '7px' : '9px' }}>
                       <a
                         href={item.href}
                         style={{
                           color: '#999',
                           textDecoration: 'none',
-                          fontSize: '0.88rem',
+                          fontSize: isMobile ? '0.7rem' : '0.88rem',
                           transition: 'color 0.3s',
+                          lineHeight: 1.4,
                         }}
                       >
                         {item.label}
@@ -1189,25 +1520,26 @@ export default function Home() {
                 <h4
                   style={{
                     color: '#D48C5B',
-                    fontSize: '0.7rem',
+                    fontSize: isMobile ? '0.6rem' : '0.7rem',
                     fontWeight: '600',
-                    letterSpacing: '2.5px',
+                    letterSpacing: isMobile ? '1.5px' : '2.5px',
                     textTransform: 'uppercase',
-                    marginBottom: '16px',
+                    marginBottom: isMobile ? '12px' : '16px',
                   }}
                 >
                   Regiões
                 </h4>
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                   {cidades.map((c, i) => (
-                    <li key={i} style={{ marginBottom: '9px' }}>
+                    <li key={i} style={{ marginBottom: isMobile ? '7px' : '9px' }}>
                       <a
                         href={`/${c.slug}`}
                         style={{
                           color: '#999',
                           textDecoration: 'none',
-                          fontSize: '0.88rem',
+                          fontSize: isMobile ? '0.7rem' : '0.88rem',
                           transition: 'color 0.3s',
+                          lineHeight: 1.4,
                         }}
                       >
                         {c.nome} - {c.estado}
@@ -1221,11 +1553,11 @@ export default function Home() {
                 <h4
                   style={{
                     color: '#D48C5B',
-                    fontSize: '0.7rem',
+                    fontSize: isMobile ? '0.6rem' : '0.7rem',
                     fontWeight: '600',
-                    letterSpacing: '2.5px',
+                    letterSpacing: isMobile ? '1.5px' : '2.5px',
                     textTransform: 'uppercase',
-                    marginBottom: '16px',
+                    marginBottom: isMobile ? '12px' : '16px',
                   }}
                 >
                   Contato
@@ -1233,9 +1565,9 @@ export default function Home() {
                 <p
                   style={{
                     color: '#999',
-                    fontSize: '0.88rem',
-                    marginBottom: '10px',
-                    lineHeight: '1.6',
+                    fontSize: isMobile ? '0.7rem' : '0.88rem',
+                    marginBottom: '8px',
+                    lineHeight: 1.5,
                   }}
                 >
                   Atendimento direto pelo WhatsApp
@@ -1247,8 +1579,9 @@ export default function Home() {
                   style={{
                     color: '#25D366',
                     textDecoration: 'none',
-                    fontSize: '0.95rem',
+                    fontSize: isMobile ? '0.75rem' : '0.95rem',
                     fontWeight: '600',
+                    lineHeight: 1.4,
                   }}
                 >
                   (11) 91357-2902
@@ -1262,7 +1595,7 @@ export default function Home() {
                 background:
                   'linear-gradient(90deg, transparent 0%, #2C2C2C 50%, transparent 100%)',
                 maxWidth: '900px',
-                margin: '0 auto 25px',
+                margin: '0 auto 22px',
               }}
             />
 
@@ -1270,19 +1603,19 @@ export default function Home() {
               <p
                 style={{
                   color: '#888',
-                  fontSize: isMobile ? '0.72rem' : '0.85rem',
+                  fontSize: isMobile ? '0.68rem' : '0.85rem',
                   marginBottom: '10px',
-                  lineHeight: '1.7',
+                  lineHeight: '1.6',
                   padding: '0 8px',
                 }}
               >
-                <strong style={{ color: '#D48C5B' }}>Marques Alta Terra</strong> — Curadoria e
-                venda de terrenos no interior de São Paulo e Minas Gerais.
+                <strong style={{ color: '#D48C5B' }}>Marques Alta Terra</strong> — Curadoria de
+                terrenos no interior de São Paulo e Minas Gerais, e imóveis de alto padrão no litoral paulista.
               </p>
               <p
                 style={{
                   color: '#666',
-                  fontSize: isMobile ? '0.68rem' : '0.75rem',
+                  fontSize: isMobile ? '0.62rem' : '0.75rem',
                   marginBottom: '6px',
                   padding: '0 8px',
                 }}
@@ -1292,7 +1625,7 @@ export default function Home() {
               <p
                 style={{
                   color: '#555',
-                  fontSize: isMobile ? '0.62rem' : '0.7rem',
+                  fontSize: isMobile ? '0.58rem' : '0.7rem',
                   margin: 0,
                   padding: '0 8px',
                 }}
@@ -1303,32 +1636,6 @@ export default function Home() {
           </div>
         </footer>
       </div>
-
-      <style jsx global>{`
-        * {
-          box-sizing: border-box;
-        }
-        html,
-        body {
-          margin: 0;
-          padding: 0;
-          overflow-x: hidden;
-          width: 100%;
-          max-width: 100%;
-        }
-        html {
-          scroll-behavior: smooth;
-        }
-        body {
-          font-family: 'Inter', 'Segoe UI', Roboto, sans-serif;
-          -webkit-font-smoothing: antialiased;
-          -moz-osx-font-smoothing: grayscale;
-        }
-        img {
-          max-width: 100%;
-          height: auto;
-        }
-      `}</style>
     </>
   );
 }

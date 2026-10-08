@@ -319,17 +319,17 @@ export default function Itapeva() {
               gap: '12px',
             }}
           >
-<a href="/" style={{ display: 'inline-block' }}>
-  <img
-    src="/images/logo.png"
-    alt="Marques Alta Terra"
-    style={{
-      height: isMobile ? '65px' : '150px',   // ✅
-      width: 'auto',
-      maxWidth: isMobile ? '170px' : '240px',
-    }}
-  />
-</a>
+            <a href="/" style={{ display: 'inline-block' }}>
+              <img
+                src="/images/logo.png"
+                alt="Marques Alta Terra"
+                style={{
+                  height: isMobile ? '65px' : '150px',
+                  width: 'auto',
+                  maxWidth: isMobile ? '170px' : '240px',
+                }}
+              />
+            </a>
             <div
               style={{
                 display: 'flex',
@@ -531,7 +531,7 @@ export default function Itapeva() {
         <section
           style={{
             backgroundColor: '#1A1A1A',
-            padding: isMobile ? '30px 16px' : '45px 20px',
+            padding: isMobile ? '28px 12px' : '45px 20px',
           }}
         >
           <div
@@ -539,8 +539,9 @@ export default function Itapeva() {
               maxWidth: '1100px',
               margin: '0 auto',
               display: 'grid',
-              gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
-              gap: isMobile ? '20px' : '0',
+              // NOVO: mobile 3 colunas lado a lado
+              gridTemplateColumns: isMobile ? '1fr 1fr 1fr' : 'repeat(3, 1fr)',
+              gap: '0',
               textAlign: 'center',
             }}
           >
@@ -552,18 +553,18 @@ export default function Itapeva() {
               <div
                 key={i}
                 style={{
-                  borderLeft: !isMobile && i > 0 ? '1px solid rgba(212,140,91,0.25)' : 'none',
-                  borderTop: isMobile && i > 0 ? '1px solid rgba(212,140,91,0.15)' : 'none',
-                  padding: isMobile ? '15px 0' : '0 20px',
+                  borderLeft: i > 0 ? '1px solid rgba(212,140,91,0.25)' : 'none',
+                  padding: isMobile ? '14px 6px' : '0 20px',
                 }}
               >
                 <div
                   style={{
                     fontFamily: "'Playfair Display', Georgia, serif",
-                    fontSize: isMobile ? '1.9rem' : '2.5rem',
+                    // NOVO: fonte reduzida no mobile pra caber 3 lado a lado
+                    fontSize: isMobile ? '1.25rem' : '2.5rem',
                     fontWeight: '600',
                     color: '#D48C5B',
-                    marginBottom: '6px',
+                    marginBottom: isMobile ? '4px' : '6px',
                     lineHeight: 1,
                   }}
                 >
@@ -572,9 +573,11 @@ export default function Itapeva() {
                 <div
                   style={{
                     color: 'rgba(255,255,255,0.7)',
-                    fontSize: isMobile ? '0.7rem' : '0.8rem',
-                    letterSpacing: '2px',
+                    // NOVO: fonte menor no mobile
+                    fontSize: isMobile ? '0.58rem' : '0.8rem',
+                    letterSpacing: isMobile ? '0.8px' : '2px',
                     textTransform: 'uppercase',
+                    lineHeight: 1.3,
                   }}
                 >
                   {item.label}
@@ -622,7 +625,6 @@ export default function Itapeva() {
               </p>
             </div>
 
-            {/* Vídeo principal centralizado */}
             <div
               style={{
                 position: 'relative',
@@ -651,7 +653,6 @@ export default function Itapeva() {
               />
             </div>
 
-            {/* Outros vídeos - carrossel */}
             {videos.length > 1 && (
               <>
                 <h3
@@ -1613,7 +1614,7 @@ export default function Itapeva() {
         {/* ====== FOOTER ====== */}
         <footer
           style={{
-            padding: isMobile ? '40px 16px 25px' : '60px 40px 30px',
+            padding: isMobile ? '35px 14px 22px' : '60px 40px 30px',
             backgroundColor: '#1A1A1A',
             color: '#999',
             width: '100%',
@@ -1621,35 +1622,27 @@ export default function Itapeva() {
           }}
         >
           <div style={{ maxWidth: '1150px', margin: '0 auto', width: '100%' }}>
-            <div style={{ textAlign: 'center', marginBottom: '30px' }}>
-              <img
-                src="/images/logo.png"
-                alt="Marques Alta Terra"
-                style={{
-                  height: isMobile ? '48px' : '70px',
-                  width: 'auto',
-                  maxWidth: '160px',
-                }}
-              />
-            </div>
+            {/* ❌ LOGO REMOVIDA */}
 
+            {/* Divisor superior */}
             <div
               style={{
                 height: '1px',
                 background:
                   'linear-gradient(90deg, transparent 0%, #3A3A3A 20%, #3A3A3A 80%, transparent 100%)',
                 maxWidth: '900px',
-                margin: '0 auto 35px',
+                margin: '0 auto 30px',
               }}
             />
 
+            {/* ====== 3 COLUNAS LADO A LADO (mobile e desktop) ====== */}
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
-                gap: isMobile ? '28px' : '50px',
-                marginBottom: '35px',
-                textAlign: isMobile ? 'center' : 'left',
+                gridTemplateColumns: '1fr 1fr 1fr',
+                gap: isMobile ? '14px' : '50px',
+                marginBottom: isMobile ? '25px' : '35px',
+                textAlign: 'left',
                 width: '100%',
               }}
             >
@@ -1657,11 +1650,11 @@ export default function Itapeva() {
                 <h4
                   style={{
                     color: '#D48C5B',
-                    fontSize: '0.7rem',
+                    fontSize: isMobile ? '0.6rem' : '0.7rem',
                     fontWeight: '600',
-                    letterSpacing: '2.5px',
+                    letterSpacing: isMobile ? '1.5px' : '2.5px',
                     textTransform: 'uppercase',
-                    marginBottom: '16px',
+                    marginBottom: isMobile ? '12px' : '16px',
                   }}
                 >
                   Navegação
@@ -1670,15 +1663,18 @@ export default function Itapeva() {
                   {[
                     { label: 'Início', href: '/' },
                     { label: 'Nossos terrenos', href: '/#terrenos' },
+                    { label: 'Blog', href: '/blog' },
                     { label: 'Quem Somos', href: '/quem-somos' },
                   ].map((item, i) => (
-                    <li key={i} style={{ marginBottom: '9px' }}>
+                    <li key={i} style={{ marginBottom: isMobile ? '7px' : '9px' }}>
                       <a
                         href={item.href}
                         style={{
                           color: '#999',
                           textDecoration: 'none',
-                          fontSize: '0.88rem',
+                          fontSize: isMobile ? '0.7rem' : '0.88rem',
+                          transition: 'color 0.3s',
+                          lineHeight: 1.4,
                         }}
                       >
                         {item.label}
@@ -1692,11 +1688,11 @@ export default function Itapeva() {
                 <h4
                   style={{
                     color: '#D48C5B',
-                    fontSize: '0.7rem',
+                    fontSize: isMobile ? '0.6rem' : '0.7rem',
                     fontWeight: '600',
-                    letterSpacing: '2.5px',
+                    letterSpacing: isMobile ? '1.5px' : '2.5px',
                     textTransform: 'uppercase',
-                    marginBottom: '16px',
+                    marginBottom: isMobile ? '12px' : '16px',
                   }}
                 >
                   Regiões
@@ -1705,16 +1701,17 @@ export default function Itapeva() {
                   {[
                     { label: 'Joanópolis - SP', href: '/joanopolis' },
                     { label: 'Bragança Paulista - SP', href: '/braganca' },
-                    { label: 'Itapeva - MG', href: '/itapeva', ativo: true },
+                    { label: 'Itapeva - MG', href: '/itapeva' },
                   ].map((item, i) => (
-                    <li key={i} style={{ marginBottom: '9px' }}>
+                    <li key={i} style={{ marginBottom: isMobile ? '7px' : '9px' }}>
                       <a
                         href={item.href}
                         style={{
-                          color: item.ativo ? '#D48C5B' : '#999',
+                          color: '#999',
                           textDecoration: 'none',
-                          fontSize: '0.88rem',
-                          fontWeight: item.ativo ? '600' : '400',
+                          fontSize: isMobile ? '0.7rem' : '0.88rem',
+                          transition: 'color 0.3s',
+                          lineHeight: 1.4,
                         }}
                       >
                         {item.label}
@@ -1728,11 +1725,11 @@ export default function Itapeva() {
                 <h4
                   style={{
                     color: '#D48C5B',
-                    fontSize: '0.7rem',
+                    fontSize: isMobile ? '0.6rem' : '0.7rem',
                     fontWeight: '600',
-                    letterSpacing: '2.5px',
+                    letterSpacing: isMobile ? '1.5px' : '2.5px',
                     textTransform: 'uppercase',
-                    marginBottom: '16px',
+                    marginBottom: isMobile ? '12px' : '16px',
                   }}
                 >
                   Contato
@@ -1740,9 +1737,9 @@ export default function Itapeva() {
                 <p
                   style={{
                     color: '#999',
-                    fontSize: '0.88rem',
-                    marginBottom: '10px',
-                    lineHeight: '1.6',
+                    fontSize: isMobile ? '0.7rem' : '0.88rem',
+                    marginBottom: '8px',
+                    lineHeight: 1.5,
                   }}
                 >
                   Vendedor responsável pelos lotes
@@ -1754,18 +1751,35 @@ export default function Itapeva() {
                   style={{
                     color: '#25D366',
                     textDecoration: 'none',
-                    fontSize: '0.95rem',
+                    fontSize: isMobile ? '0.72rem' : '0.95rem',
                     fontWeight: '600',
+                    lineHeight: 1.4,
+                    display: 'block',
                   }}
                 >
-                  Anderson Vezzani — (11) 94031-1644
+                  Anderson Vezzani
+                </a>
+                <a
+                  href={LINK_WHATSAPP}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    color: '#25D366',
+                    textDecoration: 'none',
+                    fontSize: isMobile ? '0.72rem' : '0.9rem',
+                    fontWeight: '600',
+                    lineHeight: 1.4,
+                    display: 'block',
+                  }}
+                >
+                  (11) 94031-1644
                 </a>
                 <p
                   style={{
                     color: '#777',
-                    fontSize: '0.78rem',
-                    marginTop: '12px',
-                    lineHeight: '1.6',
+                    fontSize: isMobile ? '0.62rem' : '0.75rem',
+                    marginTop: '10px',
+                    lineHeight: '1.5',
                   }}
                 >
                   Outras regiões:{' '}
@@ -1787,7 +1801,7 @@ export default function Itapeva() {
                 background:
                   'linear-gradient(90deg, transparent 0%, #2C2C2C 50%, transparent 100%)',
                 maxWidth: '900px',
-                margin: '0 auto 25px',
+                margin: '0 auto 22px',
               }}
             />
 
@@ -1795,9 +1809,9 @@ export default function Itapeva() {
               <p
                 style={{
                   color: '#888',
-                  fontSize: isMobile ? '0.72rem' : '0.85rem',
+                  fontSize: isMobile ? '0.68rem' : '0.85rem',
                   marginBottom: '10px',
-                  lineHeight: '1.7',
+                  lineHeight: '1.6',
                   padding: '0 8px',
                 }}
               >
@@ -1807,7 +1821,7 @@ export default function Itapeva() {
               <p
                 style={{
                   color: '#666',
-                  fontSize: isMobile ? '0.68rem' : '0.75rem',
+                  fontSize: isMobile ? '0.62rem' : '0.75rem',
                   marginBottom: '6px',
                   padding: '0 8px',
                 }}
@@ -1817,7 +1831,7 @@ export default function Itapeva() {
               <p
                 style={{
                   color: '#555',
-                  fontSize: isMobile ? '0.62rem' : '0.7rem',
+                  fontSize: isMobile ? '0.58rem' : '0.7rem',
                   margin: 0,
                   padding: '0 8px',
                 }}

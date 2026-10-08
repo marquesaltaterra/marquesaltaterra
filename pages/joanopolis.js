@@ -284,17 +284,17 @@ export default function Joanopolis() {
               gap: '12px',
             }}
           >
-<a href="/" style={{ display: 'inline-block' }}>
-  <img
-    src="/images/logo.png"
-    alt="Marques Alta Terra"
-    style={{
-      height: isMobile ? '65px' : '150px',   // ✅
-      width: 'auto',
-      maxWidth: isMobile ? '170px' : '240px',
-    }}
-  />
-</a>
+            <a href="/" style={{ display: 'inline-block' }}>
+              <img
+                src="/images/logo.png"
+                alt="Marques Alta Terra"
+                style={{
+                  height: isMobile ? '65px' : '150px',
+                  width: 'auto',
+                  maxWidth: isMobile ? '170px' : '240px',
+                }}
+              />
+            </a>
             <div
               style={{
                 display: 'flex',
@@ -1090,7 +1090,7 @@ export default function Joanopolis() {
         {/* ====== FOOTER ====== */}
         <footer
           style={{
-            padding: isMobile ? '40px 16px 25px' : '60px 40px 30px',
+            padding: isMobile ? '35px 14px 22px' : '60px 40px 30px',
             backgroundColor: '#1A1A1A',
             color: '#999',
             width: '100%',
@@ -1098,35 +1098,27 @@ export default function Joanopolis() {
           }}
         >
           <div style={{ maxWidth: '1150px', margin: '0 auto', width: '100%' }}>
-            <div style={{ textAlign: 'center', marginBottom: '30px' }}>
-              <img
-                src="/images/logo.png"
-                alt="Marques Alta Terra"
-                style={{
-                  height: isMobile ? '48px' : '70px',
-                  width: 'auto',
-                  maxWidth: '160px',
-                }}
-              />
-            </div>
+            {/* ❌ LOGO REMOVIDA */}
 
+            {/* Divisor superior */}
             <div
               style={{
                 height: '1px',
                 background:
                   'linear-gradient(90deg, transparent 0%, #3A3A3A 20%, #3A3A3A 80%, transparent 100%)',
                 maxWidth: '900px',
-                margin: '0 auto 35px',
+                margin: '0 auto 30px',
               }}
             />
 
+            {/* ====== 3 COLUNAS LADO A LADO (mobile e desktop) ====== */}
             <div
               style={{
                 display: 'grid',
-                gridTemplateColumns: isMobile ? '1fr' : 'repeat(3, 1fr)',
-                gap: isMobile ? '28px' : '50px',
-                marginBottom: '35px',
-                textAlign: isMobile ? 'center' : 'left',
+                gridTemplateColumns: '1fr 1fr 1fr',
+                gap: isMobile ? '14px' : '50px',
+                marginBottom: isMobile ? '25px' : '35px',
+                textAlign: 'left',
                 width: '100%',
               }}
             >
@@ -1134,11 +1126,11 @@ export default function Joanopolis() {
                 <h4
                   style={{
                     color: '#D48C5B',
-                    fontSize: '0.7rem',
+                    fontSize: isMobile ? '0.6rem' : '0.7rem',
                     fontWeight: '600',
-                    letterSpacing: '2.5px',
+                    letterSpacing: isMobile ? '1.5px' : '2.5px',
                     textTransform: 'uppercase',
-                    marginBottom: '16px',
+                    marginBottom: isMobile ? '12px' : '16px',
                   }}
                 >
                   Navegação
@@ -1147,16 +1139,18 @@ export default function Joanopolis() {
                   {[
                     { label: 'Início', href: '/' },
                     { label: 'Nossos terrenos', href: '/#terrenos' },
+                    { label: 'Blog', href: '/blog' },
                     { label: 'Quem Somos', href: '/quem-somos' },
                   ].map((item, i) => (
-                    <li key={i} style={{ marginBottom: '9px' }}>
+                    <li key={i} style={{ marginBottom: isMobile ? '7px' : '9px' }}>
                       <a
                         href={item.href}
                         style={{
                           color: '#999',
                           textDecoration: 'none',
-                          fontSize: '0.88rem',
+                          fontSize: isMobile ? '0.7rem' : '0.88rem',
                           transition: 'color 0.3s',
+                          lineHeight: 1.4,
                         }}
                       >
                         {item.label}
@@ -1170,29 +1164,30 @@ export default function Joanopolis() {
                 <h4
                   style={{
                     color: '#D48C5B',
-                    fontSize: '0.7rem',
+                    fontSize: isMobile ? '0.6rem' : '0.7rem',
                     fontWeight: '600',
-                    letterSpacing: '2.5px',
+                    letterSpacing: isMobile ? '1.5px' : '2.5px',
                     textTransform: 'uppercase',
-                    marginBottom: '16px',
+                    marginBottom: isMobile ? '12px' : '16px',
                   }}
                 >
                   Regiões
                 </h4>
                 <ul style={{ listStyle: 'none', padding: 0, margin: 0 }}>
                   {[
-                    { label: 'Joanópolis - SP', href: '/joanopolis', ativo: true },
+                    { label: 'Joanópolis - SP', href: '/joanopolis' },
                     { label: 'Bragança Paulista - SP', href: '/braganca' },
                     { label: 'Itapeva - MG', href: '/itapeva' },
                   ].map((item, i) => (
-                    <li key={i} style={{ marginBottom: '9px' }}>
+                    <li key={i} style={{ marginBottom: isMobile ? '7px' : '9px' }}>
                       <a
                         href={item.href}
                         style={{
-                          color: item.ativo ? '#D48C5B' : '#999',
+                          color: '#999',
                           textDecoration: 'none',
-                          fontSize: '0.88rem',
-                          fontWeight: item.ativo ? '600' : '400',
+                          fontSize: isMobile ? '0.7rem' : '0.88rem',
+                          transition: 'color 0.3s',
+                          lineHeight: 1.4,
                         }}
                       >
                         {item.label}
@@ -1206,11 +1201,11 @@ export default function Joanopolis() {
                 <h4
                   style={{
                     color: '#D48C5B',
-                    fontSize: '0.7rem',
+                    fontSize: isMobile ? '0.6rem' : '0.7rem',
                     fontWeight: '600',
-                    letterSpacing: '2.5px',
+                    letterSpacing: isMobile ? '1.5px' : '2.5px',
                     textTransform: 'uppercase',
-                    marginBottom: '16px',
+                    marginBottom: isMobile ? '12px' : '16px',
                   }}
                 >
                   Contato
@@ -1218,9 +1213,9 @@ export default function Joanopolis() {
                 <p
                   style={{
                     color: '#999',
-                    fontSize: '0.88rem',
-                    marginBottom: '10px',
-                    lineHeight: '1.6',
+                    fontSize: isMobile ? '0.7rem' : '0.88rem',
+                    marginBottom: '8px',
+                    lineHeight: 1.5,
                   }}
                 >
                   Vendedor direto deste terreno
@@ -1232,8 +1227,9 @@ export default function Joanopolis() {
                   style={{
                     color: '#25D366',
                     textDecoration: 'none',
-                    fontSize: '0.95rem',
+                    fontSize: isMobile ? '0.75rem' : '0.95rem',
                     fontWeight: '600',
+                    lineHeight: 1.4,
                   }}
                 >
                   (11) 94295-6152
@@ -1241,9 +1237,9 @@ export default function Joanopolis() {
                 <p
                   style={{
                     color: '#777',
-                    fontSize: '0.78rem',
+                    fontSize: isMobile ? '0.65rem' : '0.78rem',
                     marginTop: '12px',
-                    lineHeight: '1.6',
+                    lineHeight: '1.5',
                   }}
                 >
                   Outras regiões:{' '}
@@ -1265,7 +1261,7 @@ export default function Joanopolis() {
                 background:
                   'linear-gradient(90deg, transparent 0%, #2C2C2C 50%, transparent 100%)',
                 maxWidth: '900px',
-                margin: '0 auto 25px',
+                margin: '0 auto 22px',
               }}
             />
 
@@ -1273,9 +1269,9 @@ export default function Joanopolis() {
               <p
                 style={{
                   color: '#888',
-                  fontSize: isMobile ? '0.72rem' : '0.85rem',
+                  fontSize: isMobile ? '0.68rem' : '0.85rem',
                   marginBottom: '10px',
-                  lineHeight: '1.7',
+                  lineHeight: '1.6',
                   padding: '0 8px',
                 }}
               >
@@ -1285,7 +1281,7 @@ export default function Joanopolis() {
               <p
                 style={{
                   color: '#666',
-                  fontSize: isMobile ? '0.68rem' : '0.75rem',
+                  fontSize: isMobile ? '0.62rem' : '0.75rem',
                   marginBottom: '6px',
                   padding: '0 8px',
                 }}
@@ -1295,7 +1291,7 @@ export default function Joanopolis() {
               <p
                 style={{
                   color: '#555',
-                  fontSize: isMobile ? '0.62rem' : '0.7rem',
+                  fontSize: isMobile ? '0.58rem' : '0.7rem',
                   margin: 0,
                   padding: '0 8px',
                 }}
