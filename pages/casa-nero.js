@@ -1,6 +1,6 @@
 // pages/casa-nero.js
 // Casa Nero — Imóvel de Alto Padrão na Riviera de São Lourenço
-// Página cinematográfica premium com foco em SEO e conversão
+// Página premium com foco em SEO e conversão
 
 import { useState, useEffect, useRef } from 'react';
 import Head from 'next/head';
@@ -65,12 +65,6 @@ const IMOVEL = {
     'Olá, Anderson! Vi a Casa Nero no site da Marques Alta Terra e gostaria de mais informações sobre esse imóvel na Riviera de São Lourenço.',
 };
 
-// ========== LISTA DE FOTOS (25) ========== //
-const FOTOS = Array.from({ length: 25 }, (_, i) => ({
-  src: `/images/casa-nero${i + 1}.jpg`,
-  alt: `Casa Nero Riviera de São Lourenço — Foto ${i + 1} — Imóvel de alto padrão com ${IMOVEL.suites} suítes`,
-}));
-
 // ========== CARACTERÍSTICAS ========== //
 const CARACTERISTICAS = [
   {
@@ -102,8 +96,6 @@ const CARACTERISTICAS = [
 export default function CasaNero() {
   const [isMobile, setIsMobile] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
-  const [lightboxOpen, setLightboxOpen] = useState(false);
-  const [lightboxIndex, setLightboxIndex] = useState(0);
 
   useEffect(() => {
     const checkSize = () => {
@@ -126,28 +118,9 @@ export default function CasaNero() {
     };
   }, [menuOpen]);
 
-  // Navegação do lightbox com teclado
-  useEffect(() => {
-    if (!lightboxOpen) return;
-    const handleKey = (e) => {
-      if (e.key === 'Escape') setLightboxOpen(false);
-      if (e.key === 'ArrowRight')
-        setLightboxIndex((prev) => (prev + 1) % FOTOS.length);
-      if (e.key === 'ArrowLeft')
-        setLightboxIndex((prev) => (prev - 1 + FOTOS.length) % FOTOS.length);
-    };
-    window.addEventListener('keydown', handleKey);
-    return () => window.removeEventListener('keydown', handleKey);
-  }, [lightboxOpen]);
-
   const LINK_WHATSAPP = `https://wa.me/${IMOVEL.whatsapp}?text=${encodeURIComponent(
     IMOVEL.mensagemWhatsApp
   )}`;
-
-  const openLightbox = (index) => {
-    setLightboxIndex(index);
-    setLightboxOpen(true);
-  };
 
   // Espaçamentos responsivos
   const sectionPadding = isMobile ? '60px 16px' : '110px 20px';
@@ -190,9 +163,9 @@ export default function CasaNero() {
           property="og:description"
           content="Assinada pelo arquiteto Dalber Aguero. 5 suítes, 331,68m², piscina aquecida, sauna, área gourmet. O refúgio de luxo na Riviera de São Lourenço. R$ 7.800.000,00."
         />
-        <meta property="og:image" content="https://www.marquesaltaterra.shop/images/casa-nero1.jpg" />
-        <meta property="og:image:secure_url" content="https://www.marquesaltaterra.shop/images/casa-nero1.jpg" />
-        <meta property="og:image:type" content="image/jpeg" />
+        <meta property="og:image" content="https://www.marquesaltaterra.shop/images/logo.png" />
+        <meta property="og:image:secure_url" content="https://www.marquesaltaterra.shop/images/logo.png" />
+        <meta property="og:image:type" content="image/png" />
         <meta property="og:image:width" content="1200" />
         <meta property="og:image:height" content="630" />
         <meta property="og:image:alt" content="Casa Nero — Casa de Luxo na Riviera de São Lourenço" />
@@ -211,7 +184,7 @@ export default function CasaNero() {
           name="twitter:description"
           content="Imóvel de alto padrão com 5 suítes, 331,68m², piscina aquecida e sauna na Riviera de São Lourenço."
         />
-        <meta name="twitter:image" content="https://www.marquesaltaterra.shop/images/casa-nero1.jpg" />
+        <meta name="twitter:image" content="https://www.marquesaltaterra.shop/images/logo.png" />
 
         {/* ====== SCHEMA.ORG — RESIDENCE ====== */}
         <script type="application/ld+json">
@@ -221,7 +194,7 @@ export default function CasaNero() {
             name: 'Casa Nero',
             description:
               'Imóvel de alto padrão assinado pelo arquiteto Dalber Aguero na Riviera de São Lourenço, com 5 suítes, 331,68m², piscina aquecida, sauna e área gourmet.',
-            image: 'https://www.marquesaltaterra.shop/images/casa-nero1.jpg',
+            image: 'https://www.marquesaltaterra.shop/images/logo.png',
             address: {
               '@type': 'PostalAddress',
               streetAddress: 'Alameda Praia do Sul',
@@ -254,7 +227,7 @@ export default function CasaNero() {
             '@type': 'RealEstateListing',
             name: 'Casa Nero',
             url: 'https://www.marquesaltaterra.shop/casa-nero',
-            image: 'https://www.marquesaltaterra.shop/images/casa-nero1.jpg',
+            image: 'https://www.marquesaltaterra.shop/images/logo.png',
             datePosted: '2026-10-05',
             description:
               'Casa de luxo assinada pelo arquiteto Dalber Aguero na Riviera de São Lourenço. 5 suítes, 331,68m², piscina aquecida, sauna, área gourmet.',
@@ -352,7 +325,7 @@ export default function CasaNero() {
         }}
       >
         {/* ============================================================ */}
-        {/* ====== HEADER FIXO PREMIUM (logo aumentada) ====== */}
+        {/* ====== HEADER FIXO PREMIUM ====== */}
         {/* ============================================================ */}
         <header
           style={{
@@ -389,7 +362,6 @@ export default function CasaNero() {
             />
           </a>
 
-          {/* Botão WhatsApp no header (desktop) */}
           {!isMobile && (
             <a
               href={LINK_WHATSAPP}
@@ -413,7 +385,6 @@ export default function CasaNero() {
             </a>
           )}
 
-          {/* Menu mobile */}
           {isMobile && (
             <button
               onClick={() => setMenuOpen(!menuOpen)}
@@ -521,34 +492,32 @@ export default function CasaNero() {
         )}
 
         {/* ============================================================ */}
-        {/* ====== HERO CINEMATOGRÁFICO (padding ajustado) ====== */}
+        {/* ====== HERO CINEMATOGRÁFICO (SEM FOTO) ====== */}
         {/* ============================================================ */}
         <section
           style={{
             position: 'relative',
             minHeight: '100vh',
             height: '100vh',
-            backgroundImage: 'url(/images/casa-nero1.jpg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            background:
+              'linear-gradient(180deg, #0A0A0A 0%, #1A1A1A 50%, #0A0A0A 100%)',
             display: 'flex',
-            alignItems: 'flex-end',
+            alignItems: 'center',
             justifyContent: 'center',
-            padding: isMobile ? '80px 20px 60px' : '0 40px 120px',
+            padding: isMobile ? '80px 20px 60px' : '0 40px',
             boxSizing: 'border-box',
           }}
         >
-          {/* Overlay escuro cinematográfico */}
+          {/* Elemento decorativo de fundo */}
           <div
             style={{
               position: 'absolute',
               inset: 0,
               background:
-                'linear-gradient(180deg, rgba(10,10,10,0.5) 0%, rgba(10,10,10,0.3) 30%, rgba(10,10,10,0.95) 100%)',
+                'radial-gradient(ellipse at center, rgba(201,169,97,0.08) 0%, transparent 70%)',
             }}
           />
 
-          {/* Conteúdo do hero */}
           <div
             style={{
               position: 'relative',
@@ -639,13 +608,12 @@ export default function CasaNero() {
               }}
             >
               <a
-                href="#galeria"
+                href="#sobre"
                 style={{
                   padding: isMobile ? '16px 32px' : '18px 44px',
                   backgroundColor: '#C9A961',
                   color: '#0A0A0A',
                   border: 'none',
-                  borderRadius: '0px',
                   fontSize: isMobile ? '0.78rem' : '0.85rem',
                   fontWeight: '700',
                   letterSpacing: '2.5px',
@@ -657,7 +625,7 @@ export default function CasaNero() {
                   boxSizing: 'border-box',
                 }}
               >
-                Ver Galeria
+                Conhecer o Imóvel
               </a>
               <a
                 href={LINK_WHATSAPP}
@@ -668,7 +636,6 @@ export default function CasaNero() {
                   backgroundColor: 'transparent',
                   color: '#fff',
                   border: '1px solid rgba(201,169,97,0.8)',
-                  borderRadius: '0px',
                   fontSize: isMobile ? '0.78rem' : '0.85rem',
                   fontWeight: '600',
                   letterSpacing: '2.5px',
@@ -685,7 +652,6 @@ export default function CasaNero() {
             </div>
           </div>
 
-          {/* Indicador de scroll (ajustado para não invadir) */}
           {!isMobile && (
             <div
               style={{
@@ -786,6 +752,7 @@ export default function CasaNero() {
         {/* ====== SOBRE O PROJETO ====== */}
         {/* ============================================================ */}
         <section
+          id="sobre"
           style={{
             padding: sectionPadding,
             backgroundColor: '#0A0A0A',
@@ -860,7 +827,6 @@ export default function CasaNero() {
                 inesquecíveis de lazer e convivência.
               </p>
 
-              {/* Linha divisória decorativa */}
               <div
                 style={{
                   width: '80px',
@@ -875,114 +841,96 @@ export default function CasaNero() {
         </section>
 
         {/* ============================================================ */}
-        {/* ====== GALERIA ====== */}
+        {/* ====== CTA INTERMEDIÁRIO (no lugar das fotos) ====== */}
         {/* ============================================================ */}
         <section
-          id="galeria"
           style={{
-            padding: isMobile ? '60px 16px' : '100px 20px',
-            backgroundColor: '#0A0A0A',
+            padding: sectionPadding,
+            backgroundColor: '#0F0F0F',
+            borderTop: '1px solid rgba(201,169,97,0.1)',
+            borderBottom: '1px solid rgba(201,169,97,0.1)',
           }}
         >
-          <div style={{ maxWidth: '1400px', margin: '0 auto' }}>
+          <div style={{ maxWidth: '900px', margin: '0 auto', textAlign: 'center' }}>
             <FadeIn>
               <div
                 style={{
-                  textAlign: 'center',
-                  marginBottom: isMobile ? '40px' : '70px',
+                  backgroundColor: 'rgba(201,169,97,0.08)',
+                  border: '1px solid rgba(201,169,97,0.3)',
+                  padding: isMobile ? '40px 24px' : '60px 50px',
+                  borderRadius: '2px',
                 }}
               >
                 <div
                   style={{
-                    display: 'inline-flex',
-                    alignItems: 'center',
-                    gap: '14px',
-                    marginBottom: '24px',
+                    fontSize: isMobile ? '2.5rem' : '3.5rem',
+                    marginBottom: '20px',
                   }}
                 >
-                  <span style={{ width: '50px', height: '1px', backgroundColor: '#C9A961' }} />
-                  <span
-                    style={{
-                      color: '#C9A961',
-                      fontSize: isMobile ? '0.65rem' : '0.8rem',
-                      fontWeight: '500',
-                      letterSpacing: isMobile ? '3px' : '5px',
-                      textTransform: 'uppercase',
-                    }}
-                  >
-                    Galeria
-                  </span>
-                  <span style={{ width: '50px', height: '1px', backgroundColor: '#C9A961' }} />
+                  🔒
                 </div>
-                <h2
+                <h3
                   style={{
                     color: '#fff',
                     fontFamily: "'Playfair Display', Georgia, serif",
-                    fontSize: isMobile ? '1.8rem' : 'clamp(2.5rem, 4.5vw, 3.5rem)',
+                    fontSize: isMobile ? '1.4rem' : 'clamp(1.8rem, 3vw, 2.3rem)',
                     fontWeight: '500',
-                    marginBottom: '16px',
-                    lineHeight: '1.2',
+                    fontStyle: 'italic',
+                    marginBottom: '20px',
+                    lineHeight: '1.3',
                   }}
                 >
-                  Cada ambiente, uma obra
-                </h2>
+                  Galeria exclusiva sob consulta
+                </h3>
                 <p
                   style={{
-                    color: 'rgba(255,255,255,0.6)',
-                    fontSize: isMobile ? '0.9rem' : '1rem',
-                    maxWidth: '600px',
-                    margin: '0 auto',
-                    lineHeight: '1.7',
+                    color: 'rgba(255,255,255,0.7)',
+                    fontSize: isMobile ? '0.92rem' : '1.05rem',
+                    lineHeight: '1.8',
                     fontWeight: '300',
+                    marginBottom: '35px',
+                    maxWidth: '600px',
+                    margin: '0 auto 35px',
                   }}
                 >
-                  Clique em qualquer imagem para ampliar e explorar cada detalhe da Casa Nero.
+                  Por questões de privacidade dos proprietários, as fotografias completas
+                  da Casa Nero são disponibilizadas apenas para interessados sérios, durante
+                  o atendimento personalizado com o corretor responsável.
+                </p>
+                <a
+                  href={LINK_WHATSAPP}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  style={{
+                    display: 'inline-block',
+                    padding: isMobile ? '16px 32px' : '18px 44px',
+                    backgroundColor: '#25D366',
+                    color: '#fff',
+                    fontSize: isMobile ? '0.78rem' : '0.85rem',
+                    fontWeight: '700',
+                    letterSpacing: '2.5px',
+                    textTransform: 'uppercase',
+                    textDecoration: 'none',
+                    boxShadow: '0 15px 50px rgba(37, 211, 102, 0.35)',
+                    transition: 'all 0.3s ease',
+                  }}
+                >
+                  📲 Solicitar Galeria Completa
+                </a>
+                <p
+                  style={{
+                    color: 'rgba(255,255,255,0.4)',
+                    marginTop: '22px',
+                    fontSize: isMobile ? '0.7rem' : '0.78rem',
+                    letterSpacing: '1.5px',
+                    textTransform: 'uppercase',
+                    fontWeight: '400',
+                  }}
+                >
+                  Atendimento direto · Sem intermediários
                 </p>
               </div>
             </FadeIn>
-
-            {/* Grid de fotos */}
-            <div
-              style={{
-                display: 'grid',
-                gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(4, 1fr)',
-                gap: isMobile ? '8px' : '14px',
-              }}
-            >
-              {FOTOS.map((foto, index) => (
-                <FadeIn key={index} delay={(index % 8) * 0.05}>
-                  <div
-                    onClick={() => openLightbox(index)}
-                    style={{
-                      position: 'relative',
-                      width: '100%',
-                      paddingBottom: '75%',
-                      overflow: 'hidden',
-                      cursor: 'pointer',
-                      borderRadius: '2px',
-                      backgroundColor: '#1A1A1A',
-                    }}
-                  >
-                    <img
-                      src={foto.src}
-                      alt={foto.alt}
-                      loading={index < 4 ? 'eager' : 'lazy'}
-                      style={{
-                        position: 'absolute',
-                        top: 0,
-                        left: 0,
-                        width: '100%',
-                        height: '100%',
-                        objectFit: 'cover',
-                        transition: 'transform 0.7s cubic-bezier(0.4, 0, 0.2, 1)',
-                      }}
-                      onMouseOver={(e) => (e.currentTarget.style.transform = 'scale(1.08)')}
-                      onMouseOut={(e) => (e.currentTarget.style.transform = 'scale(1)')}
-                    />
-                  </div>
-                </FadeIn>
-              ))}
-            </div>
           </div>
         </section>
 
@@ -992,9 +940,7 @@ export default function CasaNero() {
         <section
           style={{
             padding: sectionPadding,
-            backgroundColor: '#0F0F0F',
-            borderTop: '1px solid rgba(201,169,97,0.1)',
-            borderBottom: '1px solid rgba(201,169,97,0.1)',
+            backgroundColor: '#0A0A0A',
           }}
         >
           <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
@@ -1105,7 +1051,9 @@ export default function CasaNero() {
         <section
           style={{
             padding: sectionPadding,
-            backgroundColor: '#0A0A0A',
+            backgroundColor: '#0F0F0F',
+            borderTop: '1px solid rgba(201,169,97,0.1)',
+            borderBottom: '1px solid rgba(201,169,97,0.1)',
           }}
         >
           <div style={{ maxWidth: '1000px', margin: '0 auto' }}>
@@ -1251,8 +1199,7 @@ export default function CasaNero() {
         <section
           style={{
             padding: sectionPadding,
-            backgroundColor: '#0F0F0F',
-            borderTop: '1px solid rgba(201,169,97,0.1)',
+            backgroundColor: '#0A0A0A',
           }}
         >
           <div style={{ maxWidth: '1000px', margin: '0 auto', textAlign: 'center' }}>
@@ -1338,7 +1285,6 @@ export default function CasaNero() {
                   backgroundColor: 'transparent',
                   color: '#C9A961',
                   border: '1px solid #C9A961',
-                  borderRadius: '0px',
                   fontSize: isMobile ? '0.72rem' : '0.8rem',
                   fontWeight: '600',
                   letterSpacing: '2.5px',
@@ -1359,9 +1305,8 @@ export default function CasaNero() {
         <section
           style={{
             padding: sectionPaddingLarge,
-            backgroundImage: 'url(/images/casa-nero25.jpg)',
-            backgroundSize: 'cover',
-            backgroundPosition: 'center',
+            background:
+              'linear-gradient(180deg, #0A0A0A 0%, #1A1A1A 50%, #0A0A0A 100%)',
             position: 'relative',
           }}
         >
@@ -1369,7 +1314,8 @@ export default function CasaNero() {
             style={{
               position: 'absolute',
               inset: 0,
-              background: 'linear-gradient(180deg, rgba(10,10,10,0.85) 0%, rgba(10,10,10,0.95) 100%)',
+              background:
+                'radial-gradient(ellipse at center, rgba(201,169,97,0.1) 0%, transparent 70%)',
             }}
           />
           <div
@@ -1445,7 +1391,6 @@ export default function CasaNero() {
                   padding: isMobile ? '18px 36px' : '22px 60px',
                   backgroundColor: '#25D366',
                   color: '#fff',
-                  borderRadius: '0px',
                   fontSize: isMobile ? '0.85rem' : '0.95rem',
                   fontWeight: '700',
                   letterSpacing: '2.5px',
@@ -1488,9 +1433,6 @@ export default function CasaNero() {
           }}
         >
           <div style={{ maxWidth: '1200px', margin: '0 auto', width: '100%' }}>
-            {/* ❌ LOGO REMOVIDA */}
-
-            {/* Divisor superior */}
             <div
               style={{
                 height: '1px',
@@ -1501,7 +1443,6 @@ export default function CasaNero() {
               }}
             />
 
-            {/* ====== 3 COLUNAS LADO A LADO (mobile e desktop) ====== */}
             <div
               style={{
                 display: 'grid',
@@ -1512,7 +1453,6 @@ export default function CasaNero() {
                 width: '100%',
               }}
             >
-              {/* COLUNA 1 — Navegação */}
               <div>
                 <h4
                   style={{
@@ -1551,7 +1491,6 @@ export default function CasaNero() {
                 </ul>
               </div>
 
-              {/* COLUNA 2 — Regiões */}
               <div>
                 <h4
                   style={{
@@ -1591,7 +1530,6 @@ export default function CasaNero() {
                 </ul>
               </div>
 
-              {/* COLUNA 3 — Contato */}
               <div>
                 <h4
                   style={{
@@ -1658,7 +1596,6 @@ export default function CasaNero() {
               }}
             />
 
-            {/* Copyright */}
             <div style={{ textAlign: 'center', width: '100%' }}>
               <p
                 style={{
@@ -1697,190 +1634,6 @@ export default function CasaNero() {
           </div>
         </footer>
       </div>
-
-      {/* ============================================================ */}
-      {/* ====== LIGHTBOX ====== */}
-      {/* ============================================================ */}
-      {lightboxOpen && (
-        <div
-          style={{
-            position: 'fixed',
-            inset: 0,
-            zIndex: 9999,
-            backgroundColor: 'rgba(5,5,5,0.98)',
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            padding: isMobile ? '20px' : '40px',
-          }}
-          onClick={() => setLightboxOpen(false)}
-        >
-          {/* Botão fechar */}
-          <button
-            onClick={() => setLightboxOpen(false)}
-            style={{
-              position: 'absolute',
-              top: isMobile ? '20px' : '30px',
-              right: isMobile ? '20px' : '30px',
-              background: 'none',
-              border: '1px solid rgba(201,169,97,0.6)',
-              color: '#C9A961',
-              width: '45px',
-              height: '45px',
-              borderRadius: '50%',
-              cursor: 'pointer',
-              fontSize: '20px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              zIndex: 10,
-            }}
-          >
-            ✕
-          </button>
-
-          {/* Contador */}
-          <div
-            style={{
-              position: 'absolute',
-              top: isMobile ? '25px' : '40px',
-              left: '50%',
-              transform: 'translateX(-50%)',
-              color: '#C9A961',
-              fontSize: '0.85rem',
-              letterSpacing: '2px',
-              fontWeight: '500',
-            }}
-          >
-            {lightboxIndex + 1} / {FOTOS.length}
-          </div>
-
-          {/* Botão anterior */}
-          {!isMobile && (
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setLightboxIndex((prev) => (prev - 1 + FOTOS.length) % FOTOS.length);
-              }}
-              style={{
-                position: 'absolute',
-                left: '30px',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                background: 'rgba(201,169,97,0.1)',
-                border: '1px solid rgba(201,169,97,0.4)',
-                color: '#C9A961',
-                width: '55px',
-                height: '55px',
-                borderRadius: '50%',
-                cursor: 'pointer',
-                fontSize: '22px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                zIndex: 10,
-              }}
-            >
-              ‹
-            </button>
-          )}
-
-          {/* Botão próximo */}
-          {!isMobile && (
-            <button
-              onClick={(e) => {
-                e.stopPropagation();
-                setLightboxIndex((prev) => (prev + 1) % FOTOS.length);
-              }}
-              style={{
-                position: 'absolute',
-                right: '30px',
-                top: '50%',
-                transform: 'translateY(-50%)',
-                background: 'rgba(201,169,97,0.1)',
-                border: '1px solid rgba(201,169,97,0.4)',
-                color: '#C9A961',
-                width: '55px',
-                height: '55px',
-                borderRadius: '50%',
-                cursor: 'pointer',
-                fontSize: '22px',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                zIndex: 10,
-              }}
-            >
-              ›
-            </button>
-          )}
-
-          {/* Imagem */}
-          <img
-            src={FOTOS[lightboxIndex].src}
-            alt={FOTOS[lightboxIndex].alt}
-            onClick={(e) => e.stopPropagation()}
-            style={{
-              maxWidth: '100%',
-              maxHeight: '90vh',
-              objectFit: 'contain',
-              boxShadow: '0 30px 100px rgba(0,0,0,0.9)',
-            }}
-          />
-
-          {/* Navegação mobile (dentro do lightbox) */}
-          {isMobile && (
-            <div
-              style={{
-                position: 'absolute',
-                bottom: '20px',
-                left: '50%',
-                transform: 'translateX(-50%)',
-                display: 'flex',
-                gap: '20px',
-                zIndex: 10,
-              }}
-            >
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setLightboxIndex((prev) => (prev - 1 + FOTOS.length) % FOTOS.length);
-                }}
-                style={{
-                  background: 'rgba(201,169,97,0.15)',
-                  border: '1px solid rgba(201,169,97,0.5)',
-                  color: '#C9A961',
-                  width: '50px',
-                  height: '50px',
-                  borderRadius: '50%',
-                  cursor: 'pointer',
-                  fontSize: '20px',
-                }}
-              >
-                ‹
-              </button>
-              <button
-                onClick={(e) => {
-                  e.stopPropagation();
-                  setLightboxIndex((prev) => (prev + 1) % FOTOS.length);
-                }}
-                style={{
-                  background: 'rgba(201,169,97,0.15)',
-                  border: '1px solid rgba(201,169,97,0.5)',
-                  color: '#C9A961',
-                  width: '50px',
-                  height: '50px',
-                  borderRadius: '50%',
-                  cursor: 'pointer',
-                  fontSize: '20px',
-                }}
-              >
-                ›
-              </button>
-            </div>
-          )}
-        </div>
-      )}
 
       <style jsx global>{`
         * {
