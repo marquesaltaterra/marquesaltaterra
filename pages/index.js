@@ -911,16 +911,21 @@ export default function Home() {
                         minHeight: isMobile ? 'auto' : '520px',
                       }}
                     >
-                      <div
-                        style={{
-                          position: 'relative',
-                          height: isMobile ? '280px' : 'auto',
-                          minHeight: isMobile ? '280px' : '520px',
-                          backgroundImage: `url(${imovel.imagem})`,
-                          backgroundSize: 'cover',
-                          backgroundPosition: 'center',
-                        }}
-                      >
+<div
+  style={{
+    position: 'relative',
+    height: isMobile ? '280px' : 'auto',
+    minHeight: isMobile ? '280px' : '520px',
+    background: 'linear-gradient(135deg, #0A0A0A 0%, #1A1A1A 50%, #0A0A0A 100%)',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'center',
+  }}
+>
+  {/* Ícone grande no lugar da foto */}
+  <div style={{ fontSize: isMobile ? '4rem' : '6rem', opacity: 0.3 }}>
+    🔒
+  </div>
                         <div
                           style={{
                             position: 'absolute',
